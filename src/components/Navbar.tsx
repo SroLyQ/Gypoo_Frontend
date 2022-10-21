@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import logo from '../assets/logo.png';
+
+function Navbar() {
+  // const [nav, setNav] = useState(false);
+
+  return (
+    <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-md">
+      <div className="px-8 flex justify-between items-center w-full h-full">
+        <a href="/">
+          <img
+            src={logo}
+            alt={'logo'}
+            className="  border-1   hidden md:flex w-32"
+          />
+        </a>
+        {/* phone */}
+        <div className="md:hidden mx-auto ">
+          <a href="/">
+            <img src={logo} alt={'logo'} className="w-32" />
+          </a>
+        </div>
+
+        <ul className="hidden md:flex ">
+          <li className="">
+            <a href="&">หน้าหลัก</a>
+          </li>
+          <li className="">
+            <a href="&">หน้าหลัก</a>
+          </li>
+          <li className="">
+            <a href="&">หน้าหลัก</a>
+          </li>
+          <li className="">
+            <a href="&">หน้าหลัก</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
