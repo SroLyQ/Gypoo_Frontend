@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function Main() {
-  return (
-    <div>Main</div>
-  )
+  return <div className="pt-24">main</div>;
 }
 
-export default Main
+export default Main;

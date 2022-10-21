@@ -21,18 +21,18 @@ function Navbar() {
           </a>
         </div>
 
-        <ul className="hidden md:flex ">
+        <ul className="hidden md:flex space-x-7 pr-12">
           <li className="">
             <a href="&">หน้าหลัก</a>
           </li>
           <li className="">
-            <a href="&">หน้าหลัก</a>
+            <a href="&">โรงแรม</a>
           </li>
           <li className="">
-            <a href="&">หน้าหลัก</a>
+            <a href="&">ร้านอาหาร</a>
           </li>
           <li className="">
-            <a href="&">หน้าหลัก</a>
+            <a href="&">กิจกรรม</a>
           </li>
         </ul>
       </div>
