@@ -23,16 +23,16 @@ function Navbar() {
 
         <ul className="hidden md:flex space-x-7 pr-12">
           <li className="">
-            <a href="&">หน้าหลัก</a>
+            <a href="/">หน้าหลัก</a>
           </li>
           <li className="">
-            <a href="&">โรงแรม</a>
+            <a href="/hotel">โรงแรม</a>
           </li>
           <li className="">
-            <a href="&">ร้านอาหาร</a>
+            <a href="/restaurant">ร้านอาหาร</a>
           </li>
           <li className="">
-            <a href="&">กิจกรรม</a>
+            <a href="/activity">กิจกรรม</a>
           </li>
         </ul>
       </div>

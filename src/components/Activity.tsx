@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Activity() {
-  return <div>Activity</div>;
+  return <div className="pt-24">Activity</div>;
 }
 
 export default Activity;
