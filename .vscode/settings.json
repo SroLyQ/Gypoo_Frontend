@@ -3,5 +3,5 @@
     "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fomatOnSave": true
+  "editor.formatOnPaste": true
 }

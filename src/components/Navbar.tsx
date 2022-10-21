@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 
 function Navbar() {
-  // const [nav, setNav] = useState(false);
-
   return (
     <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-md">
       <div className="px-8 flex justify-between items-center w-full h-full">
