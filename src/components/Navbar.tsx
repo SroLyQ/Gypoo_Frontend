@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.gif';
 
 function Navbar() {
   return (
-    <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-md">
+    <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-lg">
       <div className="px-8 flex justify-between items-center w-full h-full">
         <a href="/">
           <img
             src={logo}
             alt={'logo'}
-            className="  border-1   hidden md:flex w-32"
+            className="  border-1   hidden lg:flex w-32 "
           />
         </a>
         {/* phone */}
-        <div className="md:hidden mx-auto ">
+        <div className="lg:hidden mx-auto ">
           <a href="/">
             <img src={logo} alt={'logo'} className="w-32" />
           </a>
         </div>
 
-        <ul className="hidden md:flex space-x-7 pr-12">
+        <ul className="hidden lg:flex space-x-10 pr-12 font-kanit ">
           <li className="">
             <a href="/">หน้าหลัก</a>
           </li>
@@ -31,6 +30,9 @@ function Navbar() {
           </li>
           <li className="">
             <a href="/activity">กิจกรรม</a>
+          </li>
+          <li className="">
+            <a href="/search">search</a>
           </li>
         </ul>
       </div>
