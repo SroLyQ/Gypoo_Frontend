@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       
-      <Navbar/>
+      <HotelNavbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
