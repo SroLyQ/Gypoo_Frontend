@@ -1,33 +1,21 @@
 import React from 'react'
+import testdata from './testdata.json'
+import HotelCard from './HotelCard'
 
 function HotelHotels() {
   return (
     <div className="pt-24">
-      
-      Other
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Convallis convallis tellus id interdum velit laoreet id. Iaculis urna id volutpat lacus laoreet non curabitur gravida arcu. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Lacinia quis vel eros donec. Scelerisque eu ultrices vitae auctor. Orci a scelerisque purus semper eget duis at tellus at. Enim sit amet venenatis urna. Diam maecenas ultricies mi eget mauris pharetra et. Eget mauris pharetra et ultrices neque ornare aenean euismod. Praesent elementum facilisis leo vel. Varius duis at consectetur lorem donec. Nulla posuere sollicitudin aliquam ultrices sagittis orci. Et tortor at risus viverra adipiscing at in. Quam pellentesque nec nam aliquam sem et tortor. Fermentum posuere urna nec tincidunt praesent.
-
-Aliquam nulla facilisi cras fermentum odio eu feugiat. Sed vulputate mi sit amet mauris commodo quis. Tellus integer feugiat scelerisque varius morbi. Sed tempus urna et pharetra. Et ultrices neque ornare aenean. Netus et malesuada fames ac. Malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Sed viverra tellus in hac habitasse platea. Augue eget arcu dictum varius. Purus gravida quis blandit turpis. Ut sem nulla pharetra diam sit amet nisl. Fusce ut placerat orci nulla pellentesque. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam. In fermentum posuere urna nec tincidunt praesent.
-
-Aliquet bibendum enim facilisis gravida neque convallis a cras. Vel facilisis volutpat est velit. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu. Vitae proin sagittis nisl rhoncus mattis rhoncus urna. Lectus nulla at volutpat diam ut venenatis tellus. Mauris ultrices eros in cursus turpis massa tincidunt. Amet facilisis magna etiam tempor. Porta non pulvinar neque laoreet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Risus commodo viverra maecenas accumsan. Quis vel eros donec ac odio. Scelerisque fermentum dui faucibus in. Vitae et leo duis ut. Vitae congue eu consequat ac felis. Imperdiet nulla malesuada pellentesque elit eget gravida cum. Tristique nulla aliquet enim tortor at auctor urna nunc.
-
-Sed risus pretium quam vulputate dignissim suspendisse. Vivamus arcu felis bibendum ut tristique et egestas quis. Faucibus turpis in eu mi. Nisl rhoncus mattis rhoncus urna. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Aliquet eget sit amet tellus cras adipiscing. Fames ac turpis egestas sed tempus urna et pharetra. Neque convallis a cras semper. Volutpat diam ut venenatis tellus in metus vulputate eu scelerisque. Montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada. Urna duis convallis convallis tellus. Ultricies leo integer malesuada nunc vel risus commodo. Etiam sit amet nisl purus in mollis nunc sed. Penatibus et magnis dis parturient montes nascetur ridiculus mus. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Lorem mollis aliquam ut porttitor leo a diam. Posuere urna nec tincidunt praesent semper feugiat nibh. Sagittis aliquam malesuada bibendum arcu vitae elementum.
-
-Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Porttitor leo a diam sollicitudin tempor. Praesent semper feugiat nibh sed. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Lectus quam id leo in. Sagittis vitae et leo duis ut diam quam nulla porttitor. Amet purus gravida quis blandit turpis. Elit ullamcorper dignissim cras tincidunt lobortis. Molestie at elementum eu facilisis sed odio.
-
-Enim neque volutpat ac tincidunt vitae. Eget arcu dictum varius duis. Netus et malesuada fames ac turpis. Mi proin sed libero enim. Magna etiam tempor orci eu lobortis elementum nibh. Consequat interdum varius sit amet mattis vulputate enim nulla. Nulla malesuada pellentesque elit eget. Adipiscing tristique risus nec feugiat in fermentum posuere. At varius vel pharetra vel. Sit amet aliquam id diam maecenas ultricies mi. Turpis in eu mi bibendum neque egestas congue quisque. Et malesuada fames ac turpis egestas maecenas.
-
-Arcu ac tortor dignissim convallis aenean et tortor at. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo. Risus in hendrerit gravida rutrum quisque non tellus. Gravida arcu ac tortor dignissim convallis aenean. Aliquet nibh praesent tristique magna sit. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Eget mi proin sed libero enim. Sed risus pretium quam vulputate. Morbi tristique senectus et netus et malesuada. Purus in massa tempor nec feugiat. Tempus imperdiet nulla malesuada pellentesque elit eget gravida. Urna neque viverra justo nec ultrices dui. Nisl suscipit adipiscing bibendum est ultricies integer quis. Sem et tortor consequat id porta nibh. Nunc id cursus metus aliquam eleifend.
-
-Ut diam quam nulla porttitor massa id neque aliquam. Nunc scelerisque viverra mauris in aliquam sem. Bibendum at varius vel pharetra vel turpis nunc eget. At augue eget arcu dictum varius duis at consectetur lorem. Lacus vel facilisis volutpat est velit. Nec ultrices dui sapien eget. Porta nibh venenatis cras sed felis eget. Suspendisse potenti nullam ac tortor vitae. Malesuada bibendum arcu vitae elementum. At imperdiet dui accumsan sit. Est ultricies integer quis auctor elit sed. Et malesuada fames ac turpis egestas sed tempus urna. Nulla pellentesque dignissim enim sit amet venenatis urna cursus. Nec ullamcorper sit amet risus nullam eget felis. Fermentum et sollicitudin ac orci phasellus egestas. Non tellus orci ac auctor augue mauris augue neque.
-
-Sit amet luctus venenatis lectus. Tincidunt ornare massa eget egestas purus viverra. Sit amet risus nullam eget felis eget nunc lobortis mattis. Neque sodales ut etiam sit amet nisl purus in. Aliquam id diam maecenas ultricies mi eget mauris. Ut eu sem integer vitae justo eget magna fermentum iaculis. Nisi quis eleifend quam adipiscing. Orci a scelerisque purus semper eget duis. In est ante in nibh mauris cursus mattis molestie. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Eu non diam phasellus vestibulum. Porta nibh venenatis cras sed felis eget. Sapien pellentesque habitant morbi tristique senectus et netus et malesuada.
-
-Tellus in metus vulputate eu scelerisque felis imperdiet. Pharetra pharetra massa massa ultricies mi quis hendrerit dolor. Tempor id eu nisl nunc mi ipsum faucibus. Sed enim ut sem viverra aliquet. Nulla pellentesque dignissim enim sit amet venenatis urna cursus. Venenatis a condimentum vitae sapien pellentesque habitant. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Est lorem ipsum dolor sit amet consectetur. Iaculis nunc sed augue lacus viverra vitae congue eu. Mattis ullamcorper velit sed ullamcorper morbi.
-
-Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Est pellentesque elit ullamcorper dignissim cras. Lectus quam id leo in vitae turpis massa sed elementum. Id faucibus nisl tincidunt eget nullam non nisi est sit. At augue eget arcu dictum varius duis. Viverra aliquet eget sit amet tellus cras adipiscing. Urna cursus eget nunc scelerisque viverra mauris in aliquam. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Ipsum consequat nisl vel pretium lectus. Id venenatis a condimentum vitae sapien pellentesque habitant.
-
-Habitant morbi tristique senectus et netus et malesuada fames ac. Diam sit amet nisl suscipit adipiscing bibendum est ultricies. Ornare lectus sit amet est placerat in egestas. Sit amet risus nullam eget felis eget nunc lobortis. Faucibus turpis in eu mi bibendum. Volutpat ac tincidunt vitae semper quis lectus nulla at volutpat. Id donec ultrices tincidunt arcu non sodales. Odio ut sem nulla pharetra diam. Erat nam at lectus urna duis convallis. Egestas dui id ornare arcu odio. Vitae nunc sed velit dignissim. Fringilla phasellus faucibus scelerisque eleifend. In metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Orci porta non pulvinar neque. Neque egestas congue quisque egestas diam in. Convallis aenean et tortor at risus viverra.
+      <div className="grid grid-rows-1 grid-flow-rows justify-center">
+      {
+        testdata.map((data,id)=>{
+          return(
+          <div>
+            <HotelCard data = {data}/>
+          </div>
+          )
+        })
+      }
+      </div>
     </div>
     
   )
