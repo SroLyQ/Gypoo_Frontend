@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Main from './components/Main';
-import Hotel from './components/Hotel';
-import Restaurant from './components/Restaurant';
-import Activity from './components/Activity';
+import Navbar from './client-sites/components/Navbar';
+import Main from './client-sites/components/Main';
+import Hotel from './client-sites/components/Hotel';
+import Restaurant from './client-sites/components/Restaurant';
+import Activity from './client-sites/components/Activity';
 import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
