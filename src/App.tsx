@@ -5,14 +5,14 @@ import Main from './client-sites/components/Main';
 import Hotel from './client-sites/components/Hotel';
 import Restaurant from './client-sites/components/Restaurant';
 import Activity from './client-sites/components/Activity';
-// import HotelNavbar from './hotel-sites/components/HotelNavbar';
-// import HotelHotels from './hotel-sites/pages/HotelHotels';
-// import HotelHome from './hotel-sites/pages/HotelHome';
-// import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
-// import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
-// import HotelProfile from './hotel-sites/pages/HotelProfiles';
-// import HotelDiscount from './hotel-sites/pages/HotelDiscount';
-// import HotelHistory from './hotel-sites/pages/HotelHistory';
+import HotelNavbar from './hotel-sites/components/HotelNavbar';
+import HotelHotels from './hotel-sites/pages/HotelHotels';
+import HotelHome from './hotel-sites/pages/HotelHome';
+import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
+import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
+import HotelProfile from './hotel-sites/pages/HotelProfiles';
+import HotelDiscount from './hotel-sites/pages/HotelDiscount';
+import HotelHistory from './hotel-sites/pages/HotelHistory';
 function App() {
   return (
     <>
