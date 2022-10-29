@@ -9,7 +9,6 @@ import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
 import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
-import HotelTourisms from './hotel-sites/pages/HotelTourisms';
 import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
 import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
@@ -17,7 +16,7 @@ import HotelHistory from './hotel-sites/pages/HotelHistory';
 function App() {
   return (
     <>
-      
+      {/*deaw gor mee contition aa*/}
       <HotelNavbar/>
       <BrowserRouter>
         <Routes>
@@ -27,7 +26,6 @@ function App() {
           <Route path="/activity" element={<Activity />} />
           <Route path='/hotelhotels' element = {<HotelHotels/>}/>
           <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
-          <Route path='/hoteltourisms' element = {<HotelTourisms/>}/>
           <Route path='/hotelannouncements' element = {<HotelAnnouncements/>}/>
           <Route path='/hotelhistory' element = {<HotelHistory/>}/>
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
