@@ -13,6 +13,7 @@ import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
 import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
+import LoginPage from './hotel-sites/pages/Login';
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/activity" element={<Activity />} />
+<<<<<<< HEAD
           {/* <Route path='/hotelhotels' element = {<HotelHotels/>}/>
           <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
           <Route path='/hotelannouncements' element = {<HotelAnnouncements/>}/>
@@ -31,6 +33,17 @@ function App() {
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
           <Route path ='/hotelhome' element = {<HotelHome/>} /> */}
+=======
+          <Route path="/hotelhotels" element={<HotelHotels />} />
+          <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
+          <Route path="/hoteltourisms" element={<HotelTourisms />} />
+          <Route path="/hotelannouncements" element={<HotelAnnouncements />} />
+          <Route path="/hotelhistory" element={<HotelHistory />} />
+          <Route path="/hotelprofile" element={<HotelProfile />} />
+          <Route path="/hoteldiscount" element={<HotelDiscount />} />
+          <Route path="/hotelhome" element={<HotelHome />} />
+          <Route path="/login" element={<LoginPage />} />
+>>>>>>> 5fa8b727d4ec0ba5453e079ef75448a29aa77551
         </Routes>
       </BrowserRouter>
     </>
