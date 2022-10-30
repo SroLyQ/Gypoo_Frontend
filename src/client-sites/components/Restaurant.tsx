@@ -1,7 +1,9 @@
 import React from 'react';
 
+
 function Restaurant() {
   return (
+    
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
         <div className="mx-8 border rounded-md border-[#999999] p-[25px] mt-[25px]">
@@ -50,25 +52,30 @@ function Restaurant() {
             <p className="text-[26px]">Boom Burapee</p>
           </div>
           <div className="border border-[#D8D8D8]"></div>
-          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row flex-wrap gap-x-5">
+
+          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row gap-x-5 basis-1/3 ">
             <div className="basis-1/4">
               <p>ให้คะแนนที่พัก</p>
 
               <div className="mb-[5px]">star</div>
-
-              <div>
-                <div className="flex flex-row flex-wrap gap-x-5"></div>
-              </div>
             </div>
-
             <div className="border border-[#D8D8D8]"></div>
 
-            <form className="grow">
-              <textarea
-                className="border rounded-md border-[#D8D8D8] px-2 py-3 w-full h-full grow resize-none"
-                placeholder="Write a comment..."
-              />
-            </form>
+            <div className="flex w-[73%] ">
+              <form className="grow">
+                <div className="border rounded-md border-[#D8D8D8] p-3 text-slate-500">
+                  <textarea
+                    className=" px-2 py-3 w-full h-full "
+                    placeholder="Write a comment..."
+                  />
+                  <div className="flex flex-row-reverse">
+                    <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-2 px-14">
+                      ยืนยัน
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -76,21 +83,19 @@ function Restaurant() {
           <div className="mb-[14px]">
             <p className="text-[26px]">ความคิดเห็น</p>
           </div>
-          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex   gap-x-5">
-            <div className="basis-1/4 flex-row ">
+
+          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row gap-x-5 basis-1/3 ">
+            <div className="basis-1/4">
               <p className="text-[20px]">Boom Burapee</p>
 
               <div className="mb-[5px]">star</div>
 
               <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
             </div>
-            <div className="flex">
-              <div className="border border-[#D8D8D8] "></div>
-            </div>
-            
+            <div className="border border-[#D8D8D8]"></div>
 
-            <div className="flex">
-              <div className="border rounded-md border-[#D8D8D8] p-5">
+            <div className="flex w-[73%] ">
+              <div className="border rounded-md border-[#D8D8D8] p-5 text-slate-500">
                 A little out of the way but tucked nicely away from the noise
                 and traffic. Spotless rooms and general areas. Staff very
                 friendly and although not much English spoken we got by with
@@ -98,6 +103,47 @@ function Restaurant() {
               </div>
             </div>
           </div>
+
+          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row gap-x-5 basis-1/3 ">
+            <div className="basis-1/4">
+              <p className="text-[20px]">Boom Burapee</p>
+
+              <div className="mb-[5px]">star</div>
+
+              <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
+            </div>
+            <div className="border border-[#D8D8D8]"></div>
+
+            <div className="flex w-[73%] ">
+              <div className="border rounded-md border-[#D8D8D8] p-5 text-slate-500">
+                A little out of the way but tucked nicely away from the noise
+                and traffic. Spotless rooms and general areas. Staff very
+                friendly and although not much English spoken we got by with
+                smiles and Google translate.
+              </div>
+            </div>
+          </div>
+
+          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row gap-x-5 basis-1/3 ">
+            <div className="basis-1/4">
+              <p className="text-[20px]">Boom Burapee</p>
+
+              <div className="mb-[5px]">star</div>
+
+              <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
+            </div>
+            <div className="border border-[#D8D8D8]"></div>
+
+            <div className="flex w-[73%] ">
+              <div className="border rounded-md border-[#D8D8D8] p-5 text-slate-500">
+                A little out of the way but tucked nicely away from the noise
+                and traffic. Spotless rooms and general areas. Staff very
+                friendly and although not much English spoken we got by with
+                smiles and Google translate.
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
