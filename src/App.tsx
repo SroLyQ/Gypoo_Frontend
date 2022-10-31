@@ -18,22 +18,20 @@ function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
-      <HotelNavbar/>
+      <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/activity" element={<Activity />} />
-          <Route path="/hotelhotels" element={<HotelHotels />} />
-          <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
-          <Route path="/hoteltourisms" element={<HotelTourisms />} />
-          <Route path="/hotelannouncements" element={<HotelAnnouncements />} />
-          <Route path="/hotelhistory" element={<HotelHistory />} />
-          <Route path="/hotelprofile" element={<HotelProfile />} />
-          <Route path="/hoteldiscount" element={<HotelDiscount />} />
-          <Route path="/hotelhome" element={<HotelHome />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path='/hotelhotels' element = {<HotelHotels/>}/>
+          <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
+          <Route path='/hotelannouncements' element = {<HotelAnnouncements/>}/>
+          <Route path='/hotelhistory' element = {<HotelHistory/>}/>
+          <Route path='/hotelprofile' element = {<HotelProfile/>}/>
+          <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
+          <Route path ='/hotelhome' element = {<HotelHome/>} /> */}
         </Routes>
       </BrowserRouter>
     </>
