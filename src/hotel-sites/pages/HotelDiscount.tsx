@@ -132,18 +132,18 @@ function HotelDiscount() {
               type="file"
               id="img"
               accept="image/*"
-              className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue  -100 py-2"
+              className="block text-sm md:w-56 w-full text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue  -100 py-2"
             />
             <div className="py-2 flex justify-end">
               <input
                 type="submit"
                 value="ยืนยัน"
-                className=" w-20 text-sm text-white py-2 rounded-lg border-0 bg-blue-500 hover:bg-cyan-400"
+                className="md:w-20 w-16 text-sm text-white py-2 rounded-lg border-0 bg-blue-500 hover:bg-cyan-400"
               />
               <a className="px-2 " href="/">
                 <button
                   type="button"
-                  className="w-20 text-sm text-white py-2 rounded-lg border-0  bg-gray-300 hover:bg-red-400"
+                  className="md:w-20 w-16 text-sm text-white py-2 rounded-lg border-0 bg-gray-300 hover:bg-red-400"
                 >
                   ยกเลิก
                 </button>
@@ -153,7 +153,7 @@ function HotelDiscount() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default HotelDiscount;
+export default HotelDiscount
