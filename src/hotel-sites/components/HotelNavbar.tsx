@@ -13,7 +13,7 @@ function HotelNavbar() {
     <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-md">
       <div className="px-8 flex justify-between items-center w-full h-full">
         <a>
-          <a href="/hotelhome">
+          <a href="/">
             <img
               src={logo}
               alt="logo"
@@ -21,7 +21,7 @@ function HotelNavbar() {
             />
           </a>
           <div className="md:hidden mr-auto ml-24">
-            <a href="/hotelhome">
+            <a href="/">
               <img src={logo} alt={'logo'} className="w-32" />
             </a>
           </div>
@@ -29,19 +29,23 @@ function HotelNavbar() {
         <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1">
           <ul className="hidden md:flex space-x-2 pr-12">
             <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-              <a href="/hotelhotels" className="text-black text-xl">
+              <a href="/" className="text-black text-xl">
+                หน้าหลัก
+              </a>
+            </li>
+            <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
+              <a href="/hotel" className="text-black text-xl">
                 ที่พัก
               </a>
             </li>
             <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-              <a href="/hotelrestaurants" className="text-black text-xl">
+              <a href="/restaurant" className="text-black text-xl">
                 ร้านอาหาร
               </a>
             </li>
-
             <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-              <a href="/hotelannouncements" className="text-black text-xl">
-                ลงประกาศ
+              <a href="/activity" className="text-black text-xl">
+                กิจกรรม
               </a>
             </li>
           </ul>
@@ -114,7 +118,7 @@ function HotelNavbar() {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="/hotelhotels"
+                        href="/hotel"
                         className={classNames(
                           active
                             ? ' bg-gray-100 text-gray-900 md:hidden'
@@ -145,7 +149,7 @@ function HotelNavbar() {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="/hotelrestaurants"
+                        href="/restaurant"
                         className={classNames(
                           active
                             ? ' bg-gray-100 text-gray-900 md:hidden'
@@ -176,7 +180,7 @@ function HotelNavbar() {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="/hotelannouncements"
+                        href="/activity"
                         className={classNames(
                           active
                             ? ' bg-gray-100 text-gray-900 md:hidden'
@@ -200,7 +204,7 @@ function HotelNavbar() {
                             />
                           </svg>
                         </div>
-                        ลงประกาศ
+                        กิจกรรม
                       </a>
                     )}
                   </Menu.Item>
