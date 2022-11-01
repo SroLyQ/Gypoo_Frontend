@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import testdata from './testdata.json'
 import HotelCard from '../components/HotelCard'
-
+import { Routes,Route,Link } from 'react-router-dom'
+import HotelInnerCard from '../components/HotelInnerCard'
 function HotelHotels() {
   const [renderData,setrenderData] = React.useState(testdata)
   const originaldata = testdata
@@ -46,13 +47,16 @@ function HotelHotels() {
         renderData.map((data,id)=>{
           return(
           <div>
+          <Link to = {"/hotel/" + String(data.name).replace(" ","%20")}>
             <HotelCard data = {data}/>
+          </Link>
+         
           </div>
           )
         })
       }
-
       </div>
+      
     </div>
     
   )

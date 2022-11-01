@@ -3,8 +3,7 @@ type dataType = {
     data:{
     _id: string;
     index: number;
-    guid: string;
-    isActive: boolean;
+    isAviable: boolean;
     price: string;
     picture: string;
     name: string;
@@ -12,12 +11,11 @@ type dataType = {
     phone: string;
     address: string;
     about: string;
-    registered: string;
     latitude: number;
     longitude: number;
     rating: number;
     reviews: number;
-    status: string;
+    comment: any;
     }
 }
 const Star = (n:number) =>{
@@ -81,7 +79,7 @@ const HotelCard = ({data}:dataType) =>{
         </div>
         <div className=" text-center">
             {
-                data.status === 'a' ?
+                data.isAviable  ?
                 <button className="rounded-lg bg-green-500 p-2 text-white">มีห้องว่าง</button> :
                 <button className="rounded-lg bg-red-500 p-2 text-white">ถูกจองครบแล้ว</button>
             }

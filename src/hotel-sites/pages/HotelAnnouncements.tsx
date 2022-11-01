@@ -1,8 +1,10 @@
 import React from 'react'
-
+import HotelInnerCard from '../components/HotelInnerCard'
 function HotelAnnouncements() {
   return (
-    <div className="pt-24">กูจะแจ้งจับมึงอะ</div>
+    <div className="pt-24">
+      k
+    </div>
   )
 }
 
