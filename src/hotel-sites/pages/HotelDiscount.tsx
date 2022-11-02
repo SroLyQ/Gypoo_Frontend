@@ -1,22 +1,9 @@
 import { count } from 'console';
 import React from 'react';
 import { useEffect, useState, FormEvent } from 'react';
-interface hotelDiscountFormState {
-  title: string;
-  description: string;
-  date: string;
-  //file: File;
-}
 
 function HotelDiscount() {
   const [date, setDate] = useState('01-01-2022');
-  const [hotelDiscountForm, setHotelDiscountForm] =
-    useState<hotelDiscountFormState>({
-      title: 'string',
-      description: 'string',
-      date: date,
-      //file: imgD,
-    });
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, description, date } = e.target as typeof e.target & {
@@ -31,29 +18,24 @@ function HotelDiscount() {
       //file: img.value,
     });
     
-    // await fetch('/route', {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     title: title.value,
-    //     description: description.value,
-    //     date: date.value,
-    //     file: img.value,
-    //   }),
-    // });
     if (title.value == '' || description.value == '' || date.value == '') {
       console.log("error");
       alert('ข้อมูลใม่ครบ');
     } else {
       console.log(jason);
-      setHotelDiscountForm({
-        title: title.value,
-        description: description.value,
-        date: date.value,
-        //file: img.value,
-      });
+
+      // await fetch('/route', {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     title: title.value,
+      //     description: description.value,
+      //     date: date.value,
+      //     file: img.value,
+      //   }),
+      // });
     }
     
   };
