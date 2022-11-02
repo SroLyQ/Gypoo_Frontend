@@ -32,11 +32,11 @@ const Star = (n:number) =>{
 }
 const HotelCard = ({data}:dataType) =>{
   return (
-    <div className="flex border-2 border-black-900 rounded-lg mx-auto w-4/5 space-x-4 mt-5">
+    <div className="flex border-2 border-black-900 rounded-lg mx-auto w-4/5 md:w-3/5 space-x-4 mt-5">
     <div className="w-1/4">
         <img src = {data.picture} className=""/>
     </div>
-    <div className="block w-2/5 space-y-2">
+    <div className="block w-2/5 md:w-3/5  space-y-2">
         <p className="text-base md:text-xl">
         {data.name}
         </p>
@@ -50,9 +50,9 @@ const HotelCard = ({data}:dataType) =>{
         {data.about}
         </p>
     </div>
-    <div className="border-r-2 border-black-900 my-2 "></div>
-    <div className="block space-y-2 py-5 md:pl-6 pr-1">
-        <div className="flex">
+    <div className="border-r-2 border-black-900 my-2"></div>
+    <div className="block space-y-2 py-5 md:pl-6 pr-1 w-auto ">
+        <div className="flex ">
             {
                 Star(data.rating).map((s:number,i)=>{
                     return(
