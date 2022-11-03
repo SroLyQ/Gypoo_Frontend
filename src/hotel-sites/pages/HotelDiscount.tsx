@@ -1,43 +1,41 @@
-import { count } from 'console';
-import React from 'react';
 import { useEffect, useState, FormEvent } from 'react';
 
 function HotelDiscount() {
   const [date, setDate] = useState('01-01-2022');
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { title, description, date } = e.target as typeof e.target & {
+    const target = e.target as typeof e.target & {
       title: { value: string };
       description: { value: string };
       date: { value: string };
     };
-    const jason = JSON.stringify({
-      title: title.value,
-      description: description.value,
-      date: date.value,
-      //file: img.value,
-    });
-    
-    if (title.value == '' || description.value == '' || date.value == '') {
-      console.log("error");
-      alert('ข้อมูลใม่ครบ');
-    } else {
-      console.log(jason);
 
-      // await fetch('/route', {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     title: title.value,
-      //     description: description.value,
-      //     date: date.value,
-      //     file: img.value,
-      //   }),
-      // });
+    if (target.title.value == '') {
+      alert('โปรดกำหนดหัวข้อ');
+    } else if (target.description.value == '') {
+      alert('โปรดใสรายละเอียด');
+    } else {
+      const jason = JSON.stringify({
+        title: target.title.value,
+        description: target.description.value,
+        date: target.date.value,
+        //file: img.value,
+      });
+      const jasonArr = JSON.parse(jason);
+      console.log(jasonArr);
     }
-    
+    // await fetch('/route', {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     title: title.value,
+    //     description: description.value,
+    //     date: date.value,
+    //     file: img.value,
+    //   }),
+    // });
   };
 
   useEffect(() => {
@@ -135,7 +133,7 @@ function HotelDiscount() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default HotelDiscount
+export default HotelDiscount;

@@ -1,25 +1,52 @@
-import { useEffect, useState, FormEvent, useRef } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 
 function AddHotel() {
-  const [isHostel, setIsHostel] = useState(false);
+  const locationTypeForm = [
+    { isHostel: false },
+    { isHestaurant: false },
+    { isTravel: false },
+  ];
+
+  const convenienceTypeForm = [
+    { isWifi: false },
+    { isBreakfast: false },
+    { isParking: false },
+    { isAnimals: false },
+    { isBuffet: false },
+    { isOther: false },
+  ];
 
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       title: { value: string };
       description: { value: string };
+      coordinates: { value: string };
     };
 
-    const jason = JSON.stringify({
-      title: target.title.value,
-      description: target.description.value,
-    });
-
-    // if (title.value == '' || description.value == '' || date.value == '') {
-    //   console.log('error');
-    //   alert('ข้อมูลใม่ครบ');
-    // } else {
-    console.log(jason);
+    if (target.title.value == '') {
+      alert('โปรดกำหนดหัวข้อ');
+    } else if (target.description.value == '') {
+      alert('โปรดใสรายละเอียด');
+    } else if (
+      !locationTypeForm[0].isHostel &&
+      !locationTypeForm[1].isHestaurant &&
+      !locationTypeForm[2].isTravel
+    ) {
+      alert('โปรดเลือกประเภทของสถานที่');
+    } else if (target.coordinates.value == '') {
+      alert('โปรดใสลิงก์แผนที่');
+    } else {
+      const jason = JSON.stringify({
+        title: target.title.value,
+        description: target.description.value,
+        coordinates: target.coordinates.value,
+        locationType: locationTypeForm,
+        convenienceType: convenienceTypeForm,
+      });
+      const jasonArr = JSON.parse(jason);
+      console.log(jasonArr);
+    }
 
     // await fetch('/route', {
     //   headers: {
@@ -94,6 +121,9 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isHostel"
+                  onChange={(event) => {
+                    locationTypeForm[0] = { isHostel: event.target.checked };
+                  }}
                   defaultChecked={false}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
@@ -106,6 +136,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isHestaurant"
+                  onChange={(event) => {
+                    locationTypeForm[1] = {
+                      isHestaurant: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">ร้านอาหาร</a>
@@ -117,8 +152,8 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isTravel"
-                  onChange={() => {
-                    setIsHostel(true);
+                  onChange={(event) => {
+                    locationTypeForm[2] = { isTravel: event.target.checked };
                   }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
@@ -136,6 +171,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isWifi"
+                  onChange={(event) => {
+                    convenienceTypeForm[0] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">Free wi-fi</a>
@@ -147,6 +187,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isBreakfast"
+                  onChange={(event) => {
+                    convenienceTypeForm[1] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">อาหารเช้า</a>
@@ -158,6 +203,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isParking"
+                  onChange={(event) => {
+                    convenienceTypeForm[2] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">ที่จอดรถ</a>
@@ -167,6 +217,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isAnimals"
+                  onChange={(event) => {
+                    convenienceTypeForm[3] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">นำสัตว์เลี่ยงเข้าพักได้</a>
@@ -178,6 +233,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isBuffet"
+                  onChange={(event) => {
+                    convenienceTypeForm[4] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">ปิ้งย่าง-ชาบู</a>
@@ -189,6 +249,11 @@ function AddHotel() {
                 <input
                   type="checkbox"
                   id="isOther"
+                  onChange={(event) => {
+                    convenienceTypeForm[5] = {
+                      isWifi: event.target.checked,
+                    };
+                  }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">อื่นๆ</a>
@@ -209,6 +274,7 @@ function AddHotel() {
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
               รูปภาพ
             </p>
+
             <input
               type="file"
               id="img"
