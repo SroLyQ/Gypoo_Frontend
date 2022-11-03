@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent, useRef } from 'react';
 
-function HotelAnnouncements() {
+function AddHotel() {
   const [isHostel, setIsHostel] = useState(false);
 
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
@@ -237,4 +237,4 @@ function HotelAnnouncements() {
   );
 }
 
-export default HotelAnnouncements;
+export default AddHotel;

@@ -9,7 +9,7 @@ import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
 import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
-import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
+import AddHotel from './hotel-sites/pages/AddHotel';
 import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
@@ -29,7 +29,7 @@ function App() {
           <Route path="/activity" element={<Activity />} />
           <Route path='/hotelhotels' element = {<HotelHotels/>}/>
           <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
-          <Route path='/hotelannouncements' element = {<HotelAnnouncements/>}/>
+          <Route path='/addhotel' element = {<AddHotel/>}/>
           <Route path='/hotelhistory' element = {<HotelHistory/>}/>
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
