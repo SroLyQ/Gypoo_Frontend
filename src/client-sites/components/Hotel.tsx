@@ -77,10 +77,17 @@ function hotel() {
             </div>
             <div className="border border-[#D8D8D8]"></div>
             <form className="grow">
-              <textarea
-                className="border rounded-md border-[#999999] px-2 py-3 w-full h-full grow resize-none"
-                placeholder="Write a comment..."
-              />
+              <div className="border rounded-md border-[#D8D8D8] p-[1px] text-slate-500">
+                <textarea
+                  className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none"
+                  placeholder="Write a comment..."
+                />
+                <div className="flex flex-row-reverse pr-3 pb-3">
+                  <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-2 px-14">
+                    ยืนยัน
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -91,7 +98,20 @@ function hotel() {
           <div className="border rounded-md border-[#D8D8D8]">
             <div className="flex flex-row flex-wrap gap-x-5">
               <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
-                ให้คะแนนที่พัก
+                Boom Burapee
+                <div className="my-[5px] flex flex-row">
+                  <StarRating starSize={'25px'} />
+                </div>
+                <div className="flex flex-col flex-wrap">
+                  <div className="flex flex-row flex-wrap">
+                    <FaBed className="self-center" />
+                    <p>ddddddd</p>
+                  </div>
+                  <div className="flex flex-row flex-wrap">
+                    <FaRegCalendar className="self-center" />
+                    <p>yyyyyyy</p>
+                  </div>
+                </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
               <div className="border rounded-md border-[#999999] p-[25px] grow">
@@ -103,7 +123,20 @@ function hotel() {
           <div className="border rounded-md border-[#D8D8D8]">
             <div className="flex flex-row flex-wrap gap-x-5">
               <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
-                ให้คะแนนที่พัก
+                Boom Burapee
+                <div className="my-[5px] flex flex-row">
+                  <StarRating starSize={'25px'} />
+                </div>
+                <div className="flex flex-col flex-wrap">
+                  <div className="flex flex-row flex-wrap">
+                    <FaBed className="self-center" />
+                    <p>ddddddd</p>
+                  </div>
+                  <div className="flex flex-row flex-wrap">
+                    <FaRegCalendar className="self-center" />
+                    <p>yyyyyyy</p>
+                  </div>
+                </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
               <div className="border rounded-md border-[#999999] p-[25px] grow">
@@ -115,7 +148,20 @@ function hotel() {
           <div className="border rounded-md border-[#D8D8D8]">
             <div className="flex flex-row flex-wrap gap-x-5">
               <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
-                ให้คะแนนที่พัก
+                Boom Burapee
+                <div className="my-[5px] flex flex-row">
+                  <StarRating starSize={'25px'} />
+                </div>
+                <div className="flex flex-col flex-wrap">
+                  <div className="flex flex-row flex-wrap">
+                    <FaBed className="self-center" />
+                    <p>ddddddd</p>
+                  </div>
+                  <div className="flex flex-row flex-wrap">
+                    <FaRegCalendar className="self-center" />
+                    <p>yyyyyyy</p>
+                  </div>
+                </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
               <div className="border rounded-md border-[#999999] p-[25px] grow">
@@ -127,7 +173,20 @@ function hotel() {
           <div className="border rounded-md border-[#D8D8D8]">
             <div className="flex flex-row flex-wrap gap-x-5">
               <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
-                ให้คะแนนที่พัก
+                Boom Burapee
+                <div className="my-[5px] flex flex-row">
+                  <StarRating starSize={'25px'} />
+                </div>
+                <div className="flex flex-col flex-wrap">
+                  <div className="flex flex-row flex-wrap">
+                    <FaBed className="self-center" />
+                    <p>ddddddd</p>
+                  </div>
+                  <div className="flex flex-row flex-wrap">
+                    <FaRegCalendar className="self-center" />
+                    <p>yyyyyyy</p>
+                  </div>
+                </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
               <div className="border rounded-md border-[#999999] p-[25px] grow">
