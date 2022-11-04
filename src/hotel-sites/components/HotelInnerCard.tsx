@@ -5,7 +5,7 @@ type dataType = {
     _id: string;
     index: number;
     isAviable: boolean;
-    price: string;
+    price: number;
     picture: string;
     name: string;
     email: string;
@@ -14,6 +14,8 @@ type dataType = {
     about: string;
     latitude: number;
     longitude: number;
+    discount : number;
+    facilities:Array<string>; 
     rating: number;
     reviews: number;
     comment: Array<any>;
@@ -167,7 +169,19 @@ function HotelInnerCard({data}:dataType) {
             <p className="mb-[14px] md:text-[26px] text-[20px]">สิ่งอำนวยความสะดวก</p>
             <div className="border border-[#D8D8D8]"></div>
             <div className="mt-[15px]">
-              <FaCheck />
+              <div className="grid grid-flow-col grid-cols-3">
+              {
+                data.facilities.map(faci=>{
+                  return(
+                      <div className="flex">
+                            <FaCheck className="mr-2"/>
+                            <p>{faci}</p>
+                      </div>
+                  )
+                })
+              }
+              </div>
+              
             </div>
           </div>
           <div className="border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] basis-1/2">

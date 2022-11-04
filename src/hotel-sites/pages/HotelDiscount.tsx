@@ -21,8 +21,8 @@ function HotelDiscount() {
         date: target.date.value,
         //file: img.value,
       });
-      const jasonArr = JSON.parse(jason);
-      console.log(jasonArr);
+      //const jasonArr = JSON.parse(jason);
+      console.log(jason);
     }
     // await fetch('/route', {
     //   headers: {

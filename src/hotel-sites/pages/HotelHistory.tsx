@@ -45,7 +45,7 @@ function HotelHistory() {
       {
         renderData.map((data,id)=>{
           return(
-          <div>
+          <div className=" w-4/5 md:w-3/5 mx-auto p-0">
           <Link to = {"/hotel/" + String(data.name).replace(" ","%20")}>
             <HotelCard data = {data}/>
           </Link>
