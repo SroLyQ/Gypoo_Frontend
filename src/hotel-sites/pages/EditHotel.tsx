@@ -1,6 +1,8 @@
 import { useEffect, useState, FormEvent } from 'react';
-
-function AddHotel() {
+type datatype ={
+    _id : string
+}
+function EditHotel({_id}:datatype) {
   const locationTypeForm = [
     { isHostel: false },
     { isHestaurant: false },
@@ -23,21 +25,8 @@ function AddHotel() {
       description: { value: string };
       coordinates: { value: string };
     };
-
-    if (target.title.value == '') {
-      alert('โปรดกำหนดหัวข้อ');
-    } else if (target.description.value == '') {
-      alert('โปรดใสรายละเอียด');
-    } else if (
-      !locationTypeForm[0].isHostel &&
-      !locationTypeForm[1].isHestaurant &&
-      !locationTypeForm[2].isTravel
-    ) {
-      alert('โปรดเลือกประเภทของสถานที่');
-    } else if (target.coordinates.value == '') {
-      alert('โปรดใสลิงก์แผนที่');
-    } else {
       const jason = JSON.stringify({
+        _id : _id,
         title: target.title.value,
         description: target.description.value,
         coordinates: target.coordinates.value,
@@ -46,7 +35,6 @@ function AddHotel() {
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-    }
 
     // await fetch('/route', {
     //   headers: {
@@ -69,10 +57,10 @@ function AddHotel() {
 
   return (
     <div className="pt-28">
-      <div className="block w-screen ">
+      <div className="block w-screen h-screen">
         <div className=" mx-auto border-2 border-black-900 lg:w-3/5 md:w-2/3 w-2/3 rounded-lg md:px-16 sm:px-12 px-10 py-10 ">
           <div className="flex">
-            <p className=" md:text-2xl sm:text-base text-base">เพิ่มที่พัก</p>
+            <p className=" md:text-2xl sm:text-base text-base">แก้ไขที่พัก</p>
             <div className="px-1"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -303,4 +291,4 @@ function AddHotel() {
   );
 }
 
-export default AddHotel;
+export default EditHotel

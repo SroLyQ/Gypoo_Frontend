@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 type dataType = {
     data:{
     _id: string;
     index: number;
     isAviable: boolean;
-    price: string;
+    price: number;
     picture: string;
     name: string;
     email: string;
@@ -13,9 +14,11 @@ type dataType = {
     about: string;
     latitude: number;
     longitude: number;
+    discount : number;
+    facilities:Array<string>; 
     rating: number;
     reviews: number;
-    comment: any;
+    comment: Array<any>;
     }
 }
 const Star = (n:number) =>{
@@ -51,7 +54,8 @@ const HotelCard = ({data}:dataType) =>{
         </p>
     </div>
     <div className="border-r-2 border-black-900 my-2"></div>
-    <div className="block space-y-2 py-5 md:pl-6 pr-1 w-auto ">
+    <div className="block space-y-2 py-8 md:pl-6 pr-1 w-auto ">
+        
         <div className="flex ">
             {
                 Star(data.rating).map((s:number,i)=>{
@@ -69,13 +73,22 @@ const HotelCard = ({data}:dataType) =>{
             {data.reviews} รีวิว
         </div>
         <div>
-            promotion space
+            {
+                data.discount == 0?
+                "":
+                <div className="bg-red-600 text-white rounded-md text-center  md:text-base text-xs">SALE ลด {data.discount}% วันนี้!</div>
+            }
         </div>
         <div className="text-right text-sm md:text-base">
             ราคาเริ่มต้น (ต่อคืน)
         </div>
-        <div className="text-red-600 text-right text-sm md:text-base">
-            {data.price}
+        <div className=" text-right text-sm md:text-base">
+            {
+            data.discount == 0?
+            <div className="text-red-600">{data.price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+            :<div><span className=" text-red-600 line-through mr-1">{data.price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span className=" text-green-600 ">{(data.price*(100-data.discount)/100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></div>
+
+        }
         </div>
         <div className=" text-center">
             {

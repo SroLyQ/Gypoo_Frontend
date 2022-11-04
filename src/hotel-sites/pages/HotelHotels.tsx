@@ -3,6 +3,7 @@ import testdata from './testdata.json'
 import HotelCard from '../components/HotelCard'
 import { Routes,Route,Link } from 'react-router-dom'
 import HotelInnerCard from '../components/HotelInnerCard'
+import EditHotel from './EditHotel'
 function HotelHotels() {
   const [renderData,setrenderData] = React.useState(testdata)
   const originaldata = testdata
@@ -10,6 +11,8 @@ function HotelHotels() {
   const excludeColumns = ["name","address"];
   const [selectDelete,setSelectDelete] = useState(false)
   const [selectConfirm,setSelectConfirm] = useState(false)
+  const [selectEdit,setSelectEdit] = useState(false)
+  const [selectEditId,setSelectEditId] = useState("")
   const [selectStatus,setSelectStatus] = useState(Array(testdata.length).fill(false))
   const [deletedData,setDeletedData] = useState<string[]>([])
   const handleFilter = (e:string)=>{
@@ -88,6 +91,17 @@ function HotelHotels() {
     //   })
     //})
   }
+  const toggleEdit = ()=>{
+    setSelectEdit(!selectEdit)
+    if (!selectDelete){
+        setSelectEditId('')
+    }
+  }
+  const makeEditform = (dataId:string)=>{
+    console.log(dataId)
+    toggleEdit()
+    setSelectEditId(dataId)
+  }
   return (
     <div className="pt-24 md:grid md:grid-flow-row ">
       {
@@ -102,15 +116,28 @@ function HotelHotels() {
           </div>:
           ''
       }
+      {
+        selectEdit ?
+          <div className="grid grid-flow-row z-50 w-auto h-full bg-white absolute top-[0%] left-[0%]">
+          <div className="flex  justify-end w-auto ">
+            <div className="flex absolute md:top-[22%] top-[17%] right-[22%]">
+            <svg  onClick={toggleEdit} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+          </div>
+          <EditHotel _id = {selectEditId} />
+          </div>:
+          ''
+      }
       <div className = "md:justify-self-center">
           <p>aaaaa</p>
           <input className="" type="text" placeholder="search si ai sus" onChange={e => handleFilter(e.target.value)}/>
       </div>
-      <div className="md:grid md:grid-flow-col md:justify-self-center">
+      <div className="md:grid md:grid-flow-col md:justify-self-center ">
           <div className=" w-96 "></div>
           <div className=" w-96 "></div>
           <div className="flex space-x-4 ml-72 md:ml-0">
             {
+              
               selectDelete ?
                 deletedData.length>0 ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8" onClick={toggleConfirm}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -133,6 +160,7 @@ function HotelHotels() {
         
         renderData.map((data,i)=>{
           return(
+          selectEdit? '':
           selectDelete ?
           
           <div className="relative grid-flow-row ">
@@ -152,9 +180,12 @@ function HotelHotels() {
           
           </div>
           :
-          <div>
-          <Link to = {"/hotel/" + String(data.name).replace(" ","%20")}>
-            <HotelCard data = {data}/>
+          <div >
+          <div className="flex justify-end relative" >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute top-7 right-[13%] md:right-[21%]" onClick={()=>makeEditform(data._id)}><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+          </div>
+          <Link to = {"/hotel/" + String(data.name).replace(" ","%20")} >
+            <HotelCard data = {data} />
           </Link>
           </div>
           
