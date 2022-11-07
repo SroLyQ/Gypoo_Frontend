@@ -190,8 +190,7 @@ function hotel() {
               </div>
               <div className="border border-[#D8D8D8]"></div>
               <div className="border rounded-md border-[#999999] p-[25px] grow">
-                ให้คะแนนที่พัก
-              </div>
+               </div>
             </div>
           </div>
         </div>
