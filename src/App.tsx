@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
-      <HotelNavbar/>
+      <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -33,16 +33,12 @@ function App() {
           <Route path='/hotelhistory' element = {<HotelHistory/>}/>
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
-<<<<<<< HEAD
-          <Route path ='/hotelhome' element = {<HotelHome/>} />
-=======
           <Route path ='/hotelhome' element = {<HotelHome/>} /> 
           {testdata.map((data,index)=>{
            const thispath="/hotel/"+String(data.name).replace(" ","%20");
               return (
             <Route path={thispath} element={<HotelInnerCard data={data} />}/> 
           );})}
->>>>>>> de547a07afbace88f11d33d2aac2485a6e9a5519
         </Routes>
       </BrowserRouter>
     </>
