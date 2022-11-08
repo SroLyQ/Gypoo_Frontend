@@ -7,17 +7,22 @@ function HotelDiscount() {
     const target = e.target as typeof e.target & {
       title: { value: string };
       description: { value: string };
+      percentage: {value: number};
       date: { value: string };
     };
 
     if (target.title.value == '') {
       alert('โปรดกำหนดหัวข้อ');
     } else if (target.description.value == '') {
-      alert('โปรดใสรายละเอียด');
-    } else {
+      alert('โปรดใส่รายละเอียด');
+    } else if (target.percentage.value.toString()=="") {
+      alert('โปรดใส่ส่วนลด');
+    }
+    else {
       const jason = JSON.stringify({
         title: target.title.value,
         description: target.description.value,
+        percentage : target.percentage.value,
         date: target.date.value,
         //file: img.value,
       });
@@ -84,6 +89,15 @@ function HotelDiscount() {
               id="title"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
               placeholder="หัวข้อส่วนลด"
+            />
+          <p className="text-gray-600 py-2 md:text-lg sm:text-sm text-sm">
+            จำนวนส่วนลด (%)
+          </p>
+            <input
+              type="text"
+              id="percentage"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="จำนวนส่วนลด"
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
               รายละเอียด
