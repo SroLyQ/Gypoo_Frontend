@@ -1,10 +1,10 @@
 import React from 'react';
-import { searchData } from '../api/temp';
+
 function Search() {
-  console.log(searchData);
+  // console.log(searchData);
   return (
     <div className="pt-24">
-      <div className="text-3xl font-kanit mx-52"> ที่พักใน ขอนแก่น </div>
+      {/* <div className="text-3xl font-kanit mx-52"> ที่พักใน ขอนแก่น </div>
       <div className="search-post">
         {searchData.map((data, key) => {
           return (
@@ -40,7 +40,7 @@ function Search() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
