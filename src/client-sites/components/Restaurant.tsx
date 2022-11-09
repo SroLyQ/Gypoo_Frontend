@@ -44,7 +44,7 @@ function Restaurant() {
                   alt="..."
                 />
                 <div className="carousel-caption hidden md:block absolute text-center">
-                  <h5 className="text-xl">นี่หน้าแรกไอ่ควาย</h5>
+                  <h5 className="text-xl">นี่หน้าแรก</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ function Restaurant() {
                   alt="..."
                 />
                 <div className="carousel-caption hidden md:block absolute text-center">
-                  <h5 className="text-xl">หน้าสุดท้ายไอ่พวกนรก</h5>
+                  <h5 className="text-xl">หน้าสุดท้าย</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
               </div>
