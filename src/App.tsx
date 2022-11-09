@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
-      <HotelNavbar/>
+      <HotelNavbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -27,7 +27,6 @@ function App() {
           <Route path="/activity" element={<Activity />} />
           <Route path="/hotelhotels" element={<HotelHotels />} />
           <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
-          <Route path="/hoteltourisms" element={<HotelTourisms />} />
           <Route path="/hotelannouncements" element={<HotelAnnouncements />} />
           <Route path="/hotelhistory" element={<HotelHistory />} />
           <Route path="/hotelprofile" element={<HotelProfile />} />
