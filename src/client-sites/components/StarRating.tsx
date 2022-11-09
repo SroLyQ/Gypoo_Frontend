@@ -1,14 +1,12 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const StarRating = (props: { starSize: any; }) => {
-
-
-  const { starSize } = props
+const StarRating = (props: { starSize: any }) => {
+  const { starSize } = props;
   const stars = Array(5).fill(0);
   const [rating, setRating] = React.useState(0);
   const [hover, setHover] = React.useState(0);
-  
+
   return (
     <div className="flex flex-rows">
       {[...Array(5)].map((star, i) => {
@@ -34,6 +32,6 @@ const StarRating = (props: { starSize: any; }) => {
       })}
     </div>
   );
-}
+};
 
 export default StarRating;
