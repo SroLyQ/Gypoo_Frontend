@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
-import StarRating from './StarRating';
-import ListBox from './ListBox';
+import ListBox from '../components/ListBox';
+import StarRating from '../components/StarRating';
 
 function hotel() {
   

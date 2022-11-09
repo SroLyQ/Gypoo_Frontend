@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.gif';
 import { useState } from 'react';
 const LoginPopup: React.FC = () => {
   const [passwordType, setPasswordType] = useState<string>('password');

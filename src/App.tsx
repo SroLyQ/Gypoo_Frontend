@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './client-sites/components/Navbar';
-import Main from './client-sites/components/Main';
-import Hotel from './client-sites/components/Hotel';
-import Restaurant from './client-sites/components/Restaurant';
-import Activity from './client-sites/components/Activity';
+import Main from './client-sites/page/Main';
+import Hotel from './client-sites/page/Hotel';
+import Restaurant from './client-sites/page/Restaurant';
+import Activity from './client-sites/page/Activity';
 import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
@@ -16,6 +15,8 @@ import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
 import testdata from './hotel-sites/pages/testdata.json';
 import TestPage from './component/TestPage';
+
+
 function App() {
   return (
     <>
@@ -36,6 +37,7 @@ function App() {
           <Route path ='/hotelhome' element = {<HotelHome/>} /> 
           <Route path ='/hotel/:_id' element = {<HotelInnerCard />} /> 
           <Route path="/testLogin" element={<TestPage />} />
+
         </Routes>
       </BrowserRouter>
     </>
