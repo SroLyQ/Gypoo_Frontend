@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
 import StarRating from './StarRating';
-import { Listbox } from '@headlessui/react';
+import ListBox from './ListBox';
 
 function hotel() {
   
@@ -70,9 +70,7 @@ function hotel() {
           <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
             <p className="mb-[14px] text-[26px]">แผนที่</p>
             <div className="border border-[#D8D8D8]"></div>
-            <div className="mt-[15px]">
-              googleMAP
-            </div>
+            <div className="mt-[15px]">googleMAP</div>
           </div>
         </div>
 
@@ -92,11 +90,11 @@ function hotel() {
               <div className="flex flex-col flex-wrap">
                 <div className="flex flex-row flex-wrap">
                   <FaBed className="self-center" />
-                  <p>ddddddd</p>
+                  <ListBox />
                 </div>
                 <div className="flex flex-row flex-wrap">
                   <FaRegCalendar className="self-center" />
-                  <p>yyyyyyy</p>
+                  <ListBox />
                 </div>
               </div>
             </div>
