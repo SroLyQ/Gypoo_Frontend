@@ -14,7 +14,6 @@ import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
-import testdata from './hotel-sites/pages/testdata.json'
 import LoginPage from './hotel-sites/pages/Login';
 function App() {
   return (
@@ -34,11 +33,7 @@ function App() {
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
           <Route path ='/hotelhome' element = {<HotelHome/>} /> 
-          {testdata.map((data,index)=>{
-           const thispath="/hotel/"+String(data.name).replace(" ","%20");
-              return (
-            <Route path={thispath} element={<HotelInnerCard data={data} />}/> 
-          );})}
+          <Route path ='/hotel/:_id' element = {<HotelInnerCard />} /> 
         </Routes>
       </BrowserRouter>
     </>
