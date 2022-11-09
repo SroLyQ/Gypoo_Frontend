@@ -30,7 +30,7 @@ function Search() {
                       <div className="font-kanit text-1xl row-span-4 text-right ml-28 ">
                         รีวิว 12345
                       </div>
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded" >
                         รายระเอียดเพิ่มเติม
                       </button>
                     </div>
