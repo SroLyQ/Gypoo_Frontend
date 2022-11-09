@@ -1,5 +1,7 @@
 import React,{useState,FormEvent} from 'react'
 import { FaCheck, FaBed, FaRegCalendar,FaStar } from 'react-icons/fa';
+import {useParams} from 'react-router-dom';
+import testdata from '../pages/testdata.json'
 type dataType = {
     data:{
     _id: string;
@@ -47,9 +49,12 @@ const SelectDescription = (n:number) =>{
     else if (n>1) return "fair";
     else return "poor";
 }
+{/*{data}:dataType}*/}
 
-
-function HotelInnerCard({data}:dataType) {
+function HotelInnerCard() {
+  const {_id} = useParams();
+  const tdata = testdata.filter((d,i)=>{if (d._id === _id){return d;}})
+  const data = tdata[0];
   const [commentForm, setCommentForm] = React.useState<commentFormState>({
     //name: '',
     //roomtype: '',

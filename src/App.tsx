@@ -27,19 +27,14 @@ function App() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/activity" element={<Activity />} />
-          <Route path="/hotelhotels" element={<HotelHotels />} />
-          <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
-          <Route path="/addhotel" element={<AddHotel />} />
-          <Route path="/hotelhistory" element={<HotelHistory />} />
-          <Route path="/hotelprofile" element={<HotelProfile />} />
-          <Route path="/hoteldiscount" element={<HotelDiscount />} />
-          <Route path="/hotelhome" element={<HotelHome />} />
-          {testdata.map((data, index) => {
-            const thispath = '/hotel/' + String(data.name).replace(' ', '%20');
-            return (
-              <Route path={thispath} element={<HotelInnerCard data={data} />} />
-            );
-          })}
+          <Route path='/hotelhotels' element = {<HotelHotels/>}/>
+          <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
+          <Route path='/addhotel' element = {<AddHotel/>}/>
+          <Route path='/hotelhistory' element = {<HotelHistory/>}/>
+          <Route path='/hotelprofile' element = {<HotelProfile/>}/>
+          <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
+          <Route path ='/hotelhome' element = {<HotelHome/>} /> 
+          <Route path ='/hotel/:_id' element = {<HotelInnerCard />} /> 
           <Route path="/testLogin" element={<TestPage />} />
         </Routes>
       </BrowserRouter>
