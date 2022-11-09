@@ -1,23 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 type dataType = {
     data:{
     _id: string;
     index: number;
-    guid: string;
-    isActive: boolean;
-    price: string;
+    isAviable: boolean;
+    price: number;
     picture: string;
     name: string;
     email: string;
     phone: string;
     address: string;
     about: string;
-    registered: string;
     latitude: number;
     longitude: number;
+    discount : number;
+    facilities:Array<string>; 
     rating: number;
     reviews: number;
-    status: string;
+    comment: Array<any>;
     }
 }
 const Star = (n:number) =>{
@@ -34,11 +35,11 @@ const Star = (n:number) =>{
 }
 const HotelCard = ({data}:dataType) =>{
   return (
-    <div className="flex border-2 border-black-900 rounded-lg mx-auto w-4/5 space-x-4 mt-5">
-    <div className="w-1/4">
+    <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5">
+    <div className="w-1/3">
         <img src = {data.picture} className=""/>
     </div>
-    <div className="block w-2/5 space-y-2">
+    <div className="block w-2/5 md:w-3/5  space-y-2">
         <p className="text-base md:text-xl">
         {data.name}
         </p>
@@ -52,9 +53,10 @@ const HotelCard = ({data}:dataType) =>{
         {data.about}
         </p>
     </div>
-    <div className="border-r-2 border-black-900 my-2 "></div>
-    <div className="block space-y-2 py-5 md:pl-6 pr-1">
-        <div className="flex">
+    <div className="border-r-2 border-black-900 my-2"></div>
+    <div className="block space-y-2 py-8 md:pl-6 pr-1 w-auto ">
+        
+        <div className="flex ">
             {
                 Star(data.rating).map((s:number,i)=>{
                     return(
@@ -71,17 +73,26 @@ const HotelCard = ({data}:dataType) =>{
             {data.reviews} รีวิว
         </div>
         <div>
-            promotion space
+            {
+                data.discount == 0?
+                "":
+                <div className="bg-red-600 text-white rounded-md text-center  md:text-base text-xs">SALE ลด {data.discount}% วันนี้!</div>
+            }
         </div>
         <div className="text-right text-sm md:text-base">
             ราคาเริ่มต้น (ต่อคืน)
         </div>
-        <div className="text-red-600 text-right text-sm md:text-base">
-            {data.price}
+        <div className=" text-right text-sm md:text-base">
+            {
+            data.discount == 0?
+            <div className="text-red-600">{data.price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+            :<div><span className=" text-red-600 line-through mr-1">{data.price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span className=" text-green-600 ">{(data.price*(100-data.discount)/100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></div>
+
+        }
         </div>
         <div className=" text-center">
             {
-                data.status === 'a' ?
+                data.isAviable  ?
                 <button className="rounded-lg bg-green-500 p-2 text-white">มีห้องว่าง</button> :
                 <button className="rounded-lg bg-red-500 p-2 text-white">ถูกจองครบแล้ว</button>
             }

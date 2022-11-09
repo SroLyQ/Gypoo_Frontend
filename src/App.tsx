@@ -9,11 +9,13 @@ import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
 import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
-import HotelAnnouncements from './hotel-sites/pages/HotelAnnouncements';
+import AddHotel from './hotel-sites/pages/AddHotel';
 import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
-import LoginPage from './hotel-sites/pages/Login';
+import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
+import testdata from './hotel-sites/pages/testdata.json';
+import TestPage from './component/TestPage';
 function App() {
   return (
     <>
@@ -27,12 +29,18 @@ function App() {
           <Route path="/activity" element={<Activity />} />
           <Route path="/hotelhotels" element={<HotelHotels />} />
           <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
-          <Route path="/hotelannouncements" element={<HotelAnnouncements />} />
+          <Route path="/addhotel" element={<AddHotel />} />
           <Route path="/hotelhistory" element={<HotelHistory />} />
           <Route path="/hotelprofile" element={<HotelProfile />} />
           <Route path="/hoteldiscount" element={<HotelDiscount />} />
           <Route path="/hotelhome" element={<HotelHome />} />
-          <Route path="/login" element={<LoginPage />} />
+          {testdata.map((data, index) => {
+            const thispath = '/hotel/' + String(data.name).replace(' ', '%20');
+            return (
+              <Route path={thispath} element={<HotelInnerCard data={data} />} />
+            );
+          })}
+          <Route path="/testLogin" element={<TestPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function HotelHome() {
-  return (
-    <div className="pt-24">Home</div>
-  )
+  return <div className="pt-24">Home</div>;
 }
 
-export default HotelHome
+export default HotelHome;
