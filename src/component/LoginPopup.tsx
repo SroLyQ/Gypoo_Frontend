@@ -29,14 +29,14 @@ const LoginPopup: React.FC = () => {
   return (
     <div className="absolute w-full h-full z-10 ">
       <div className="flex w-full bg-[#bebbbcb3] h-full items-center justify-center">
-        <div className="flex flex-col bg-white w-[30%] h-[60%] rounded-md shadow-lg shadow-[#979797] items-center">
+        <div className="flex flex-col bg-white xs:w-[500px] w-full sm:mx-0 mx-5 h-[530px] rounded-md shadow-lg px-3 shadow-[#979797] items-center">
           <img
             src="https://cdn-icons-png.flaticon.com/512/75/75519.png"
-            className="w-5 m-5 self-end hover:cursor-pointer"
+            className="w-5 md:m-3 md:mb-0 m-5 mb-2 self-end hover:cursor-pointer"
             onClick={closeHandler}
           />
-          <img src={logo} className="w-44" />
-          <label className="text-[32px] text-center pb-4 pt-2 border-b-[1px] border-gray-300 w-[80%] font-semibold">
+          <img src={logo} className="w-40" />
+          <label className="lg:text-[32px] text-[30px] text-center md:pb-4 lg:pt-2 border-b-[1px] border-gray-300 w-[80%] font-semibold">
             {' '}
             Login
           </label>
@@ -66,7 +66,7 @@ const LoginPopup: React.FC = () => {
             </div>
             <button
               type="button"
-              className="mt-6 h-12 bg-[#488BF8] w-32 self-center rounded-md text-white font-semibold text-[22px] text-center align-middle items-center"
+              className="xl:mt-8 mt-3 h-12 bg-[#488BF8] w-32 self-center rounded-md text-white font-semibold text-[22px] text-center align-middle items-center"
               onClick={loginHandler}
             >
               Login
