@@ -1,5 +1,6 @@
 import logo from '../assets/logo.gif';
 import { useState } from 'react';
+import { login } from '../services/authService';
 const LoginPopup: React.FC = () => {
   const [passwordType, setPasswordType] = useState<string>('password');
   const [form, setForm] = useState({
@@ -19,9 +20,11 @@ const LoginPopup: React.FC = () => {
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [event.currentTarget.name]: event.currentTarget.value });
   };
-  const loginHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Login');
-    console.log(form);
+  const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const data = await login(form);
+    const token = data.token;
+    localStorage.setItem("token",token);
+    window.location.reload();
   };
   return (
     <div className="absolute w-full h-full z-10 ">
