@@ -23,7 +23,7 @@ const LoginPopup: React.FC = () => {
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const data = await login(form);
     const token = data.token;
-    localStorage.setItem("token",token);
+    localStorage.setItem('token', token);
     window.location.reload();
   };
   return (
