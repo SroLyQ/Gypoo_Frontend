@@ -1,12 +1,13 @@
 //for login and reg func
 import apiClient from '../api/apiClient'
+import config from '../config.json'
 interface loginProp{
   username:string,
   password:string,
 }
 
 export const login = async (body:loginProp) => {
-  const res = await apiClient('https://localhost:7066/api/User/login',{
+  const res = await apiClient(`${config.api_url.localHost}/User/login`,{
     method:'POST',
     data:body,
   })
