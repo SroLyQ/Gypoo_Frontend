@@ -4,7 +4,6 @@ import StarRating from '../components/StarRating';
 import { Listbox } from '@headlessui/react';
 
 function hotel() {
-  
   return (
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
@@ -70,9 +69,7 @@ function hotel() {
           <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
             <p className="mb-[14px] text-[26px]">แผนที่</p>
             <div className="border border-[#D8D8D8]"></div>
-            <div className="mt-[15px]">
-              googleMAP
-            </div>
+            <div className="mt-[15px]">googleMAP</div>
           </div>
         </div>
 
