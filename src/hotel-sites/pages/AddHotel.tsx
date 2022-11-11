@@ -1,12 +1,12 @@
 import { useEffect, useState, FormEvent } from 'react';
 
 function AddHotel() {
+  const [selectHotel,setSelectHotel] = useState(false);
   const locationTypeForm = [
-    { isHostel: false },
-    { isHestaurant: false },
+    { isHotel: false },
+    { isRestaurant: false },
     { isTravel: false },
   ];
-
   const convenienceTypeForm = [
     { isWifi: false },
     { isBreakfast: false },
@@ -15,13 +15,21 @@ function AddHotel() {
     { isBuffet: false },
     { isOther: false },
   ];
-
+  const rooms = [
+      {single: '0'},
+      {singlePrice:'0'},
+      {duo: '0'},
+      {duoPrice:'0'},
+      {suite: '0'},
+      {suitePrice:'0'},
+  ];
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       title: { value: string };
       description: { value: string };
       coordinates: { value: string };
+      
     };
 
     if (target.title.value == '') {
@@ -29,25 +37,27 @@ function AddHotel() {
     } else if (target.description.value == '') {
       alert('โปรดใสรายละเอียด');
     } else if (
-      !locationTypeForm[0].isHostel &&
-      !locationTypeForm[1].isHestaurant &&
+      locationTypeForm[0].isHotel&&
+      !locationTypeForm[1].isRestaurant &&
       !locationTypeForm[2].isTravel
     ) {
       alert('โปรดเลือกประเภทของสถานที่');
+      console.log(locationTypeForm)
     } else if (target.coordinates.value == '') {
-      alert('โปรดใสลิงก์แผนที่');
+      alert('โปรดใส่ลิงก์แผนที่');
     } else {
       const jason = JSON.stringify({
         title: target.title.value,
         description: target.description.value,
         coordinates: target.coordinates.value,
+        room : rooms,
         locationType: locationTypeForm,
         convenienceType: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
     }
-
+    window.location.assign('/hotelhotels');
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',
@@ -120,11 +130,12 @@ function AddHotel() {
               <label>
                 <input
                   type="checkbox"
-                  id="isHostel"
+                  id="isHotel"
                   onChange={(event) => {
-                    locationTypeForm[0] = { isHostel: event.target.checked };
+                    locationTypeForm[0] = { isHotel: event.target.checked };
+                    setSelectHotel(!selectHotel)
+                    console.log(locationTypeForm[0].isHotel)
                   }}
-                  defaultChecked={false}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
                 <a className="px-2">ที่พัก</a>
@@ -135,10 +146,10 @@ function AddHotel() {
               <label>
                 <input
                   type="checkbox"
-                  id="isHestaurant"
+                  id="isRestaurant"
                   onChange={(event) => {
                     locationTypeForm[1] = {
-                      isHestaurant: event.target.checked,
+                      isRestaurant: event.target.checked,
                     };
                   }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
@@ -162,7 +173,68 @@ function AddHotel() {
               <a className="sm:hidden">
                 <br />
               </a>
-            </div>
+            </div> 
+              { 
+              selectHotel ?
+              <div>
+                <div className="block space-y-2">
+                <p>ห้องพักแบบเดี่ยว</p>
+                <div className='flex space-x-2'>
+                  <input
+              type="text"
+              id="singleroom"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="จำนวนห้องพัก"
+              onChange={(e)=>{rooms[0].single = e.target.value}}
+            />
+                  <input
+              type="text"
+              id="singleroomPrice"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="ราคาห้องพัก"
+              onChange={(e)=>{rooms[1].singlePrice = e.target.value}}
+            />
+                </div>
+              </div>
+              <div className="block space-y-2">
+                <p>ห้องพักแบบคู่</p>
+                <div className='flex space-x-2'>
+                  <input
+              type="text"
+              id="duoroom"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="จำนวนห้องพัก"
+              onChange={(e)=>{rooms[2].duo = e.target.value}}
+            />
+                  <input
+              type="text"
+              id="duoroomPrice"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="ราคาห้องพัก"
+              onChange={(e)=>{rooms[3].duoPrice = e.target.value}}
+            />
+                </div>
+              </div>
+              <div className="block space-y-2">
+                <p>ห้องพักแบบเดอลุกซ์</p>
+                <div className='flex space-x-2'>
+                  <input
+              type="text"
+              id="deluxeroom"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="จำนวนห้องพัก"
+              onChange={(e)=>{rooms[4].suite = e.target.value}}
+            />
+                  <input
+              type="text"
+              id="deluxeroomPrice"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="ราคาห้องพัก"
+              onChange={(e)=>{rooms[5].suitePrice = e.target.value}}
+            />
+                </div>
+              </div>
+              </div>:''}
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
               สิ่งอำนวยความสะดวก
             </p>

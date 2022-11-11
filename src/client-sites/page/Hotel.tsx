@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
+import ListBox from '../components/ListBox';
 import StarRating from '../components/StarRating';
-import { Listbox } from '@headlessui/react';
 
 function hotel() {
   return (
@@ -89,11 +89,11 @@ function hotel() {
               <div className="flex flex-col flex-wrap">
                 <div className="flex flex-row flex-wrap">
                   <FaBed className="self-center" />
-                  <p>ddddddd</p>
+                  <ListBox />
                 </div>
                 <div className="flex flex-row flex-wrap">
                   <FaRegCalendar className="self-center" />
-                  <p>yyyyyyy</p>
+                  <ListBox />
                 </div>
               </div>
             </div>
