@@ -9,6 +9,8 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 function HotelNavbar() {
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {}, []);
   return (
     <div className="w-screen h-[95px] z-10 bg-gray-100 fixed drop-shadow-md">
       <div className="px-8 flex justify-between items-center w-full h-full">
