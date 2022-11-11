@@ -1,7 +1,10 @@
 import logo from '../assets/logo.gif';
-import { useState } from 'react';
-import { login } from '../services/authService';
-const LoginPopup: React.FC = () => {
+import { useState, Dispatch, SetStateAction } from 'react';
+import { checkLogin, login } from '../services/authService';
+interface IParentPopup {
+  setParentPopup: Dispatch<SetStateAction<boolean>>;
+}
+const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
   const [passwordType, setPasswordType] = useState<string>('password');
   const [form, setForm] = useState({
     username: '',
@@ -9,6 +12,7 @@ const LoginPopup: React.FC = () => {
   });
   const closeHandler = () => {
     console.log('close');
+    props.setParentPopup(false);
   };
   const viewButton = () => {
     if (passwordType === 'text') {
@@ -27,7 +31,7 @@ const LoginPopup: React.FC = () => {
     window.location.reload();
   };
   return (
-    <div className="absolute w-full h-full z-10 ">
+    <div className="fixed w-full h-full z-20">
       <div className="flex w-full bg-[#bebbbcb3] h-full items-center justify-center">
         <div className="flex flex-col bg-white xs:w-[500px] w-full sm:mx-0 mx-5 h-[530px] rounded-md shadow-lg px-3 shadow-[#979797] items-center">
           <img

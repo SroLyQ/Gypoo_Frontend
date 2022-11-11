@@ -36,7 +36,6 @@ function App() {
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
           <Route path ='/hotelhome' element = {<HotelHome/>} /> 
           <Route path ='/hotel/:_id' element = {<HotelInnerCard />} /> 
-          <Route path="/testLogin" element={<TestPage />} />
 
         </Routes>
       </BrowserRouter>
