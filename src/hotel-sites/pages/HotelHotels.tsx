@@ -172,15 +172,9 @@ function HotelHotels() {
               }
               
             </div>
-<<<<<<< HEAD
           
           <div className="z-30 md:w-3/5 w-4/5 h-[95%] bg-slate-300 opacity-20  mx-auto absolute top-5  md:left-[20%] left-[10%] rounded-lg"></div>
           <Link to = {"/hotel/" + String(data.name).replace(" ","%20")} className="z-20">  
-=======
-               
-          <div className="z-30 w-[100%]  h-[95%] bg-slate-300 opacity-20  mx-auto absolute top-5 left-[0%]  rounded-lg"></div>
-          <Link to = {`/hotel/${data._id}`} className="z-20">  
->>>>>>> 0a5db209a4bf1c775bcc880c97383406a3afbbf5
             <HotelCard data = {data} />
           </Link>
           

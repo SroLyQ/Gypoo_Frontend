@@ -1,5 +1,5 @@
 
-import logo from '../assets/logo.gif';
+
 
 import React, { useState } from 'react';
 

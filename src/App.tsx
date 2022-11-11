@@ -14,18 +14,14 @@ import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
 import testdata from './hotel-sites/pages/testdata.json';
-import TestPage from './component/TestPage';
+
 
 
 function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
-<<<<<<< HEAD
-      <Navbar/>
-=======
-      <HotelNavbar />
->>>>>>> 0a5db209a4bf1c775bcc880c97383406a3afbbf5
+      <HotelNavbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />

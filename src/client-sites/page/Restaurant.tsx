@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
-import StarRating from './StarRating';
+import StarRating from '../components/StarRating';
 import { Listbox } from '@headlessui/react';
 import 'tw-elements';
 

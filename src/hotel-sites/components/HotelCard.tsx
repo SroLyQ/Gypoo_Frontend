@@ -35,7 +35,6 @@ const Star = (n: number) => {
 };
 const HotelCard = ({ data }: dataType) => {
   return (
-<<<<<<< HEAD
     <div className="flex border-2 border-black-900 rounded-lg mx-auto w-4/5 md:w-3/5 space-x-4 mt-5">
     <div className="w-1/4">
         <img src = {data.picture} className=""/>
@@ -44,14 +43,6 @@ const HotelCard = ({ data }: dataType) => {
         <p className="text-base md:text-xl">
         {data.name}
         </p>
-=======
-    <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5">
-      <div className="w-1/3">
-        <img src={data.picture} className="" />
-      </div>
-      <div className="block w-2/5 md:w-3/5  space-y-2">
-        <p className="text-base md:text-xl">{data.name}</p>
->>>>>>> 0a5db209a4bf1c775bcc880c97383406a3afbbf5
         <div className="flex text-blue-500 text-sm md:text-base">
           <svg
             xmlns="http://www.w3.org/2000/svg"
