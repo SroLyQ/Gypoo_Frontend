@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './client-sites/components/Navbar';
-import Main from './client-sites/components/Main';
-import Hotel from './client-sites/components/Hotel';
-import Restaurant from './client-sites/components/Restaurant';
-import Activity from './client-sites/components/Activity';
+import Main from './client-sites/page/Main';
+import Hotel from './client-sites/page/Hotel';
+import Restaurant from './client-sites/page/Restaurant';
+import Activity from './client-sites/page/Activity';
 import HotelNavbar from './hotel-sites/components/HotelNavbar';
 import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
@@ -14,13 +13,19 @@ import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
-import testdata from './hotel-sites/pages/testdata.json'
-import LoginPage from './hotel-sites/pages/Login';
+import testdata from './hotel-sites/pages/testdata.json';
+import TestPage from './component/TestPage';
+
+
 function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
+<<<<<<< HEAD
       <Navbar/>
+=======
+      <HotelNavbar />
+>>>>>>> 0a5db209a4bf1c775bcc880c97383406a3afbbf5
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -34,11 +39,8 @@ function App() {
           <Route path='/hotelprofile' element = {<HotelProfile/>}/>
           <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
           <Route path ='/hotelhome' element = {<HotelHome/>} /> 
-          {testdata.map((data,index)=>{
-           const thispath="/hotel/"+String(data.name).replace(" ","%20");
-              return (
-            <Route path={thispath} element={<HotelInnerCard data={data} />}/> 
-          );})}
+          <Route path ='/hotel/:_id' element = {<HotelInnerCard />} /> 
+
         </Routes>
       </BrowserRouter>
     </>
