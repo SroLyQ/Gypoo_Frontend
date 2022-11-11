@@ -172,19 +172,54 @@ function Main() {
     } else if (state == 1) {
       return (
         <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
-          <div className=" text-center">2</div>
+          <form className="px-16">
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <div className="flex flex-row mt-4 ">
+              <input type="date" id="dayCheckIn" name="dayCheckIn"></input>
+              <div className="px-2">|</div>
+              <input type="date" id="dayCheckOut" name="dayCheckOut"></input>
+            </div>
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
+              ค้นหาโรงแรม
+            </button>
+          </form>
         </div>
       );
     } else if (state == 2) {
       return (
         <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
-          <div className=" text-center">3</div>
+          <form className="px-16">
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
+              ค้นหาร้านอาหาร
+            </button>
+          </form>
         </div>
       );
     } else if (state == 3) {
       return (
         <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
-          <div className=" text-center">4</div>
+          <form className="px-16">
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
+              ค้นหากิจกรรม
+            </button>
+          </form>
         </div>
       );
     } else {
