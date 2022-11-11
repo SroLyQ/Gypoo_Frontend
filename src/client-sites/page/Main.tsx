@@ -4,6 +4,7 @@ import { HomeIcon } from '@heroicons/react/20/solid';
 import { BuildingStorefrontIcon } from '@heroicons/react/20/solid';
 import { FaceSmileIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
+import Topotown from '../components/topTown';
 // useEffect,
 function Main() {
   const [state, setState] = useState(0);
@@ -202,8 +203,7 @@ function Main() {
         </div>
       </div>
       <Menu />
-      {/* ********************************************************** */}
-      {/* <div className=" bg-black mx-32 pt-10"></div> */}
+      <Topotown />
     </div>
   );
 }
