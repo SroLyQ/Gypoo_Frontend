@@ -2,6 +2,7 @@ import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
 import ListBox from '../components/ListBox';
 import StarRating from '../components/StarRating';
+import GooGleMAP from '../components/googleMap'
 
 function hotel() {
   return (
@@ -69,7 +70,9 @@ function hotel() {
           <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
             <p className="mb-[14px] text-[26px]">แผนที่</p>
             <div className="border border-[#D8D8D8]"></div>
-            <div className="mt-[15px]">googleMAP</div>
+            <div className="mt-[15px]">
+              <GooGleMAP></GooGleMAP>
+            </div>
           </div>
         </div>
 
