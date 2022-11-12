@@ -9,6 +9,7 @@ import HotelHotels from './hotel-sites/pages/HotelHotels';
 import HotelHome from './hotel-sites/pages/HotelHome';
 import HotelRestaurants from './hotel-sites/pages/HotelRestaurants';
 import AddHotel from './hotel-sites/pages/AddHotel';
+import AddRoom from './hotel-sites/pages/AddRoom';
 import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
@@ -29,12 +30,13 @@ function App() {
           <Route path="/hotelhotels" element={<HotelHotels />} />
           <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
           <Route path="/addhotel" element={<AddHotel />} />
+          <Route path="/addroom" element={<AddRoom />} />
           <Route path="/hotelhistory" element={<HotelHistory />} />
           <Route path="/hotelprofile" element={<HotelProfile />} />
           <Route path="/hoteldiscount" element={<HotelDiscount />} />
           <Route path="/hotelhome" element={<HotelHome />} />
           <Route path="/hotel/:_id" element={<HotelInnerCard />} />
-          //<Route path="/search" element={<Search />} />
+          {/* <Route path="/search" element={<Search />} /> */}
         </Routes>
       </BrowserRouter>
     </>
