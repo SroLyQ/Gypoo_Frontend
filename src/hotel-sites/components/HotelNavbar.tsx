@@ -260,7 +260,7 @@ function HotelNavbar() {
                               />
                             </svg>
                           </div>
-                          ที่พักของฉัน
+                          กิจการของฉัน
                         </a>
                       )}
                     </Menu.Item>

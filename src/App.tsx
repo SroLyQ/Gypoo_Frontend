@@ -14,8 +14,15 @@ import HotelProfile from './hotel-sites/pages/HotelProfiles';
 import HotelDiscount from './hotel-sites/pages/HotelDiscount';
 import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
+import HotelInnerRoomCard from './hotel-sites/components/HotelInnerRoomCard';
 import testdata from './hotel-sites/pages/testdata.json';
+<<<<<<< HEAD
+//import TestPage from './component/TestPage';
+
+
+=======
 //import Search from './client-sites/page/Search';
+>>>>>>> b18410a7a54348c6c2fcfbcdd25ac832f780d248
 function App() {
   return (
     <>
@@ -27,6 +34,17 @@ function App() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/activity" element={<Activity />} />
+<<<<<<< HEAD
+          <Route path='/hotelhotels' element = {<HotelHotels/>}/>
+          <Route path='/hotelrestaurants' element = {<HotelRestaurants/>}/>
+          <Route path='/addhotel' element = {<AddHotel/>}/>
+          <Route path='/hotelhistory' element = {<HotelHistory/>}/>
+          <Route path='/hotelprofile' element = {<HotelProfile/>}/>
+          <Route path='/hoteldiscount' element = {<HotelDiscount/>}/>
+          <Route path ='/hotelhome' element = {<HotelHome/>} /> 
+          <Route path ='/hotel/:_id' element = {<HotelInnerRoomCard />} /> 
+
+=======
           <Route path="/hotelhotels" element={<HotelHotels />} />
           <Route path="/hotelrestaurants" element={<HotelRestaurants />} />
           <Route path="/addhotel" element={<AddHotel />} />
@@ -37,6 +55,7 @@ function App() {
           <Route path="/hotelhome" element={<HotelHome />} />
           <Route path="/hotel/:_id" element={<HotelInnerCard />} />
           {/* <Route path="/search" element={<Search />} /> */}
+>>>>>>> b18410a7a54348c6c2fcfbcdd25ac832f780d248
         </Routes>
       </BrowserRouter>
     </>
