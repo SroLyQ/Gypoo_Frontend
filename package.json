@@ -21,6 +21,7 @@
     "eslint-config-prettier": "^8.5.0",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.3.4",
+    "jwt-decode": "^3.1.2",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
