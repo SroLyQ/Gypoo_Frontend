@@ -1,0 +1,327 @@
+[
+    {
+        "_id": "6360d07ef5fbc336368d9d61",
+        "index": 0,
+        "isAviable": true,
+        "price": 1394.36,
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKYVy_EsHWnQc9x5eMEc7vOpHe_ORfQP-60DXWYz_EPq9OBVRhCxKiFDdnbAJ20Yc8AY&usqp=CAU",
+        "name": "PLEXIA",
+        "email": "greeneoconnor@plexia.com",
+        "phone": "+1 (938) 404-3751",
+        "address": "603 Garfield Place, Crisman, Massachusetts, 6128",
+        "about": "Dolor adipisicing aute qui incididunt mollit cupidatat ex aute ipsum reprehenderit amet tempor proident. Et eu voluptate mollit anim et ex elit. Magna nulla occaecat velit Lorem sit incididunt laborum nulla adipisicing veniam consequat aute anim commodo. Elit id consequat adipisicing non sit. Consectetur culpa do adipisicing veniam nostrud aliqua Lorem elit proident deserunt. Id eiusmod anim qui labore ut amet Lorem quis. Labore veniam ullamco aliqua non minim ad voluptate.\r\n",
+        "discount" : 20,
+        "rating": 0,
+        "reviews": 237,
+      "room": [
+        {
+          "_id": "636f65cdc95ce5b621c86fd6",
+          "type": "duo",
+          "room": 2,
+          "currentroom": 5,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2565,
+          "discount": 30,
+          "facilities": [
+            "dildo",
+            "wifi"
+          ]
+        }
+      ]
+    },
+    {
+        "_id": "6360d07e55b7b409d900ef45",
+        "index": 1,
+        "isAviable": false,
+        "price": 2502.31,
+        "picture": "https://youre.outof.cards/media/uploads/76/35/763545fb-d2ca-4219-8fdf-75148f63f97a/21623008.jpg",
+        "name": "PASTURIA",
+        "email": "greeneoconnor@pasturia.com",
+        "phone": "+1 (840) 575-2253",
+        "address": "320 Oceanview Avenue, Cumminsville, North Carolina, 1088",
+        "about": "Ex proident nulla laborum laboris tempor. Ut ad quis ipsum anim anim. Consectetur aliqua dolor amet cillum velit laborum tempor id. Et reprehenderit aute est est sint nulla laboris anim minim laborum officia exercitation. Ipsum deserunt non dolor laboris enim voluptate.\r\n",
+        "discount" : 30,
+        "rating": 5,
+        "reviews": 1234,
+      "room": [
+        {
+          "_id": "636f65cd1b977e3b81dafa58",
+          "type": "duo",
+          "room": 5,
+          "currentroom": 0,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 1202,
+          "discount": 10,
+          "facilities": [
+            "fan",
+            "dildo",
+            "fan"
+          ]
+        },
+        {
+          "_id": "636f65cdeb78171bbf67e8bd",
+          "type": "duo",
+          "room": 4,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 1029,
+          "discount": 20,
+          "facilities": [
+            "fan",
+            "fan",
+            "dildo",
+            "dildo"
+          ]
+        }
+      ]
+    },
+    {
+        "_id": "6360d07e6bc0a44549ca2b2b",
+        "index": 2,
+        "isAviable": true,
+        "price": 1412.13,
+        "picture": "https://ygoprodeck.com/pics/50005218.jpg",
+        "name": "DYMI",
+        "email": "greeneoconnor@dymi.com",
+        "phone": "+1 (909) 402-3245",
+        "address": "905 Kensington Walk, Beaulieu, Hawaii, 6604",
+        "about": "Tempor eiusmod voluptate id fugiat velit veniam aute sit magna irure amet. Tempor incididunt veniam reprehenderit commodo. Nisi eu et consequat voluptate dolore. Aliquip laboris proident ea qui Lorem minim commodo ipsum non. Mollit dolore nostrud exercitation dolore fugiat mollit ad laboris labore dolor Lorem eiusmod cillum.\r\n",
+        "discount" : 0,
+        "rating": 1,
+        "reviews": 76,
+      "room": [
+        {
+            "_id": "636f65cd7fed48d656f0ed68",
+          "type": "single",
+          "room": 5,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2136,
+          "discount": 30,
+          "facilities": [
+            "dildo",
+            "dildo"
+          ]
+        }
+      ]
+    },
+    {
+        "_id": "6360d07e13b8774430a36aed",
+        "index": 3,
+        "isAviable": false,
+        "price": 3526.8,
+        "picture": "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+        "name": "MOLTONIC",
+        "email": "greeneoconnor@moltonic.com",
+        "phone": "+1 (951) 531-2069",
+        "address": "666 Temple Court, Lookingglass, Colorado, 7520",
+        "about": "Duis anim dolor voluptate est cupidatat do veniam magna ea dolor exercitation commodo veniam et. Adipisicing et duis fugiat fugiat exercitation consectetur eu est ullamco mollit ad ipsum non anim. Sint deserunt duis ad quis et cupidatat commodo. Reprehenderit velit elit minim proident laborum est. Id consectetur exercitation commodo consequat sunt in laborum mollit tempor ipsum exercitation. Consectetur occaecat deserunt amet magna et dolore veniam exercitation mollit est qui duis non.\r\n",
+        "discount" : 10,
+        "rating": 3,
+        "reviews": 123,
+      "room": [
+        {
+            "_id": "636f65cd1cfa104a4e116a3a",
+          "type": "duo",
+          "room": 0,
+          "currentroom": 1,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2330,
+          "discount": 10,
+          "facilities": [
+            "dildo",
+            "wifi",
+            "wifi",
+            "namuun"
+          ]
+        },
+        {
+            "_id": "636f65cda4f9b544a47ca233",
+          "type": "suite",
+          "room": 2,
+          "currentroom": 4,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2553,
+          "discount": 10,
+          "facilities": [
+            "wifi",
+            "namuun",
+            "dildo"
+          ]
+        },
+        {
+            "_id": "636f65cd3d7ed0e93dbebcfc",
+          "type": "single",
+          "room": 2,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 1431,
+          "discount": 20,
+          "facilities": [
+            "namuun",
+            "wifi",
+            "fan"
+          ]
+        }
+      ]
+    },
+    {
+        "_id": "6360d07e015a13236426abb5",
+        "index": 4,
+        "isAviable": true,
+        "price": 1497.82,
+        "picture": "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+        "name": "CENTREGY",
+        "email": "greeneoconnor@centregy.com",
+        "phone": "+1 (958) 564-2110",
+        "address": "418 Woodbine Street, Gwynn, New Mexico, 5054",
+        "about": "Amet magna labore amet quis ad enim deserunt et. Id occaecat commodo consectetur officia laboris esse aute culpa pariatur commodo. Dolor fugiat incididunt sit fugiat tempor sint pariatur non.\r\n",
+        "discount" : 10,
+        "rating": 3,
+        "reviews": 29,
+      "room": [
+        {
+            "_id": "636f65cd2ff4bc93f22826b3",
+          "type": "duo",
+          "room": 2,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2176,
+          "discount": 10,
+          "facilities": [
+            "wifi",
+            "namuun",
+            "namuun",
+            "wifi"
+          ]
+        },
+        {
+            "_id": "636f65cd2ff4bc93f22826b3",
+          "type": "suite",
+          "room": 3,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2354,
+          "discount": 20,
+          "facilities": [
+            "dildo",
+            "dildo",
+            "namuun"
+          ]
+        },
+        {
+            "_id": "636f65cdc9e926bd7249ac2f",
+          "type": "suite",
+          "room": 1,
+          "currentroom": 2,
+          "picture": [
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            },
+            {
+              "src": "http://placehold.it/32x32"
+            }
+          ],
+          "price": 2168,
+          "discount": 30,
+          "facilities": [
+            "dildo",
+            "fan"
+          ]
+        }
+      ]
+    }
+  ]

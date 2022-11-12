@@ -44,7 +44,7 @@ function EditHotel({_id}:datatype) {
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-      window.location.assign('/hotelhotels');
+      //window.location.assign('/hotelhotels');
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',
