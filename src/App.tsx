@@ -15,8 +15,6 @@ import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
 import testdata from './hotel-sites/pages/testdata.json';
 
-
-
 function App() {
   return (
     <>
