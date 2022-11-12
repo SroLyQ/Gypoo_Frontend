@@ -11,7 +11,7 @@ function hotel() {
           <div>imgSlider</div>
         </div>
 
-        <div className="mx-8 border rounded-md border-[#999999] p-[25px] pt-[15px] mt-[25px]">
+        <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
           <div className="mb-[5px]">
             <div className="mb-[5px]">
               <p className="text-[26px] font-semibold">
@@ -35,41 +35,18 @@ function hotel() {
           </p>
         </div>
 
-        <div className="mx-8 mt-[25px] grid grid-cols-2 max-sm:grid-cols-1 gap-8">
-          <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
+        <div className="mx-8 mt-[25px] grid grid-cols-2 gap-x-8">
+          <div className="border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] basis-1/2">
             <p className="mb-[14px] text-[26px]">สิ่งอำนวยความสะดวก</p>
             <div className="border border-[#D8D8D8]"></div>
-            <div className="mt-[15px] grid grid-cols-2">
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center" />
-                <p className="pl-[10px] self-center">อาหารเช้า</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center" />
-                <p className="pl-[10px] self-center">สัตว์เลี้ยงเข้าพักได้</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center" />
-                <p className="pl-[10px] self-center">ที่จอดรถ</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center" />
-                <p className="pl-[10px] self-center">ปิ้งบาร์บีคิว</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center" />
-                <p className="pl-[10px] self-center">Free Wi-Fi</p>
-              </div>
+            <div className="mt-[15px]">
+              <FaCheck />
             </div>
           </div>
-          <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
+          <div className="border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] basis-1/2">
             <p className="mb-[14px] text-[26px]">แผนที่</p>
             <div className="border border-[#D8D8D8]"></div>
-            <div className="mt-[15px]">googleMAP</div>
+            <div className="mt-[15px]">mapImg</div>
           </div>
         </div>
 
@@ -78,8 +55,8 @@ function hotel() {
             <p className="text-[26px]">Boom Burapee</p>
           </div>
           <div className="border border-[#D8D8D8]"></div>
-          <div className="border rounded-md border-[#D8D8D8] mt-[25px] flex flex-row">
-            <div className="p-[25px] pl-[40px] basis-1/4">
+          <div className="border rounded-md border-[#D8D8D8] py-[15px] pl-[40px] pr-[20px] mt-[25px] flex flex-row flex-wrap gap-x-5">
+            <div className="basis-1/4">
               <p>ให้คะแนนที่พัก</p>
 
               <div className="my-[5px] flex flex-row">
@@ -97,15 +74,15 @@ function hotel() {
                 </div>
               </div>
             </div>
-            <div className="border border-[#D8D8D8] my-[10px] basis-0"></div>
-            <form className="p-[25px] basis-3/4">
+            <div className="border border-[#D8D8D8]"></div>
+            <form className="grow">
               <div className="border rounded-md border-[#D8D8D8] p-[1px] text-slate-500">
                 <textarea
                   className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none"
                   placeholder="Write a comment..."
                 />
                 <div className="flex flex-row-reverse pr-3 pb-3">
-                  <button className="border rounded-md border-none bg-sky-500 hover:bg-sky-600 text-white py-2 px-14">
+                  <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-2 px-14">
                     ยืนยัน
                   </button>
                 </div>
@@ -118,8 +95,8 @@ function hotel() {
           <p className="mb-8">ความคิดเห็น</p>
 
           <div className="border rounded-md border-[#D8D8D8]">
-            <div className="flex flex-row">
-              <div className="p-[25px] pl-[40px] basis-1/4">
+            <div className="flex flex-row flex-wrap gap-x-5">
+              <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
                 Boom Burapee
                 <div className="my-[5px] flex flex-row">
                   <StarRating starSize={'25px'} />
@@ -135,21 +112,16 @@ function hotel() {
                   </div>
                 </div>
               </div>
-              <div className="border border-[#D8D8D8] my-[10px] basis-0"></div>
-              <div className="p-[25px] basis-3/4">
-                <p>
-                  A little out of the way but tucked nicely away from the noise
-                  and traffic. Spotless rooms and general areas. Staff very
-                  friendly and although not much English spoken we got by with
-                  smiles and Google translate.
-                </p>
+              <div className="border border-[#D8D8D8]"></div>
+              <div className="border rounded-md border-[#999999] p-[25px] grow">
+                ให้คะแนนที่พัก
               </div>
             </div>
           </div>
 
           <div className="border rounded-md border-[#D8D8D8]">
-            <div className="flex flex-row">
-              <div className="p-[25px] pl-[40px] basis-1/4">
+            <div className="flex flex-row flex-wrap gap-x-5">
+              <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
                 Boom Burapee
                 <div className="my-[5px] flex flex-row">
                   <StarRating starSize={'25px'} />
@@ -165,21 +137,16 @@ function hotel() {
                   </div>
                 </div>
               </div>
-              <div className="border border-[#D8D8D8] my-[10px] basis-0"></div>
-              <div className="p-[25px] basis-3/4">
-                <p>
-                  A little out of the way but tucked nicely away from the noise
-                  and traffic. Spotless rooms and general areas. Staff very
-                  friendly and although not much English spoken we got by with
-                  smiles and Google translate.
-                </p>
+              <div className="border border-[#D8D8D8]"></div>
+              <div className="border rounded-md border-[#999999] p-[25px] grow">
+                ให้คะแนนที่พัก
               </div>
             </div>
           </div>
 
           <div className="border rounded-md border-[#D8D8D8]">
-            <div className="flex flex-row">
-              <div className="p-[25px] pl-[40px] basis-1/4">
+            <div className="flex flex-row flex-wrap gap-x-5">
+              <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
                 Boom Burapee
                 <div className="my-[5px] flex flex-row">
                   <StarRating starSize={'25px'} />
@@ -195,21 +162,16 @@ function hotel() {
                   </div>
                 </div>
               </div>
-              <div className="border border-[#D8D8D8] my-[10px] basis-0"></div>
-              <div className="p-[25px] basis-3/4">
-                <p>
-                  A little out of the way but tucked nicely away from the noise
-                  and traffic. Spotless rooms and general areas. Staff very
-                  friendly and although not much English spoken we got by with
-                  smiles and Google translate.
-                </p>
+              <div className="border border-[#D8D8D8]"></div>
+              <div className="border rounded-md border-[#999999] p-[25px] grow">
+                ให้คะแนนที่พัก
               </div>
             </div>
           </div>
 
           <div className="border rounded-md border-[#D8D8D8]">
-            <div className="flex flex-row">
-              <div className="p-[25px] pl-[40px] basis-1/4">
+            <div className="flex flex-row flex-wrap gap-x-5">
+              <div className="border rounded-md border-[#999999] p-[25px] basis-1/4">
                 Boom Burapee
                 <div className="my-[5px] flex flex-row">
                   <StarRating starSize={'25px'} />
@@ -225,15 +187,9 @@ function hotel() {
                   </div>
                 </div>
               </div>
-              <div className="border border-[#D8D8D8] my-[10px] basis-0"></div>
-              <div className="p-[25px] basis-3/4">
-                <p>
-                  A little out of the way but tucked nicely away from the noise
-                  and traffic. Spotless rooms and general areas. Staff very
-                  friendly and although not much English spoken we got by with
-                  smiles and Google translate.
-                </p>
-              </div>
+              <div className="border border-[#D8D8D8]"></div>
+              <div className="border rounded-md border-[#999999] p-[25px] grow">
+               </div>
             </div>
           </div>
         </div>
