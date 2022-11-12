@@ -5,9 +5,26 @@ import { BuildingStorefrontIcon } from '@heroicons/react/20/solid';
 import { FaceSmileIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import Topotown from '../components/topTown';
+import { Menu } from '@headlessui/react';
 // useEffect,
 function Main() {
   const [state, setState] = useState(0);
+  const [roomtype, setRoomtype] = useState({ adult: 0, children: 0, room: 0 });
+
+  function test() {
+    console.log(roomtype);
+    setRoomtype({ adult: 0, children: 0, room: 0 });
+  }
+
+  function handleAdultplus() {
+    setRoomtype({ ...roomtype, adult: roomtype.adult + 1 });
+  }
+  function handleChildrenplus() {
+    setRoomtype({ ...roomtype, children: roomtype.children + 1 });
+  }
+  function handleRoomplus() {
+    setRoomtype({ ...roomtype, room: roomtype.room + 1 });
+  }
 
   function Menuselect() {
     if (state == 0) {
@@ -147,7 +164,7 @@ function Main() {
     }
   }
 
-  function Menu() {
+  function Menuu() {
     if (state == 0) {
       return (
         <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
@@ -162,9 +179,42 @@ function Main() {
               <input type="date" id="dayCheckIn" name="dayCheckIn"></input>
               <div className="px-2">|</div>
               <input type="date" id="dayCheckOut" name="dayCheckOut"></input>
+              <div>
+                <Menu>
+                  <Menu.Button>
+                    adult{roomtype.adult}
+                    children{roomtype.children}
+                    room{roomtype.room}
+                  </Menu.Button>
+                  <Menu.Items className="absolute flex flex-col ">
+                    <Menu.Item>
+                      <button className="text-left" onClick={handleAdultplus}>
+                        adult +
+                      </button>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <button
+                        className="text-left"
+                        onClick={handleChildrenplus}
+                      >
+                        children +
+                      </button>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <button className="text-left" onClick={handleRoomplus}>
+                        room +
+                      </button>
+                    </Menu.Item>
+                  </Menu.Items>
+                </Menu>
+              </div>
             </div>
-            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
-              ค้นหาโรงแรม
+
+            <button
+              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 mt-4  rounded font-kanit  "
+              onClick={test}
+            >
+              ค้นหา
             </button>
           </form>
         </div>
@@ -237,7 +287,7 @@ function Main() {
           <Menuselect />
         </div>
       </div>
-      <Menu />
+      <Menuu />
       <Topotown />
     </div>
   );
