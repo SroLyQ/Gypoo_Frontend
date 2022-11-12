@@ -1,28 +1,12 @@
 import { useEffect, useState, FormEvent } from 'react';
 
 function AddHotel() {
-  const [selectHotel,setSelectHotel] = useState(false);
-  const locationTypeForm = [
-    { isHotel: false },
-    { isRestaurant: false },
-    { isTravel: false },
-  ];
-  const convenienceTypeForm = [
-    { isWifi: false },
-    { isBreakfast: false },
-    { isParking: false },
-    { isAnimals: false },
-    { isBuffet: false },
-    { isOther: false },
-  ];
-  const rooms = [
-      {single: '0'},
-      {singlePrice:'0'},
-      {duo: '0'},
-      {duoPrice:'0'},
-      {suite: '0'},
-      {suitePrice:'0'},
-  ];
+  const locationTypeForm = {
+     isHotel: false ,
+     isRestaurant: false ,
+     isTravel: false ,
+  };
+
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -37,9 +21,9 @@ function AddHotel() {
     } else if (target.description.value == '') {
       alert('โปรดใสรายละเอียด');
     } else if (
-      locationTypeForm[0].isHotel&&
-      !locationTypeForm[1].isRestaurant &&
-      !locationTypeForm[2].isTravel
+      !locationTypeForm.isHotel&&
+      !locationTypeForm.isRestaurant &&
+      !locationTypeForm.isTravel
     ) {
       alert('โปรดเลือกประเภทของสถานที่');
       console.log(locationTypeForm)
@@ -50,9 +34,7 @@ function AddHotel() {
         title: target.title.value,
         description: target.description.value,
         coordinates: target.coordinates.value,
-        room : rooms,
         locationType: locationTypeForm,
-        convenienceType: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
@@ -72,10 +54,6 @@ function AddHotel() {
     // });
     // }
   };
-
-  useEffect(() => {
-    console.log('HotelHome Run');
-  }, []);
 
   return (
     <div className="pt-28">
@@ -127,211 +105,22 @@ function AddHotel() {
               ประเภทของสถานที่
             </p>
             <div className="py-2 truncate">
-              <label>
-                <input
-                  type="checkbox"
-                  id="isHotel"
-                  onChange={(event) => {
-                    locationTypeForm[0] = { isHotel: event.target.checked };
-                    setSelectHotel(!selectHotel)
-                    console.log(locationTypeForm[0].isHotel)
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">ที่พัก</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isRestaurant"
-                  onChange={(event) => {
-                    locationTypeForm[1] = {
-                      isRestaurant: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">ร้านอาหาร</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isTravel"
-                  onChange={(event) => {
-                    locationTypeForm[2] = { isTravel: event.target.checked };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">สถานที่ท่องเที่ยว</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-            </div> 
-              { 
-              selectHotel ?
-              <div>
-                <div className="block space-y-2">
-                <p>ห้องพักแบบเดี่ยว</p>
-                <div className='flex space-x-2'>
-                  <input
-              type="text"
-              id="singleroom"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="จำนวนห้องพัก"
-              onChange={(e)=>{rooms[0].single = e.target.value}}
-            />
-                  <input
-              type="text"
-              id="singleroomPrice"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ราคาห้องพัก"
-              onChange={(e)=>{rooms[1].singlePrice = e.target.value}}
-            />
-                </div>
-              </div>
-              <div className="block space-y-2">
-                <p>ห้องพักแบบคู่</p>
-                <div className='flex space-x-2'>
-                  <input
-              type="text"
-              id="duoroom"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="จำนวนห้องพัก"
-              onChange={(e)=>{rooms[2].duo = e.target.value}}
-            />
-                  <input
-              type="text"
-              id="duoroomPrice"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ราคาห้องพัก"
-              onChange={(e)=>{rooms[3].duoPrice = e.target.value}}
-            />
-                </div>
-              </div>
-              <div className="block space-y-2">
-                <p>ห้องพักแบบเดอลุกซ์</p>
-                <div className='flex space-x-2'>
-                  <input
-              type="text"
-              id="deluxeroom"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="จำนวนห้องพัก"
-              onChange={(e)=>{rooms[4].suite = e.target.value}}
-            />
-                  <input
-              type="text"
-              id="deluxeroomPrice"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ราคาห้องพัก"
-              onChange={(e)=>{rooms[5].suitePrice = e.target.value}}
-            />
-                </div>
-              </div>
-              </div>:''}
-            <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
-              สิ่งอำนวยความสะดวก
-            </p>
-            <div className="py-2 truncate">
-              <label>
-                <input
-                  type="checkbox"
-                  id="isWifi"
-                  onChange={(event) => {
-                    convenienceTypeForm[0] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">Free wi-fi</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isBreakfast"
-                  onChange={(event) => {
-                    convenienceTypeForm[1] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">อาหารเช้า</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isParking"
-                  onChange={(event) => {
-                    convenienceTypeForm[2] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">ที่จอดรถ</a>
-              </label>
-              <br />
-              <label>
-                <input
-                  type="checkbox"
-                  id="isAnimals"
-                  onChange={(event) => {
-                    convenienceTypeForm[3] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">นำสัตว์เลี่ยงเข้าพักได้</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isBuffet"
-                  onChange={(event) => {
-                    convenienceTypeForm[4] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">ปิ้งย่าง-ชาบู</a>
-              </label>
-              <a className="sm:hidden">
-                <br />
-              </a>
-              <label>
-                <input
-                  type="checkbox"
-                  id="isOther"
-                  onChange={(event) => {
-                    convenienceTypeForm[5] = {
-                      isWifi: event.target.checked,
-                    };
-                  }}
-                  className=" md:w-4 md:h-4w-3 h-3 pt-2"
-                />
-                <a className="px-2">อื่นๆ</a>
-              </label>
-            </div>
 
+              <input id="isHotel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
+                locationTypeForm.isHotel = event.target.checked
+              }}/>
+              <label htmlFor="isHotel" className="px-2">ที่พัก</label>
+              <a className="sm:hidden"><br /></a>
+              <input id="isRestaurant" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
+                locationTypeForm.isRestaurant = event.target.checked
+              }}/>
+              <label htmlFor="isRestaurant" className="px-2">ร้านอาหาร</label>
+              <a className="sm:hidden"><br /></a>
+              <input id="isTravel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
+                locationTypeForm.isTravel = event.target.checked
+              }}/>
+              <label htmlFor="isTravel" className="px-2">สถานที่ท่องเที่ยว</label>
+            </div> 
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
               แผนที่
             </p>
@@ -366,6 +155,7 @@ function AddHotel() {
                 >
                   ยกเลิก
                 </button>
+                
               </a>
             </div>
           </form>
