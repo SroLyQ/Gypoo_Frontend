@@ -15,12 +15,11 @@ import HotelHistory from './hotel-sites/pages/HotelHistory';
 import HotelInnerCard from './hotel-sites/components/HotelInnerCard';
 import testdata from './hotel-sites/pages/testdata.json';
 
-
 function App() {
   return (
     <>
       {/*deaw gor mee contition aa*/}
-      <HotelNavbar />
+      <HotelNavbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -40,6 +39,8 @@ function App() {
       </BrowserRouter>
     </>
   );
+
+  
 }
 
 export default App;
