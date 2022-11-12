@@ -1,6 +1,7 @@
 import logo from '../assets/logo.gif';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { checkLogin, login } from '../services/authService';
+import { getCurrentUser } from '../services/userService';
 interface IParentPopup {
   setParentPopup: Dispatch<SetStateAction<boolean>>;
 }
@@ -40,12 +41,12 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
             onClick={closeHandler}
           />
           <img src={logo} className="w-40" />
-          <label className="lg:text-[32px] text-[30px] text-center md:pb-4 lg:pt-2 border-b-[1px] border-gray-300 w-[80%] font-semibold">
+          <label className="lg:text-[32px] text-[30px] text-center md:pb-4 lg:pt-2 border-b-[1px] border-gray-300 w-[80%]">
             {' '}
             Login
           </label>
           <form className="flex flex-col mt-5">
-            <label className="text-[20px] font-semibold">Username :</label>
+            <label className="text-[20px] ">Username :</label>
             <input
               type="text"
               name="username"
@@ -53,7 +54,7 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
               placeholder="Username"
               onChange={changeHandler}
             />
-            <label className="text-[20px] font-semibold mt-3">Password :</label>
+            <label className="text-[20px]  mt-3">Password :</label>
             <div className="relative my-3">
               <input
                 type={passwordType}
