@@ -1,6 +1,7 @@
 import logo from '../assets/logo.gif';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { checkLogin, login } from '../services/authService';
+import { getCurrentUser } from '../services/userService';
 interface IParentPopup {
   setParentPopup: Dispatch<SetStateAction<boolean>>;
 }

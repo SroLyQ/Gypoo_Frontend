@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { NavLink, Link } from 'react-router-dom';
 import { checkLogin } from '../../services/authService';
 import LoginPopup from '../../component/LoginPopup';
+import { getCurrentUser } from '../../services/userService';
 
 const logo =
   'https://cdn.discordapp.com/attachments/798208544914407465/1034861427472732171/logo.gif';
