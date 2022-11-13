@@ -33,7 +33,7 @@ function AddRoom() {
     } else if(!roomBadTypeForm.oneBad && !roomBadTypeForm.twoBad && !roomBadTypeForm.specialRoom) {
       alert('โปรดเลือกประเภทเตียงและห้อง');
     } else if(target.view.value == '') {
-      alert('โปรดใสคำอธิบายของวิว');
+      alert('โปรดใส่คำอธิบายของวิว');
     } else {
       const jason = JSON.stringify({
         titleroom: target.titleRoom.value,

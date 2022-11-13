@@ -1,8 +1,7 @@
 import { useEffect, useState, FormEvent } from 'react';
-type datatype ={
-    _id : string
-}
-function EditHotel({_id}:datatype) {
+import {useParams} from 'react-router-dom';
+function EditHotel() {
+  const {_id} = useParams();
   const locationTypeForm = {
     isHotel: false ,
     isRestaurant: false ,
@@ -48,6 +47,7 @@ function EditHotel({_id}:datatype) {
     //   }),
     // });
     // }
+    window.location.assign("/hotelhotels");
   };
 
   return (
