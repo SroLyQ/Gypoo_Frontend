@@ -11,6 +11,8 @@ function Main() {
   const [state, setState] = useState(0);
   const [roomtype, setRoomtype] = useState({ adult: 0, children: 0, room: 0 });
 
+  const [customOpen, setCustomOpen] = useState(false);
+
   function test() {
     console.log(roomtype);
     setRoomtype({ adult: 0, children: 0, room: 0 });
@@ -25,7 +27,9 @@ function Main() {
   function handleRoomplus() {
     setRoomtype({ ...roomtype, room: roomtype.room + 1 });
   }
-
+  function buttonClicked() {
+    setCustomOpen((prev) => !prev);
+  }
   function Menuselect() {
     if (state == 0) {
       return (
@@ -202,31 +206,49 @@ function Main() {
               </div>
               <div>
                 <Menu>
-                  <Menu.Button>
-                    adult{roomtype.adult}
-                    children{roomtype.children}
-                    room{roomtype.room}
-                  </Menu.Button>
-                  <Menu.Items className="absolute flex flex-col ">
-                    <Menu.Item>
-                      <button className="text-left" onClick={handleAdultplus}>
-                        adult +
-                      </button>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <button
-                        className="text-left"
-                        onClick={handleChildrenplus}
-                      >
-                        children +
-                      </button>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <button className="text-left" onClick={handleRoomplus}>
-                        room +
-                      </button>
-                    </Menu.Item>
-                  </Menu.Items>
+                  {({ open }) => (
+                    <>
+                      <Menu.Button onClick={buttonClicked}>
+                        adult{roomtype.adult}
+                        children{roomtype.children}
+                        room{roomtype.room}
+                      </Menu.Button>
+                      {customOpen && (
+                        <Menu.Items static className="flex flex-col absolute ">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleAdultplus}
+                              >
+                                adult{roomtype.adult}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'} `}
+                                onClick={handleChildrenplus}
+                              >
+                                children{roomtype.children}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleRoomplus}
+                              >
+                                room{roomtype.room}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      )}
+                    </>
+                  )}
                 </Menu>
               </div>
             </div>
