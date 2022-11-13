@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeModernIcon } from '@heroicons/react/20/solid';
+import { HomeModernIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { HomeIcon } from '@heroicons/react/20/solid';
 import { BuildingStorefrontIcon } from '@heroicons/react/20/solid';
 import { FaceSmileIcon } from '@heroicons/react/20/solid';
@@ -29,30 +29,30 @@ function Main() {
   function Menuselect() {
     if (state == 0) {
       return (
-        <div className="flex flex-row justify-evenly py-7 shadow-2xl bg-white">
+        <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-blue-500  my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500   "
+            className="bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -62,30 +62,30 @@ function Main() {
       );
     } else if (state == 1) {
       return (
-        <div className="flex flex-row justify-evenly py-7 shadow-2xl bg-white">
+        <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500   "
+            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-blue-500  my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -95,30 +95,30 @@ function Main() {
       );
     } else if (state == 2) {
       return (
-        <div className="flex flex-row justify-evenly py-7 shadow-2xl bg-white">
+        <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500   "
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-blue-500 my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -128,30 +128,30 @@ function Main() {
       );
     } else if (state == 3) {
       return (
-        <div className="flex flex-row justify-evenly py-7 shadow-2xl bg-white">
+        <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500   "
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-blue-500  my-auto h-24 w-28 rounded-xl duration-100 hover:bg-blue-500"
+            className="bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -167,18 +167,27 @@ function Main() {
   function Menuu() {
     if (state == 0) {
       return (
-        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
+        <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
-            <input
-              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="Search for anything..."
-              type="text"
-              name="search"
-            />
-            <div className="flex flex-row mt-4 ">
-              <input type="date" id="dayCheckIn" name="dayCheckIn"></input>
-              <div className="px-2">|</div>
-              <input type="date" id="dayCheckOut" name="dayCheckOut"></input>
+            <div className='bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm'>
+              <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
+              <input
+                className="placeholder:italic placeholder:text-slate-400  w-full mr-5  focus:outline-none"
+                placeholder="Search for anything..."
+                type="text"
+                name="search"
+              />
+            </div>
+
+            <div className="flex flex-row my-5 ">
+              <div className='bg-white py-2 px-5 flex rounded-md'>
+                <div><input className='text-[#585858]' type="date" id="dayCheckIn" name="dayCheckIn"></input></div>
+                
+                <div className="px-5 text-[#585858]">|</div>
+                <div className='bg-[#585858]'><input className='text-[#585858]' type="date" id="dayCheckOut" name="dayCheckOut"></input></div>
+                
+                
+              </div>
               <div>
                 <Menu>
                   <Menu.Button>
@@ -221,7 +230,7 @@ function Main() {
       );
     } else if (state == 1) {
       return (
-        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
             <input
               className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -242,7 +251,7 @@ function Main() {
       );
     } else if (state == 2) {
       return (
-        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
             <input
               className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -258,7 +267,7 @@ function Main() {
       );
     } else if (state == 3) {
       return (
-        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl ">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
             <input
               className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
