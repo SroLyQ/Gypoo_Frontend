@@ -11,6 +11,8 @@ function Main() {
   const [state, setState] = useState(0);
   const [roomtype, setRoomtype] = useState({ adult: 0, children: 0, room: 0 });
 
+  const [customOpen, setCustomOpen] = useState(false);
+
   function test() {
     console.log(roomtype);
     setRoomtype({ adult: 0, children: 0, room: 0 });
@@ -25,7 +27,9 @@ function Main() {
   function handleRoomplus() {
     setRoomtype({ ...roomtype, room: roomtype.room + 1 });
   }
-
+  function buttonClicked() {
+    setCustomOpen((prev) => !prev);
+  }
   function Menuselect() {
     if (state == 0) {
       return (
@@ -169,7 +173,7 @@ function Main() {
       return (
         <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
-            <div className='bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm'>
+            <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
               <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
               <input
                 className="placeholder:italic placeholder:text-slate-400  w-full mr-5  focus:outline-none"
@@ -180,41 +184,71 @@ function Main() {
             </div>
 
             <div className="flex flex-row my-5 ">
-              <div className='bg-white py-2 px-5 flex rounded-md'>
-                <div><input className='text-[#585858]' type="date" id="dayCheckIn" name="dayCheckIn"></input></div>
-                
+              <div className="bg-white py-2 px-5 flex rounded-md">
+                <div>
+                  <input
+                    className="text-[#585858]"
+                    type="date"
+                    id="dayCheckIn"
+                    name="dayCheckIn"
+                  ></input>
+                </div>
+
                 <div className="px-5 text-[#585858]">|</div>
-                <div className='bg-[#585858]'><input className='text-[#585858]' type="date" id="dayCheckOut" name="dayCheckOut"></input></div>
-                
-                
+                <div className="bg-[#585858]">
+                  <input
+                    className="text-[#585858]"
+                    type="date"
+                    id="dayCheckOut"
+                    name="dayCheckOut"
+                  ></input>
+                </div>
               </div>
               <div>
                 <Menu>
-                  <Menu.Button>
-                    adult{roomtype.adult}
-                    children{roomtype.children}
-                    room{roomtype.room}
-                  </Menu.Button>
-                  <Menu.Items className="absolute flex flex-col ">
-                    <Menu.Item>
-                      <button className="text-left" onClick={handleAdultplus}>
-                        adult +
-                      </button>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <button
-                        className="text-left"
-                        onClick={handleChildrenplus}
-                      >
-                        children +
-                      </button>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <button className="text-left" onClick={handleRoomplus}>
-                        room +
-                      </button>
-                    </Menu.Item>
-                  </Menu.Items>
+                  {({ open }) => (
+                    <>
+                      <Menu.Button onClick={buttonClicked}>
+                        adult{roomtype.adult}
+                        children{roomtype.children}
+                        room{roomtype.room}
+                      </Menu.Button>
+                      {customOpen && (
+                        <Menu.Items static className="flex flex-col absolute ">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleAdultplus}
+                              >
+                                adult{roomtype.adult}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'} `}
+                                onClick={handleChildrenplus}
+                              >
+                                children{roomtype.children}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleRoomplus}
+                              >
+                                room{roomtype.room}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      )}
+                    </>
+                  )}
                 </Menu>
               </div>
             </div>
