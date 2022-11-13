@@ -116,18 +116,6 @@ function HotelHotels() {
           </div>:
           ''
       }
-      {
-        selectEdit ?
-          <div className="grid grid-flow-row z-50 w-auto h-full bg-white absolute top-[0%] left-[0%]">
-          <div className="flex  justify-end w-auto ">
-            <div className="flex absolute md:top-[22%] top-[17%] right-[22%]">
-            <svg  onClick={toggleEdit} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-            </div>
-          </div>
-          <EditHotel _id = {selectEditId} />
-          </div>:
-          ''
-      }
       <div className = "md:justify-self-center">
           <p>aaaaa</p>
           <input className="" type="text" placeholder="search si ai sus" onChange={e => handleFilter(e.target.value)}/>
@@ -160,7 +148,6 @@ function HotelHotels() {
         
         renderData.map((data,i)=>{
           return(
-          selectEdit? '':
           selectDelete ?
           
           <div className="relative grid-flow-row ">
@@ -182,7 +169,9 @@ function HotelHotels() {
           :
           <div >
           <div className="flex justify-end relative" >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute top-7 right-[13%] md:right-[21%]" onClick={()=>makeEditform(data._id)}><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+            <Link to = {`/hotel/${data._id}/edit`} >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute top-7 right-[13%] md:right-[21%]"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+            </Link>
           </div>
           <Link to = {`/hotel/${data._id}`} >
             <HotelCard data = {data} />
