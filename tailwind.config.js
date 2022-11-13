@@ -18,7 +18,5 @@ module.exports = {
       xl: '1700px',
     },
   },
-  plugins: [
-    require('tw-elements/dist/plugin'),
-],
+  plugins: [require('tw-elements/dist/plugin')],
 };
