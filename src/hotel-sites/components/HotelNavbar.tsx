@@ -22,12 +22,17 @@ function HotelNavbar() {
       } else {
         setIsLogin(false);
       }
+      console.log(isLogin);
     };
     checkAuth();
   }, []);
   const loginClickHandler = () => {
     setLoginPopup(true);
     // console.log(loginPopup);
+  };
+  const logoutHandler = () => {
+    localStorage.setItem('token', '');
+    setIsLogin(false);
   };
   console.log(loginPopup);
 
@@ -336,7 +341,7 @@ function HotelNavbar() {
                               : 'text-gray-700',
                             'flex block px-4 py-2 text-sm',
                           )}
-                          onClick={loginClickHandler}
+                          onClick={isLogin ? logoutHandler : loginClickHandler}
                         >
                           <div className="mr-2">
                             <svg
@@ -354,7 +359,7 @@ function HotelNavbar() {
                               />
                             </svg>
                           </div>
-                          {isLogin ? 'เข้าสู่ระบบ' : 'ออกจากระบบ'}
+                          {isLogin ? 'ออกจากระบบ' : 'เข้าสู่ระบบ'}
                         </button>
                       )}
                     </Menu.Item>

@@ -5,6 +5,11 @@ interface loginProp {
   username: string;
   password: string;
 }
+interface registerProp {
+  username: string;
+  password: string;
+  confirmPassword: string;
+}
 export const checkLogin = async () => {
   const token: string = localStorage.getItem('token') || '';
   try {
@@ -27,6 +32,11 @@ export const login = async (body: loginProp) => {
   console.log(res);
   return res.data;
 };
-export const register = async (username: string, password: string) => {
-  return 'login';
+export const registerFunc = async (body: registerProp) => {
+  const res = await apiClient(`${config.api_url.localHost}/User/register`, {
+    method: 'POST',
+    data: body,
+  });
+  console.log(res.data);
+  return res.data;
 };
