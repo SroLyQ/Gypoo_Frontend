@@ -101,6 +101,7 @@ const toggleConfirm = () =>{
 const sendFormDelete=() =>{
   toggleConfirm()
    const jason = JSON.stringify({
+          _id : _id,
            deletedData
        })
   console.log(jason)
