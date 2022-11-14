@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeModernIcon, MagnifyingGlassIcon, UserIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
+import { HomeModernIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { HomeIcon } from '@heroicons/react/20/solid';
 import { BuildingStorefrontIcon } from '@heroicons/react/20/solid';
 import { FaceSmileIcon } from '@heroicons/react/20/solid';
@@ -176,184 +176,75 @@ function Main() {
             <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
               <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
               <input
-                className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
+                className="placeholder:italic placeholder:text-slate-400  w-full mr-5  focus:outline-none"
                 placeholder="Search for anything..."
                 type="text"
                 name="search"
               />
             </div>
 
-            <div className="flex flex-row my-3 justify-between">
-              <div className="bg-white px-5 my-3 flex rounded-md">
-                <div className='mt-[9px]'>
+            <div className="flex flex-row my-5 ">
+              <div className="bg-white py-2 px-5 flex rounded-md">
+                <div>
                   <input
-                    className="text-[#585858] focus:outline-none"
+                    className="text-[#585858]"
                     type="date"
                     id="dayCheckIn"
                     name="dayCheckIn"
                   ></input>
                 </div>
 
-                <div className=" border border-[#585858] mx-5 my-2"></div>
-                <div className="mt-[9px]">
+                <div className="px-5 text-[#585858]">|</div>
+                <div className="bg-[#585858]">
                   <input
-                    className="text-[#585858] focus:outline-none"
+                    className="text-[#585858]"
                     type="date"
                     id="dayCheckOut"
                     name="dayCheckOut"
                   ></input>
                 </div>
               </div>
-              <div className='bg-white px-5 my-3 flex rounded-md'>
+              <div>
                 <Menu>
                   {({ open }) => (
                     <>
-                      <div className='flex py-2'>
-                        <UserIcon className="h-5 w-5 text-[#6D6969] mx-2 my-1" />
-                        <div className='flex mt-[2px]'>
-                        <div className='text-[#585858] ml-8 mr-2'>
-                            ผู้ใหญ่ {roomtype.adult} คน
-                          </div>
-                          <div>,</div>
-                          <div className='text-[#585858] ml-2 mr-5'>
-                            เด็ก {roomtype.children} คน
-                          </div>
-                          <div className="border border-[#585858]"></div>
-                          <div className='text-[#585858] mx-5'>
-                          {roomtype.room} ห้อง 
-                          </div>
-                        </div>
-                      </div>
                       <Menu.Button onClick={buttonClicked}>
-                        <ChevronDownIcon className="h-5 w-5 text-[#6D6969]" />
+                        adult{roomtype.adult}
+                        children{roomtype.children}
+                        room{roomtype.room}
                       </Menu.Button>
                       {customOpen && (
-
-                        <Menu.Items static className="absolute bg-[#4A94AB] rounded-sm py-5 my-[42px] ml-[112px] shadow-slate-600 shadow-2xl text-white">
-                          <div className='flex mx-5 mb-4'>
-                            <div className='pr-[60px]'>ผู้ใหญ่</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleAdultplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.adult}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleAdultplus}
-                                  >
-                                    <div className='px-2'>
-                                      +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                          </div>
-                          <div className=" border border-[#D9D9D9] mx-5 my-2"></div>
-                          <div className='flex bg-[#4A94AB] mx-5 my-4'>
-                            <div className='pr-[77px]'>เด็ก</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleChildrenplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.children}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleChildrenplus}
-                                  >
-                                    <div className='px-2'>
-                                      +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                          </div>
-                          <div className=" border border-[#D9D9D9] mx-5 my-4"></div>
-                          <div className='flex bg-[#4A94AB] mx-5 '>
-                            <div className='pr-[74px]'>ห้อง</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleRoomplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.room}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleRoomplus}
-                                  >
-                                    <div className='px-2'>
-                                      +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-
-                          </div>
-                          <div className='flex justify-center pt-5'>
-                              <button className='bg-[#005A76] py-2 px-4 rounded-md'>
-                                ยืนยัน
+                        <Menu.Items static className="flex flex-col absolute ">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleAdultplus}
+                              >
+                                adult{roomtype.adult}+
                               </button>
-                            </div>
-
-
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'} `}
+                                onClick={handleChildrenplus}
+                              >
+                                children{roomtype.children}+
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${active && 'bg-blue-500'}`}
+                                onClick={handleRoomplus}
+                              >
+                                room{roomtype.room}+
+                              </button>
+                            )}
+                          </Menu.Item>
                         </Menu.Items>
                       )}
                     </>
@@ -363,7 +254,7 @@ function Main() {
             </div>
 
             <button
-              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
+              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 mt-4  rounded font-kanit  "
               onClick={test}
             >
               ค้นหา
@@ -373,224 +264,36 @@ function Main() {
       );
     } else if (state == 1) {
       return (
-        <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
-            <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
-              <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
-              <input
-                className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
-                placeholder="Search for anything..."
-                type="text"
-                name="search"
-              />
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <div className="flex flex-row mt-4 ">
+              <input type="date" id="dayCheckIn" name="dayCheckIn"></input>
+              <div className="px-2">|</div>
+              <input type="date" id="dayCheckOut" name="dayCheckOut"></input>
             </div>
-
-            <div className="flex flex-row my-3 justify-between">
-              <div className="bg-white px-5 my-3 flex rounded-md">
-                <div className='mt-[9px]'>
-                  <input
-                    className="text-[#585858] focus:outline-none"
-                    type="date"
-                    id="dayCheckIn"
-                    name="dayCheckIn"
-                  ></input>
-                </div>
-
-                <div className=" border border-[#585858] mx-5 my-2"></div>
-                <div className="mt-[9px]">
-                  <input
-                    className="text-[#585858] focus:outline-none"
-                    type="date"
-                    id="dayCheckOut"
-                    name="dayCheckOut"
-                  ></input>
-                </div>
-              </div>
-              <div className='bg-white px-5 my-3 flex rounded-md'>
-              <Menu>
-                  {({ open }) => (
-                    <>
-                      <div className='flex py-2'>
-                        <UserIcon className="h-5 w-5 text-[#6D6969] mx-2 my-1" />
-                        <div className='flex mt-[2px]'>
-                        <div className='text-[#585858] ml-8 mr-2'>
-                            ผู้ใหญ่ {roomtype.adult} คน
-                          </div>
-                          <div>,</div>
-                          <div className='text-[#585858] ml-2 mr-5'>
-                            เด็ก {roomtype.children} คน
-                          </div>
-                          <div className="border border-[#585858]"></div>
-                          <div className='text-[#585858] mx-5'>
-                          {roomtype.room} ห้อง 
-                          </div>
-                        </div>
-                      </div>
-                      <Menu.Button onClick={buttonClicked}>
-                        <ChevronDownIcon className="h-5 w-5 text-[#6D6969]" />
-                      </Menu.Button>
-                      {customOpen && (
-
-                        <Menu.Items static className="absolute bg-[#4A94AB] rounded-sm py-5 my-[42px] ml-[112px] shadow-slate-600 shadow-2xl text-white">
-                          <div className='flex mx-5 mb-4'>
-                            <div className='pr-[60px]'>ผู้ใหญ่</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleAdultplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.adult}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleAdultplus}
-                                  >
-                                    <div className='px-2'>
-                                    +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                          </div>
-                          <div className=" border border-[#D9D9D9] mx-5 my-2"></div>
-                          <div className='flex bg-[#4A94AB] mx-5 my-4'>
-                            <div className='pr-[77px]'>เด็ก</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleChildrenplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.children}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleChildrenplus}
-                                  >
-                                    <div className='px-2'>
-                                      +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                          </div>
-                          <div className=" border border-[#D9D9D9] mx-5 my-4"></div>
-                          <div className='flex bg-[#4A94AB] mx-5 '>
-                            <div className='pr-[74px]'>ห้อง</div>
-
-                            <div className='px-3'>
-                              <Menu.Item >
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleRoomplus}
-                                  >
-                                    <div className='px-2'>
-                                      -
-                                    </div>
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-                            <div className='bg-[#005A76] rounded-md px-2 '>
-                              {roomtype.room}
-                            </div>
-                            <div className='px-3 '>
-                              <Menu.Item>
-                                {({ active }) => (
-
-                                  <button
-                                    className={`${active && 'bg-[#005A76] rounded-md'}`}
-                                    onClick={handleRoomplus}
-                                  >
-                                    <div className='px-2'>
-                                      +
-                                    </div>
-
-                                  </button>
-                                )}
-                              </Menu.Item>
-                            </div>
-
-                          </div>
-                          <div className='flex justify-center pt-5'>
-                              <button className='bg-[#005A76] py-2 px-4 rounded-md'>
-                                ยืนยัน
-                              </button>
-                            </div>
-
-
-                        </Menu.Items>
-                      )}
-                    </>
-                  )}
-                </Menu>
-              </div>
-            </div>
-
-            <button
-              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
-              onClick={test}
-            >
-              ค้นหา
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
+              ค้นหาโรงแรม
             </button>
           </form>
         </div>
       );
     } else if (state == 2) {
       return (
-        <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
-            <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
-              <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
-              <input
-                className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
-                placeholder="Search for anything..."
-                type="text"
-                name="search"
-              />
-            </div>
-
-            <button
-              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
-              onClick={test}
-            >
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
               ค้นหาร้านอาหาร
             </button>
           </form>
@@ -598,22 +301,15 @@ function Main() {
       );
     } else if (state == 3) {
       return (
-        <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
+        <div className="pt-10 pb-4 mb-4 mt-8 bg-gray-300 mx-auto w-[900px] rounded-xl shadow-2xl">
           <form className="px-16">
-            <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
-              <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
-              <input
-                className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
-                placeholder="Search for anything..."
-                type="text"
-                name="search"
-              />
-            </div>
-
-            <button
-              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
-              onClick={test}
-            >
+            <input
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border  border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+            />
+            <button className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 mt-4  rounded font-kanit ">
               ค้นหากิจกรรม
             </button>
           </form>
