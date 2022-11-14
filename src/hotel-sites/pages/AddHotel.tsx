@@ -35,6 +35,7 @@ function AddHotel() {
         description: target.description.value,
         coordinates: target.coordinates.value,
         locationType: locationTypeForm,
+        room : [],
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
