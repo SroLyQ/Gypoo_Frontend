@@ -10,15 +10,10 @@ function AddRoom() {
      isBuffet: false ,
      isOther: false ,
   };
-  const roomBadTypeForm = {
-    oneBad: false ,
-    twoBad: false ,
-    specialRoom: false ,
- };
-
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
+      roomtype : {value:string};
       numberOfRooms: { value: string };
       price: { value: string };
       view: { value: string };
@@ -28,16 +23,16 @@ function AddRoom() {
       alert('โปรดใสจำนวนห้อง');
     } else if (target.price.value == '') {
       alert('โปรดใส่ราคาของห้อง');
-    } else if(!roomBadTypeForm.oneBad && !roomBadTypeForm.twoBad && !roomBadTypeForm.specialRoom) {
+    } else if(target.roomtype.value =='') {
       alert('โปรดเลือกประเภทเตียงและห้อง');
     } else if(target.view.value == '') {
       alert('โปรดใส่คำอธิบายของวิว');
     } else {
       const jason = JSON.stringify({
         _id  : _id,
+        roomtype : target.roomtype.value,
         roomcount: target.numberOfRooms.value,
         roomprice: target.price.value,
-        roombadtype : roomBadTypeForm,
         conveniencetype: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
@@ -109,26 +104,17 @@ function AddRoom() {
               </div>
               <div className="py-1"></div>
             </div> */}
-            <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
-              ประเภทเตียงหรือห้อง
+           <div className="">
+              <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
+              ประเภทห้องพัก
             </p>
-            <div className=" truncate">
-              <div className="py-1"></div>
-              <input id="oneBad" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                roomBadTypeForm.oneBad = event.target.checked
-              }}/>
-              <label htmlFor="oneBad" className="px-2">1 เตียง</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="twoBad" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                roomBadTypeForm.twoBad = event.target.checked
-              }}/>
-              <label htmlFor="twoBad" className="px-2">2 เตียง</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="specialRoom" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                roomBadTypeForm.specialRoom = event.target.checked
-              }}/>
-              <label htmlFor="specialRoom" className="px-2">ห้องพิเศษ</label>
-            </div> 
+            <input
+                type="text"
+                id="roomtype"
+                className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+                placeholder="ประเภทห้อง"
+              />
+            </div>
             <div className="">
               <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
                 จำนวนห้องพัก
