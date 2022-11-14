@@ -23,24 +23,51 @@ function Main() {
     setRoomtype({ adult: 0, children: 0, room: 0 });
   }
 
-  function handleAdultplus() {
-    setRoomtype({ ...roomtype, adult: roomtype.adult + 1 });
+  function handleAdult(x: number) {
+    if (x == 1) {
+      setRoomtype({ ...roomtype, adult: roomtype.adult + 1 });
+    } else {
+      if (roomtype.adult > 0) {
+        setRoomtype({ ...roomtype, adult: roomtype.adult + -1 });
+      } else {
+        setRoomtype({ ...roomtype, adult: 0 });
+      }
+    }
   }
-  function handleChildrenplus() {
-    setRoomtype({ ...roomtype, children: roomtype.children + 1 });
+  function handleChildren(x: number) {
+    if (x == 1) {
+      setRoomtype({ ...roomtype, children: roomtype.children + 1 });
+    } else {
+      if (roomtype.children > 0) {
+        setRoomtype({ ...roomtype, children: roomtype.children - 1 });
+      } else {
+        setRoomtype({ ...roomtype, children: 0 });
+      }
+    }
   }
-  function handleRoomplus() {
-    setRoomtype({ ...roomtype, room: roomtype.room + 1 });
+
+  function handleRoom(x: number) {
+    if (x == 1) {
+      setRoomtype({ ...roomtype, room: roomtype.room + 1 });
+    } else {
+      if (roomtype.room > 0) {
+        setRoomtype({ ...roomtype, room: roomtype.room - 1 });
+      } else {
+        setRoomtype({ ...roomtype, room: 0 });
+      }
+    }
   }
+
   function buttonClicked() {
     setCustomOpen((prev) => !prev);
   }
+
   function Menuselect() {
     if (state == 0) {
       return (
         <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
+            className="bg-[#AACEDA]  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -73,28 +100,28 @@ function Main() {
       return (
         <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-[#AACEDA]   my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -120,7 +147,7 @@ function Main() {
             <p className="font-kanit">ที่พัก</p>
           </button>
           <button
-            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-[#AACEDA] my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(2)}
           >
             <BuildingStorefrontIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -160,7 +187,7 @@ function Main() {
             <p className="font-kanit">ร้านอาหาร</p>
           </button>
           <button
-            className="bg-white  my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-[#AACEDA]   my-auto h-24 w-32 rounded-xl  duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(3)}
           >
             <FaceSmileIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -247,7 +274,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleAdultplus}
+                                    onClick={() => handleAdult(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -264,7 +291,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleAdultplus}
+                                    onClick={() => handleAdult(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -283,7 +310,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleChildrenplus}
+                                    onClick={() => handleChildren(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -300,7 +327,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleChildrenplus}
+                                    onClick={() => handleChildren(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -319,7 +346,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleRoomplus}
+                                    onClick={() => handleRoom(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -336,7 +363,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleRoomplus}
+                                    onClick={() => handleRoom(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -344,8 +371,12 @@ function Main() {
                               </Menu.Item>
                             </div>
                           </div>
+
                           <div className="flex justify-center pt-5">
-                            <button className="bg-[#005A76] py-2 px-4 rounded-md">
+                            <button
+                              className="bg-[#005A76] py-2 px-4 rounded-md"
+                              onClick={buttonClicked}
+                            >
                               ยืนยัน
                             </button>
                           </div>
@@ -358,7 +389,7 @@ function Main() {
             </div>
 
             <button
-              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
+              className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4    rounded font-kanit  "
               onClick={test}
             >
               ค้นหา
@@ -439,7 +470,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleAdultplus}
+                                    onClick={() => handleAdult(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -456,7 +487,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleAdultplus}
+                                    onClick={() => handleAdult(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -475,7 +506,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleChildrenplus}
+                                    onClick={() => handleChildren(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -492,7 +523,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleChildrenplus}
+                                    onClick={() => handleChildren(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -511,7 +542,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleRoomplus}
+                                    onClick={() => handleRoom(0)}
                                   >
                                     <div className="px-2">-</div>
                                   </button>
@@ -528,7 +559,7 @@ function Main() {
                                     className={`${
                                       active && 'bg-[#005A76] rounded-md'
                                     }`}
-                                    onClick={handleRoomplus}
+                                    onClick={() => handleRoom(1)}
                                   >
                                     <div className="px-2">+</div>
                                   </button>
@@ -537,7 +568,11 @@ function Main() {
                             </div>
                           </div>
                           <div className="flex justify-center pt-5">
-                            <button className="bg-[#005A76] py-2 px-4 rounded-md">
+                            <button
+                              className="bg-[#005A76] py-2 px-4 rounded-md"
+                              type="button"
+                              onClick={buttonClicked}
+                            >
                               ยืนยัน
                             </button>
                           </div>
@@ -552,6 +587,7 @@ function Main() {
             <button
               className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
               onClick={test}
+              type="button"
             >
               ค้นหา
             </button>
@@ -575,6 +611,7 @@ function Main() {
             <button
               className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
               onClick={test}
+              type="button"
             >
               ค้นหาร้านอาหาร
             </button>
@@ -598,6 +635,7 @@ function Main() {
             <button
               className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4  rounded font-kanit  "
               onClick={test}
+              type="button"
             >
               ค้นหากิจกรรม
             </button>
