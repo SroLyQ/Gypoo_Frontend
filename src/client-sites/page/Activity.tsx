@@ -6,7 +6,7 @@ import 'tw-elements';
 
 function Activity() {
   return (
-    <div className="pt-[95px]">
+    <div className="pt-[95px] font-kanit">
       <div className="container mx-auto flex-wrap">
         <div className="mx-8 rounded-md mt-[25px]">
           <div

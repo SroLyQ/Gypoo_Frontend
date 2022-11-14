@@ -242,8 +242,13 @@ function Main() {
                     <>
                       <div className="flex py-2">
                         <UserIcon className="h-5 w-5 text-[#6D6969] mx-2 my-1" />
+<<<<<<< HEAD
+                        <div className='flex mt-[2px]'>
+                          <div className='text-[#585858] ml-8 mr-2'>
+=======
                         <div className="flex mt-[2px]">
                           <div className="text-[#585858] ml-8 mr-2">
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                             ผู้ใหญ่ {roomtype.adult} คน
                           </div>
                           <div>,</div>
@@ -251,7 +256,11 @@ function Main() {
                             เด็ก {roomtype.children} คน
                           </div>
                           <div className="border border-[#585858]"></div>
+<<<<<<< HEAD
+                          <div className='text-[#585858] mx-5'>
+=======
                           <div className="text-[#585858] mx-5">
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                             {roomtype.room} ห้อง
                           </div>
                         </div>
@@ -353,6 +362,14 @@ function Main() {
                                 )}
                               </Menu.Item>
                             </div>
+<<<<<<< HEAD
+
+                          </div>
+                          <div className='flex justify-center pt-5'>
+                            <button className='bg-[#005A76] py-2 px-4 rounded-md'>
+                              ยืนยัน
+                            </button>
+=======
                             <div className="bg-[#005A76] rounded-md px-2 ">
                               {roomtype.room}
                             </div>
@@ -370,6 +387,7 @@ function Main() {
                                 )}
                               </Menu.Item>
                             </div>
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                           </div>
 
                           <div className="flex justify-center pt-5">
@@ -432,14 +450,23 @@ function Main() {
                   ></input>
                 </div>
               </div>
+<<<<<<< HEAD
+              <div className='bg-white px-5 my-3 flex rounded-md'>
+=======
               <div className="bg-white px-5 my-3 flex rounded-md">
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                 <Menu>
                   {({ open }) => (
                     <>
                       <div className="flex py-2">
                         <UserIcon className="h-5 w-5 text-[#6D6969] mx-2 my-1" />
+<<<<<<< HEAD
+                        <div className='flex mt-[2px]'>
+                          <div className='text-[#585858] ml-8 mr-2'>
+=======
                         <div className="flex mt-[2px]">
                           <div className="text-[#585858] ml-8 mr-2">
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                             ผู้ใหญ่ {roomtype.adult} คน
                           </div>
                           <div>,</div>
@@ -447,7 +474,11 @@ function Main() {
                             เด็ก {roomtype.children} คน
                           </div>
                           <div className="border border-[#585858]"></div>
+<<<<<<< HEAD
+                          <div className='text-[#585858] mx-5'>
+=======
                           <div className="text-[#585858] mx-5">
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                             {roomtype.room} ห้อง
                           </div>
                         </div>
@@ -489,7 +520,14 @@ function Main() {
                                     }`}
                                     onClick={() => handleAdult(1)}
                                   >
+<<<<<<< HEAD
+                                    <div className='px-2'>
+                                      +
+                                    </div>
+
+=======
                                     <div className="px-2">+</div>
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                                   </button>
                                 )}
                               </Menu.Item>
@@ -549,6 +587,17 @@ function Main() {
                                 )}
                               </Menu.Item>
                             </div>
+<<<<<<< HEAD
+
+                          </div>
+                          <div className='flex justify-center pt-5'>
+                            <button className='bg-[#005A76] py-2 px-4 rounded-md'>
+                              ยืนยัน
+                            </button>
+                          </div>
+
+
+=======
                             <div className="bg-[#005A76] rounded-md px-2 ">
                               {roomtype.room}
                             </div>
@@ -576,6 +625,7 @@ function Main() {
                               ยืนยัน
                             </button>
                           </div>
+>>>>>>> 5c9fcafd2066222c746631ffa7b9be7222f620b8
                         </Menu.Items>
                       )}
                     </>
