@@ -2,20 +2,21 @@ import React from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
 import ListBox from '../components/ListBox';
 import StarRating from '../components/StarRating';
-import GooGleMAP from '../components/googleMap'
+import GooGleMAP from '../components/googleMap';
+import Roomtype from '../components/Roomtype';
 import 'tw-elements';
 
 function hotel() {
   return (
     <div className="pt-[95px]">
-      <div className="container mx-auto flex-wrap">
-      <div className="mx-8 rounded-md mt-[25px]">
+      <div className="container mx-auto flex-wrap grid   ">
+        <div className=" mx-8 rounded-md mt-[25px]  ">
           <div
             id="carouselExampleCaptions"
             className="carousel slide relative"
             data-bs-ride="carousel"
           >
-            <div className="carousel-inner relative w-full overflow-hidden rounded-md">
+            <div className="carousel-inner relative w-full overflow-hidden rounded-md ">
               <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                   type="button"
@@ -76,7 +77,6 @@ function hotel() {
                   <h5 className="text-xl">หน้า3จ้าาาาา</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
-                
               </div>
               <div className="carousel-item relative float-left w-full">
                 <img
@@ -88,7 +88,6 @@ function hotel() {
                   <h5 className="text-xl">หน้าสุดท้ายจ้าาาาา</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
-                
               </div>
 
               <div>
@@ -118,73 +117,77 @@ function hotel() {
                 </button>
               </div>
             </div>
-            <div className='block'>
-              <div className='md:hidden'>
-                <div className='mt-[15px] '>
-                  <div className='w-full h-[60px] flex columns-4 gap-x-[2.7%]'>
-                  <button type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="0"
-                    className="active w-[23%]"
-                    aria-current="true"
-                    aria-label="Slide 1">
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
-                      alt="..."
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-                  >
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
-                      alt="..."
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-                  >
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
-                      alt="..."
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
-                    data-bs-slide-to="3"
-                    aria-label="Slide 4"
-                  >
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
-                      alt="..."
-                    />
-                  </button>
+            <div className="block">
+              <div className="md:hidden">
+                <div className="mt-[15px] ">
+                  <div className="w-full h-[60px] flex columns-4 gap-x-[2.7%]">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleCaptions"
+                      data-bs-slide-to="0"
+                      className="active w-[23%]"
+                      aria-current="true"
+                      aria-label="Slide 1"
+                    >
+                      <img
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        className="block rounded-md w-full h-full  "
+                        alt="..."
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleCaptions"
+                      className="w-[23%]"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+                    >
+                      <img
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        className="block rounded-md w-full h-full "
+                        alt="..."
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleCaptions"
+                      className="w-[23%]"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"
+                    >
+                      <img
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        className="block rounded-md w-full h-full "
+                        alt="..."
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleCaptions"
+                      className="w-[23%]"
+                      data-bs-slide-to="3"
+                      aria-label="Slide 4"
+                    >
+                      <img
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        className="block rounded-md w-full h-full "
+                        alt="..."
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <div className='mt-[20px] hidden md:block'>
-                <div className='w-full h-[152px] flex columns-4 gap-x-[2.7%]'>
-                  <button type="button"
+              <div className="mt-[20px] hidden md:block">
+                <div className="w-full h-[152px] flex columns-4 gap-x-[2.7%]">
+                  <button
+                    type="button"
                     data-bs-target="#carouselExampleCaptions"
                     data-bs-slide-to="0"
                     className="active w-[23%]"
                     aria-current="true"
-                    aria-label="Slide 1">
+                    aria-label="Slide 1"
+                  >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
                       className="block rounded-md w-full h-full "
@@ -233,11 +236,10 @@ function hotel() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
-        <div className="mx-8 border rounded-md border-[#999999] p-[25px] pt-[15px] mt-[25px]">
+        <div className=" mx-8 border rounded-md border-[#999999] p-[25px] pt-[15px] mt-[25px]">
           <div className="mb-[5px]">
             <div className="mb-[5px]">
               <p className="text-[26px] font-semibold">
@@ -300,6 +302,8 @@ function hotel() {
             </div>
           </div>
         </div>
+
+        <Roomtype />
 
         <div className="block">
           <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
