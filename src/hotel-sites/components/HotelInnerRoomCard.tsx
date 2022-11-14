@@ -243,7 +243,7 @@ const makeEditform = (dataId:string)=>{
                 deletedData.length>0 ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8" onClick={sendFormDelete}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               :'':
-              <Link to="/addroom">
+              <Link to={`/hotel/${_id}/addroom`}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </Link>
             }
@@ -260,6 +260,7 @@ const makeEditform = (dataId:string)=>{
             {
                 
                 data.room.map((r,i)=>{
+                    r.discount = data.discount
                     return(
                         selectEdit? '':
                     selectDelete ?

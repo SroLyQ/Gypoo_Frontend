@@ -35,9 +35,9 @@ const Star = (n: number) => {
 };
 const HotelCard = ({ data }: dataType) => {
   return (
-    <div className="flex border-2 border-black-900 rounded-lg mx-auto w-4/5 md:w-3/5 space-x-4 mt-5">
-    <div className="w-1/4">
-        <img src = {data.picture} className=""/>
+    <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5 pr-7">
+    <div className="w-1/4 ">
+        <img src = {data.picture} className="object-cover object-left"/>
     </div>
     <div className="block w-2/5 md:w-3/5  space-y-2">
         <p className="text-base md:text-xl">

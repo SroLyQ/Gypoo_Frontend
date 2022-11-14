@@ -1,39 +1,33 @@
 import { useEffect, useState, FormEvent } from 'react';
 import {useParams} from 'react-router-dom';
-function EditHotel() {
+function AddPromotion() {
   const {_id} = useParams();
-  const locationTypeForm = {
-    isHotel: false ,
-    isRestaurant: false ,
-    isTravel: false ,
- };
- const convenienceTypeForm = {
-    isWifi: false,
-    isBreakfast: false ,
-    isParking: false ,
-    isAnimals: false ,
-    isBuffet: false ,
-    isOther: false ,
- };
-
+  const [date, setDate] = useState('01-01-2022');
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       title: { value: string };
+      percent: { value: string };
       description: { value: string };
-      coordinates: { value: string };
+      date: { value: string };
     };
+
+    if (target.title.value == '') {
+      alert('โปรดกำหนดหัวข้อ');
+    } else if (target.description.value == '') {
+      alert('โปรดใสรายละเอียด');
+    } else {
       const jason = JSON.stringify({
-        _id : _id,
+        _id: _id,
         title: target.title.value,
+        percent : target.percent.value,
         description: target.description.value,
-        coordinates: target.coordinates.value,
-        locationType: locationTypeForm,
-        convenienceType: convenienceTypeForm,
+        date: target.date.value,
+        //file: img.value,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-      //window.location.assign('/hotelhotels');
+    }
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',
@@ -46,16 +40,23 @@ function EditHotel() {
     //     file: img.value,
     //   }),
     // });
-    // }
-    //window.location.assign("/hotelhotels");
   };
+
+  useEffect(() => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const curDate = dd + '-' + mm + '-' + yyyy;
+    setDate(curDate);
+  }, []);
 
   return (
     <div className="pt-28">
-      <div className="block w-screen h-screen">
+      <div className="block w-screen ">
         <div className=" mx-auto border-2 border-black-900 lg:w-3/5 md:w-2/3 w-2/3 rounded-lg md:px-16 sm:px-12 px-10 py-10 ">
           <div className="flex">
-            <p className=" md:text-2xl sm:text-base text-base">แก้ไขที่พัก</p>
+            <p className=" md:text-2xl sm:text-base text-base">คูปองส่วนลด</p>
             <div className="px-1"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,13 +69,13 @@ function EditHotel() {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46"
+                d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z"
               />
             </svg>
           </div>
           <div className="border-b-2 border-black-900 my-2 mx-auto w-full"></div>
-          <p className="text-gray-600 py-2 md:text-lg sm:text-sm text-sm truncate">
-            ชื่อที่พัก ร้านอาหาร หรือสถานที่ท่องเที่ยว
+          <p className="text-gray-600 py-2 md:text-lg sm:text-sm text-sm">
+            หัวข้อส่วนลด
           </p>
           <form
             className="md:text-lg sm:text-sm text-sm"
@@ -86,7 +87,16 @@ function EditHotel() {
               type="text"
               id="title"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ชื่อที่พัก ร้านอาหาร หรือสถานที่ท่องเที่ยว"
+              placeholder="หัวข้อส่วนลด"
+            />
+            <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
+              ส่วนลดที่ลด (%)
+            </p>
+            <input
+              type="text"
+              id="percent"
+              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
+              placeholder="ส่วนลด"
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
               รายละเอียด
@@ -97,35 +107,17 @@ function EditHotel() {
               placeholder="รายละเอียด"
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
-              ประเภทของสถานที่
+              ขอบเขตการใช้งาน
             </p>
-            <div className="py-2 truncate">
-            <input id="isHotel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isHotel = event.target.checked
-              }}/>
-              <label htmlFor="isHotel" className="px-2">ที่พัก</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="isRestaurant" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isRestaurant = event.target.checked
-              }}/>
-              <label htmlFor="isRestaurant" className="px-2">ร้านอาหาร</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="isTravel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isTravel = event.target.checked
-              }}/>
-              <label htmlFor="isTravel" className="px-2">สถานที่ท่องเที่ยว</label>
+            <div className="py-2">
+              <input
+                type="date"
+                id="date"
+                min={date}
+                max="2050-12-31"
+                className="text-gray-400 border-2 border-black-900 rounded-lg md:px-5 px-4"
+              />
             </div>
-            <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
-              แผนที่
-            </p>
-            <p className="py-1"></p>
-            <input
-              type="text"
-              id="coordinates"
-              className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ลิงก์แผนที่"
-            />
-            <p className="py-1"></p>
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
               รูปภาพ
             </p>
@@ -141,7 +133,7 @@ function EditHotel() {
                 value="ยืนยัน"
                 className="md:w-20 w-16 text-sm text-white py-2 rounded-lg border-0 bg-blue-500 hover:bg-cyan-400"
               />
-              <a className="px-2 " href="/hotelhotels">
+              <a className="px-2 " href="/">
                 <button
                   type="button"
                   className="md:w-20 w-16 text-sm text-white py-2 rounded-lg border-0 bg-gray-300 hover:bg-red-400"
@@ -157,4 +149,4 @@ function EditHotel() {
   );
 }
 
-export default EditHotel
+export default AddPromotion;
