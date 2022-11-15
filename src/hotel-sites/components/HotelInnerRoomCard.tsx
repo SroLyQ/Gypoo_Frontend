@@ -242,7 +242,7 @@ const makeEditform = (dataId:string)=>{
               
               selectDelete ?
                 deletedData.length>0 ?
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8" onClick={sendFormDelete}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-10" onClick={sendFormDelete}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               :'':
               <Link to={`/hotel/${_id}/addroom`}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -270,8 +270,8 @@ const makeEditform = (dataId:string)=>{
                         <div>
                         {
                         selectStatus[i] ?
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="z-40 h-10 w-10 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                        : <button className="z-40 h-10 w-10 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}> </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="z-40 h-16 w-16 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        : <button className="z-40 h-16 w-16 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}> </button>
                         }
                         
                     </div>
