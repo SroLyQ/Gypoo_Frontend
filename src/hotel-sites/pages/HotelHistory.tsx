@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import testdata from './testdata.json'
+import testdata from './testroomdata.json'
 import HotelCard from '../components/HotelCard'
 import { Routes,Route,Link } from 'react-router-dom'
 function HotelHistory() {

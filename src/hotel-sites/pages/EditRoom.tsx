@@ -46,7 +46,7 @@ function EditRoom() {
       console.log(jason);
     }
     //window.location.assign(`/hotel/${_id}`);
-    // window.location.assign('/hotelhotels');
+    
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
-import React,{useState,FormEvent} from 'react'
+import React,{useState,FormEvent,useEffect} from 'react'
 import { FaCheck, FaBed, FaRegCalendar,FaStar } from 'react-icons/fa';
 import {useParams, Link} from 'react-router-dom';
+import { Slide } from 'react-slideshow-image';
 import RoomCard from './RoomCard';
 import testroomdata from '../pages/testroomdata.json'
 type dataType = {
@@ -9,7 +10,7 @@ type dataType = {
     index: number;
     isAviable: boolean;
     price: number;
-    picture: string;
+    picture: Array<string>;
     name: string;
     email: string;
     phone: string;
@@ -21,7 +22,11 @@ type dataType = {
     room: Array<any>;
     }
 }
-
+type imgSlide = {
+  arr: Array<string>;
+  image:any;
+  index:number;
+}
 interface commentFormState {
   //name: string;
   //roomtype: string;
@@ -198,12 +203,70 @@ const makeEditform = (dataId:string)=>{
     </div>
   );
   }
+  
+  const Thumbnail = ({ arr, image, index }:imgSlide) => {
+    return (
+    <div className="flex h-[20%] w-[20%] space-x-2">
+      {
+        arr.map((imgsrc, i) => (
+          <img
+            key={i}
+            height="50"
+            src={imgsrc}
+            onClick={() => image(i)}
+            className={index === i ? 'active' : ''}
+          />
+        ))
+      }
+    </div>)
+  }
+  
+  const Slideshow = ({ imgs }:any) => {
+    const [index, setIndex] = useState(0)
+  
+    useEffect(() => {
+      setIndex(0)
+    }, [])
+  
+    const next = () => {
+      if (index === imgs.length - 1) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }
+    const prev = () => {
+      if (index === 0) {
+        setIndex(imgs.length - 1)
+      } else {
+        setIndex(index - 1)
+      }
+    }
+  
+  
+    return (
+      <div className="  justify-center block">
+        <img className="h-[30%] w-[30%] mx-auto mb-2" src={imgs[index]} />
+        
+        <div className="">
+          <div className="ml-auto">
+          <Thumbnail arr={imgs} image={setIndex} index={index} />
+          </div>
+          
+        </div>
+      </div>
+    )
+  }
+  
   return (
       <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
         <div className="mx-8 border rounded-md border-[#999999] p-[25px] mt-[25px]">
-          <img src={data.picture}/>
-          <div>imgSlider</div>
+        <div className="App">
+      <Slideshow
+        imgs={data.picture}
+      />
+    </div>
         </div>
         <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
           <div className="mb-[5px]">
