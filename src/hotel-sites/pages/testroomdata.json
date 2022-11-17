@@ -4,7 +4,13 @@
         "index": 0,
         "isAviable": true,
         "price": 1394.36,
-        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKYVy_EsHWnQc9x5eMEc7vOpHe_ORfQP-60DXWYz_EPq9OBVRhCxKiFDdnbAJ20Yc8AY&usqp=CAU",
+        "picture": [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKYVy_EsHWnQc9x5eMEc7vOpHe_ORfQP-60DXWYz_EPq9OBVRhCxKiFDdnbAJ20Yc8AY&usqp=CAU",
+          "https://ygoreviews.files.wordpress.com/2019/05/skystrikermaneuverafterburners-dasa-en-scr-1e.png",
+          "https://yugiohblog.konami.com/articles/wp-content/uploads/2018/05/IbleeNoMore.jpg",
+          "https://m.media-amazon.com/images/I/51aivizHN4L._AC_SY580_.jpg",
+          "https://s3.duellinksmeta.com/mdm_img/content/news/2022/10/misc/selection-5/RedArrows.webp"
+        ],
         "name": "PLEXIA",
         "email": "greeneoconnor@plexia.com",
         "phone": "+1 (938) 404-3751",
@@ -44,7 +50,12 @@
         "index": 1,
         "isAviable": false,
         "price": 2502.31,
-        "picture": "https://youre.outof.cards/media/uploads/76/35/763545fb-d2ca-4219-8fdf-75148f63f97a/21623008.jpg",
+        "picture": [
+          "https://youre.outof.cards/media/uploads/76/35/763545fb-d2ca-4219-8fdf-75148f63f97a/21623008.jpg",
+          "https://yugiohblog.konami.com/articles/wp-content/uploads/2018/05/IbleeNoMore.jpg",
+          "https://m.media-amazon.com/images/I/51aivizHN4L._AC_SY580_.jpg",
+          "https://s3.duellinksmeta.com/mdm_img/content/news/2022/10/misc/selection-5/RedArrows.webp"
+        ],
         "name": "PASTURIA",
         "email": "greeneoconnor@pasturia.com",
         "phone": "+1 (840) 575-2253",
@@ -110,7 +121,12 @@
         "index": 2,
         "isAviable": true,
         "price": 1412.13,
-        "picture": "https://ygoprodeck.com/pics/50005218.jpg",
+        "picture": [
+          "https://ygoprodeck.com/pics/50005218.jpg",
+          "https://yugiohblog.konami.com/articles/wp-content/uploads/2018/05/IbleeNoMore.jpg",
+          "https://m.media-amazon.com/images/I/51aivizHN4L._AC_SY580_.jpg",
+          "https://s3.duellinksmeta.com/mdm_img/content/news/2022/10/misc/selection-5/RedArrows.webp"
+        ],
         "name": "DYMI",
         "email": "greeneoconnor@dymi.com",
         "phone": "+1 (909) 402-3245",
@@ -150,7 +166,12 @@
         "index": 3,
         "isAviable": false,
         "price": 3526.8,
-        "picture": "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+        "picture": [
+          "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+          "https://yugiohblog.konami.com/articles/wp-content/uploads/2018/05/IbleeNoMore.jpg",
+          "https://m.media-amazon.com/images/I/51aivizHN4L._AC_SY580_.jpg",
+          "https://s3.duellinksmeta.com/mdm_img/content/news/2022/10/misc/selection-5/RedArrows.webp"
+        ],
         "name": "MOLTONIC",
         "email": "greeneoconnor@moltonic.com",
         "phone": "+1 (951) 531-2069",
@@ -240,7 +261,12 @@
         "index": 4,
         "isAviable": true,
         "price": 1497.82,
-        "picture": "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+        "picture": [
+          "https://ygoprodeck.com/cdn-cgi/image/format=auto,width=313/https://images.ygoprodeck.com/images/cards/9726840.jpg",
+          "https://yugiohblog.konami.com/articles/wp-content/uploads/2018/05/IbleeNoMore.jpg",
+          "https://m.media-amazon.com/images/I/51aivizHN4L._AC_SY580_.jpg",
+          "https://s3.duellinksmeta.com/mdm_img/content/news/2022/10/misc/selection-5/RedArrows.webp"
+        ],
         "name": "CENTREGY",
         "email": "greeneoconnor@centregy.com",
         "phone": "+1 (958) 564-2110",

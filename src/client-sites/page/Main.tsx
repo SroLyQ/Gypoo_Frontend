@@ -11,17 +11,35 @@ import { FaceSmileIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import Topotown from '../components/topTown';
 import { Menu } from '@headlessui/react';
+
+import { useSearchParams } from 'react-router-dom';
+
 // useEffect,
 function Main() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [state, setState] = useState(0);
-  const [roomtype, setRoomtype] = useState({ adult: 0, children: 0, room: 0 });
+  const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
 
   const [customOpen, setCustomOpen] = useState(false);
 
   function test() {
-    console.log(roomtype);
-    setRoomtype({ adult: 0, children: 0, room: 0 });
+    const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
+
+    const seach = {
+      search: 'wdad',
+      guest: guestN.toString(),
+    };
+    setSearchParams(seach);
   }
+
+  // const test = (e) => {
+  //   const keyword = e.target.value;
+  //   if (keyword) {
+  //     setSearchParams({ keyword });
+  //   } else {
+  //     setSearchParams({});
+  //   }
+  // };
 
   function handleAdult(x: number) {
     if (x == 1) {
@@ -387,10 +405,10 @@ function Main() {
                 </Menu>
               </div>
             </div>
-
             <button
               className="flex mx-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-10 mt-4    rounded font-kanit  "
               onClick={test}
+              type="button"
             >
               ค้นหา
             </button>

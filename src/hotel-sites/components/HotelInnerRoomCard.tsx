@@ -1,6 +1,7 @@
-import React,{useState,FormEvent} from 'react'
+import React,{useState,FormEvent,useEffect} from 'react'
 import { FaCheck, FaBed, FaRegCalendar,FaStar } from 'react-icons/fa';
 import {useParams, Link} from 'react-router-dom';
+import { Slide } from 'react-slideshow-image';
 import RoomCard from './RoomCard';
 import testroomdata from '../pages/testroomdata.json'
 type dataType = {
@@ -9,7 +10,7 @@ type dataType = {
     index: number;
     isAviable: boolean;
     price: number;
-    picture: string;
+    picture: Array<string>;
     name: string;
     email: string;
     phone: string;
@@ -21,7 +22,11 @@ type dataType = {
     room: Array<any>;
     }
 }
-
+type imgSlide = {
+  arr: Array<string>;
+  image:any;
+  index:number;
+}
 interface commentFormState {
   //name: string;
   //roomtype: string;
@@ -198,12 +203,70 @@ const makeEditform = (dataId:string)=>{
     </div>
   );
   }
+  
+  const Thumbnail = ({ arr, image, index }:imgSlide) => {
+    return (
+    <div className="flex h-[20%] w-[20%] space-x-2">
+      {
+        arr.map((imgsrc, i) => (
+          <img
+            key={i}
+            height="50"
+            src={imgsrc}
+            onClick={() => image(i)}
+            className={index === i ? 'active' : ''}
+          />
+        ))
+      }
+    </div>)
+  }
+  
+  const Slideshow = ({ imgs }:any) => {
+    const [index, setIndex] = useState(0)
+  
+    useEffect(() => {
+      setIndex(0)
+    }, [])
+  
+    const next = () => {
+      if (index === imgs.length - 1) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }
+    const prev = () => {
+      if (index === 0) {
+        setIndex(imgs.length - 1)
+      } else {
+        setIndex(index - 1)
+      }
+    }
+  
+  
+    return (
+      <div className="  justify-center block">
+        <img className="h-[30%] w-[30%] mx-auto mb-2" src={imgs[index]} />
+        
+        <div className="">
+          <div className="ml-auto">
+          <Thumbnail arr={imgs} image={setIndex} index={index} />
+          </div>
+          
+        </div>
+      </div>
+    )
+  }
+  
   return (
       <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
         <div className="mx-8 border rounded-md border-[#999999] p-[25px] mt-[25px]">
-          <img src={data.picture}/>
-          <div>imgSlider</div>
+        <div className="App">
+      <Slideshow
+        imgs={data.picture}
+      />
+    </div>
         </div>
         <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
           <div className="mb-[5px]">
@@ -242,7 +305,7 @@ const makeEditform = (dataId:string)=>{
               
               selectDelete ?
                 deletedData.length>0 ?
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8" onClick={sendFormDelete}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-10" onClick={sendFormDelete}><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               :'':
               <Link to={`/hotel/${_id}/addroom`}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -270,8 +333,8 @@ const makeEditform = (dataId:string)=>{
                         <div>
                         {
                         selectStatus[i] ?
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="z-40 h-10 w-10 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                        : <button className="z-40 h-10 w-10 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}> </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="z-40 h-16 w-16 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        : <button className="z-40 h-16 w-16 bg-white rounded-md border-2 border-black-900 absolute top-5 left-[0%]" onClick={()=>toggleStatus(i)}> </button>
                         }
                         
                     </div>
