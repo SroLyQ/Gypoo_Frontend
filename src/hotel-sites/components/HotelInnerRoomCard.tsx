@@ -1,7 +1,7 @@
 import React,{useState,FormEvent,useEffect} from 'react'
 import { FaCheck, FaBed, FaRegCalendar,FaStar } from 'react-icons/fa';
 import {useParams, Link} from 'react-router-dom';
-import { Slide } from 'react-slideshow-image';
+//import { Slide } from 'react-slideshow-image';
 import RoomCard from './RoomCard';
 import testroomdata from '../pages/testroomdata.json'
 type dataType = {
