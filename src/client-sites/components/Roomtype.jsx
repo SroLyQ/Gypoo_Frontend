@@ -70,7 +70,16 @@ function Roomtype() {
               <div className=" col-span-2 border-l-2  ">
                 <p className="text-center font-bold mb-3 ">🔻 จองเลย 🔻</p>
                 <div className="grid grid-cols-2 text-center  ">
-                  <div className="col-span-1  py-3 px-2 ">1</div>
+                  <form>
+                    <input
+                      type="number"
+                      id="quantity"
+                      name="quantity"
+                      min="1"
+                      max="5"
+                      value={1}
+                    />
+                  </form>
                   <div className="col-span-1 ">
                     <button className=" bg-[#07ffff] py-3 px-4 rounded-xl hover:bg-[#128e8e]">
                       จองเลย
