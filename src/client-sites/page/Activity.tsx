@@ -6,7 +6,7 @@ import 'tw-elements';
 
 function Activity() {
   return (
-    <div className="pt-[95px] font-kanit">
+    <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
         <div className="mx-8 rounded-md mt-[25px]">
           <div
@@ -75,7 +75,6 @@ function Activity() {
                   <h5 className="text-xl">หน้า3จ้าาาาา</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
-                
               </div>
               <div className="carousel-item relative float-left w-full">
                 <img
@@ -87,7 +86,6 @@ function Activity() {
                   <h5 className="text-xl">หน้าสุดท้ายจ้าาาาา</h5>
                   <p>อยากเขียนไรยาวๆเอามาไว้นี่</p>
                 </div>
-                
               </div>
 
               <div>
@@ -117,127 +115,127 @@ function Activity() {
                 </button>
               </div>
             </div>
-            <div className='block'>
-              <div className='md:hidden'>
-                <div className='mt-[15px] '>
-                  <div className='w-full h-[60px] flex columns-4 gap-x-[2.7%]'>
-                  <button type="button"
+            <div className="mt-[2%]">
+              <div className="md:hidden">
+                <div className="flex columns-4 gap-x-[2.7%] h-[59px] ss:h-[79px] sm:h-[100px]">
+                  <button
+                    type="button"
                     data-bs-target="#carouselExampleCaptions"
                     data-bs-slide-to="0"
-                    className="active w-[23%]"
+                    className="w-full"
                     aria-current="true"
-                    aria-label="Slide 1">
+                    aria-label="Slide 1"
+                  >
                     <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      src="https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      className="rounded-md w-full h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="1"
                     aria-label="Slide 2"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="2"
                     aria-label="Slide 3"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="3"
                     aria-label="Slide 4"
                   >
                     <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      src="https://img.freepik.com/free-vector/japanese-wave-line-art-landscape-background-abstract-mountain-banner-design-pattern-vector-illustration-geometric-poster_90220-715.jpg?w=1380&t=st=1668416689~exp=1668417289~hmac=55b262e9e8d60e4dcf172bb54dcd86a887b12f5834c835426f5403b6b42c2430"
+                      className="rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
-                  </div>
                 </div>
               </div>
 
-              <div className='mt-[20px] hidden md:block'>
-                <div className='w-full h-[152px] flex columns-4 gap-x-[2.7%]'>
-                  <button type="button"
+              <div className="hidden md:block">
+                <div className="w-full flex columns-4 gap-x-[2.7%] h-[142px] lg:h-[158px] xl:h-[221px]">
+                  <button
+                    type="button"
                     data-bs-target="#carouselExampleCaptions"
                     data-bs-slide-to="0"
-                    className="active w-[23%]"
+                    className="w-full"
                     aria-current="true"
-                    aria-label="Slide 1">
+                    aria-label="Slide 1"
+                  >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="block rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="1"
                     aria-label="Slide 2"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="block rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="2"
                     aria-label="Slide 3"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="block rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="3"
                     aria-label="Slide 4"
                   >
                     <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      src="https://img.freepik.com/free-vector/japanese-wave-line-art-landscape-background-abstract-mountain-banner-design-pattern-vector-illustration-geometric-poster_90220-715.jpg?w=1380&t=st=1668416689~exp=1668417289~hmac=55b262e9e8d60e4dcf172bb54dcd86a887b12f5834c835426f5403b6b42c2430"
+                      className="block rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
-
-        <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
+        <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
           <div className="mb-[5px]">
             <div className="mb-[5px]">
               <p className="text-[26px] font-semibold">
@@ -263,7 +261,7 @@ function Activity() {
           </p>
         </div>
 
-        <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
+        <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
           <div className="mb-[5px]">
             <div className="mb-[5px]">
               <p className="mb-[14px] text-[26px]">แผนที่</p>
@@ -272,11 +270,10 @@ function Activity() {
           <div className="border border-[#D8D8D8]"></div>
           <p className="mt-[15px]">mapImg</p>
         </div>
-        {/* ------ */}
 
         <div className="block ">
           <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] ">
+            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
               <div className="mb-[14px]">
                 <p className="text-[26px]">Boom Burapee</p>
               </div>
@@ -307,7 +304,7 @@ function Activity() {
             </div>
           </div>
 
-          <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] hidden md:block ">
+          <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block ">
             <div className="mb-[14px]">
               <p className="text-[26px]">Boom Burapee</p>
             </div>
@@ -338,10 +335,9 @@ function Activity() {
             </div>
           </div>
         </div>
-        {/* ------ */}
         <div className="block">
           <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] ">
+            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
               <div className="mb-[14px]">
                 <p className="text-[26px]">ความคิดเห็น</p>
               </div>
@@ -371,13 +367,13 @@ function Activity() {
             </div>
           </div>
 
-          <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] hidden md:block ">
+          <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block ">
             <div className="mb-[14px]">
               <p className="text-[26px]">ความคิดเห็น</p>
             </div>
             <div className="border border-[#D8D8D8]"></div>
 
-            <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex gap-x-5 px-5 ">
+            <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[2%] flex gap-x-5 px-5 ">
               <div className="basis-1/4">
                 <p className="text-[20px]">Boom Burapee</p>
                 <div className="mb-[5px]">
