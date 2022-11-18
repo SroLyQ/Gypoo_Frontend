@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
 import ListBox from '../components/ListBox';
 import StarRating from '../components/StarRating';
 import GooGleMAP from '../components/googleMap';
 import Roomtype from '../components/Roomtype';
 import 'tw-elements';
+import axios from 'axios';
+
+const testFaci = ["อาหารเช้า", "สัตว์เลี้ยงเข้าพักได้", "ที่จอดรถ", "ปิ้งบาร์บีคิว", "Free Wi-Fi"]
+
+const baseURL = "https://localhost:7066/api";
 
 function hotel() {
+
+  const [post, setPost] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${baseURL}/Hotel/1`).then((Response) => {
+      setPost(Response.data);
+      console.log(Response.data);
+    }).catch(error => {
+      setError(error);
+    })
+  }, []);
+
   return (
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap grid   ">
@@ -268,30 +286,12 @@ function hotel() {
             <p className="mb-[14px] text-[26px]">สิ่งอำนวยความสะดวก</p>
             <div className="border border-[#D8D8D8]"></div>
             <div className="mt-[15px] grid grid-cols-2">
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center min-w-[16px]" />
-                <p className="pl-[10px] self-center">อาหารเช้า</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center min-w-[16px]" />
-                <p className="pl-[10px] self-center">สัตว์เลี้ยงเข้าพักได้</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center min-w-[16px]" />
-                <p className="pl-[10px] self-center">ที่จอดรถ</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center min-w-[16px]" />
-                <p className="pl-[10px] self-center">ปิ้งบาร์บีคิว</p>
-              </div>
-
-              <div className="flex flex-row p-[10px]">
-                <FaCheck className="self-center min-w-[16px]" />
-                <p className="pl-[10px] self-center">Free Wi-Fi</p>
-              </div>
+              {testFaci.map((testFaci, i) => 
+                <div className="flex flex-row p-[10px]">
+                  <FaCheck className="self-center min-w-[16px]" />
+                  <p className="pl-[10px] self-center">{testFaci}</p>
+                </div>
+              )}
             </div>
           </div>
           <div className="border rounded-md border-[#999999] p-[25px] pt-[15px] basis-1/2">
