@@ -81,9 +81,11 @@ function Roomtype() {
                     />
                   </form>
                   <div className="col-span-1 ">
-                    <button className=" bg-[#07ffff] py-3 px-4 rounded-xl hover:bg-[#128e8e]">
-                      จองเลย
-                    </button>
+                    <a href="/renthotel">
+                      <button className=" bg-[#07ffff] py-3 px-4 rounded-xl hover:bg-[#128e8e]">
+                        จองเลย
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -41,6 +41,7 @@ function App() {
           <Route path="/hotel/:_id/addroom" element={<AddRoom />} />
           <Route path="/hotel/:_id/addpromotion" element={<AddPromotion />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/renthotel" element={<RentHotel />} />
         </Routes>
       </BrowserRouter>
     </>
