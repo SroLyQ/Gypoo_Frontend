@@ -15,7 +15,7 @@ function RentHotel() {
 
 
     return (
-        <div className='py-20 font-kanit'>
+        <div className='pt-[95px] font-kanit'>
             <div className="container mx-auto flex-wrap">
                 <div className='block'>
                     <div className='md:hidden'>
