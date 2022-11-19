@@ -35,15 +35,15 @@ function HistoryCard ({h}:history){
                             <div className='block'>
                             <div className='text-right'>
                     
-                            <div className="text-red-600  text-[28px]">
+                            <div className="text-red-600  md:text-[28px] text-[24px]">
                                 {h.price
                                     .toFixed(2)
                                     .toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                             </div>
                             
-                            <p className='md:text-xl text:xs md:text-right '>Checkin at {h.checkin} </p>
-                            <p className='md:text-xl text:xs md:text-right '>Checkout at {h.checkout}</p>
+                            <p className='md:text-xl text-[12px] md:text-right '>Checkin at {h.checkin} </p>
+                            <p className='md:text-xl text-[12px] md:text-right '>Checkout at {h.checkout}</p>
                             </div>
                             </div>
                             
