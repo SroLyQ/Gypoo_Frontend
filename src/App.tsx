@@ -39,7 +39,7 @@ function App() {
           <Route path="/hotel/:_id/editroom/:_roomid" element={<EditRoom />} />
           <Route path="/hotel/:_id/edit" element={<EditHotel />} />
           <Route path="/hotel/:_id/addroom" element={<AddRoom />} />
-          <Route path="/hotel/:_id/addpromotion" element={<AddPromotion/>} />
+          <Route path="/hotel/:_id/addpromotion" element={<AddPromotion />} />
           <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
