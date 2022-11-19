@@ -12,28 +12,41 @@ import { useState } from 'react';
 import Topotown from '../components/topTown';
 import { Menu } from '@headlessui/react';
 
-import { useNavigate, createSearchParams } from 'react-router-dom';
+import {
+  useSearchParams,
+  useNavigate,
+  createSearchParams,
+} from 'react-router-dom';
 
 // useEffect,
 function Main() {
   const [state, setState] = useState(0);
   const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
   const navigate = useNavigate();
+
   const [customOpen, setCustomOpen] = useState(false);
-  const [value, setValue] = useState('');
 
   function test() {
     const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
+
     const search = {
-      key: value,
+      key: 'wdad',
       guest: guestN.toString(),
     };
     navigate({
       pathname: '/search',
       search: `?${createSearchParams(search)}`,
     });
-    // navigate('/search', { state: { id: 1, name: 'sabaoon' } });
   }
+
+  // const test = (e) => {
+  //   const keyword = e.target.value;
+  //   if (keyword) {
+  //     setSearchParams({ keyword });
+  //   } else {
+  //     setSearchParams({});
+  //   }
+  // };
 
   function handleAdult(x: number) {
     if (x == 1) {
@@ -215,22 +228,20 @@ function Main() {
   function Menuu() {
     if (state == 0) {
       return (
-        <div className="py-10 my-10 bg-[#D9D9D9] mx-auto w-[900px] rounded-xl shadow-2xl">
-          <form className="px-16">
+        <div className="py-10 my-10 bg-[#D9D9D9] rounded-xl shadow-2xl">
+          <form className="px-8 md:px-16">
             <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
               <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
               <input
-                className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
+                className="placeholder:italic placeholder:text-[#7e7e7e]  mr-5  focus:outline-none"
                 placeholder="Search for anything..."
                 type="text"
                 name="search"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
               />
             </div>
 
-            <div className="flex flex-row my-3 justify-between">
-              <div className="bg-white px-5 my-3 flex rounded-md">
+            <div className="flex flex-col md:flex-row my-3 justify-between ">
+              <div className="bg-white px-5 my-3 flex rounded-md justify-center ">
                 <div className="mt-[9px]">
                   <input
                     className="text-[#585858] focus:outline-none"
@@ -239,7 +250,6 @@ function Main() {
                     name="dayCheckIn"
                   ></input>
                 </div>
-
                 <div className=" border border-[#585858] mx-5 my-2"></div>
                 <div className="mt-[9px]">
                   <input
@@ -250,6 +260,7 @@ function Main() {
                   ></input>
                 </div>
               </div>
+
               <div className="bg-white px-5 my-3 flex rounded-md">
                 <Menu>
                   {({ open }) => (
@@ -664,15 +675,15 @@ function Main() {
     <div className="pt-24 ">
       <div className="pt-12  ">
         <img
-          className="object-cover object-left-top h-[350px] mx-auto w-[900px] "
+          className="object-cover object-left-top h-[350px] mx-auto"
           src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         />
-        <div className="mx-auto w-[900px] ">
+        <div className="mx-auto ">
           <Menuselect />
         </div>
       </div>
       <Menuu />
-      <Topotown />
+      {/* <Topotown /> */}
     </div>
   );
 }

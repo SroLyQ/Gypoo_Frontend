@@ -26,20 +26,23 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
     }
   };
   const switchRegister = () => {
+    console.log(register);
+    register ? setPopUpHeight(' h-[530px]') : setPopUpHeight(' h-[620px]');
     register ? setRegister(false) : setRegister(true);
-    register ? setPopUpHeight(' h-[530px]') : setPopUpHeight(' h-[580px]');
     console.log(register);
   };
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [event.currentTarget.name]: event.currentTarget.value });
   };
   const loginHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(form);
     const data = await login(form);
     const token = data.token;
     localStorage.setItem('token', token);
     window.location.reload();
   };
   const registerHandler = async () => {
+    console.log(form);
     const data = await registerFunc(form);
     const token = data.token || '';
     localStorage.setItem('token', token);
@@ -59,10 +62,10 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
             className="w-5 md:m-3 m-5 mb-0 self-end hover:cursor-pointer"
             onClick={closeHandler}
           />
-          <img src={logo} className="w-40" />
+          <img src={logo} className="w-36" />
           <label className="lg:text-[32px] md:text-[30px] text-[26px] text-center md:pb-4 lg:pt-2 border-b-[1px] border-gray-300 w-[80%]">
             {' '}
-            Login
+            {register ? 'Register' : 'Login'}
           </label>
           <form className="flex flex-col mt-5">
             <label className="text-[20px] ">Username :</label>
@@ -95,7 +98,7 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
               <div className="relative my-3">
                 <input
                   type={passwordType}
-                  name="password"
+                  name="confirmPassword"
                   className=" border-gray-400 border-[1px] rounded-md w-72 h-10 text-[20px] indent-3 pb-1"
                   placeholder="Confirm Password"
                   onChange={changeHandler}
@@ -104,7 +107,7 @@ const LoginPopup: React.FC<IParentPopup> = (props: IParentPopup) => {
             )}
             <button
               type="button"
-              className="xl:mt-8 my-3 h-12 bg-[#488BF8] w-32 self-center rounded-md text-white text-[22px] text-center align-middle items-center"
+              className="xl:mt-0 my-3 h-12 bg-[#488BF8] w-32 self-center rounded-md text-white text-[22px] text-center align-middle items-center"
               onClick={register ? registerHandler : loginHandler}
             >
               {register ? 'Register' : 'Login'}

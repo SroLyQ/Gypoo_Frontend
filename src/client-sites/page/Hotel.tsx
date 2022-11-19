@@ -36,7 +36,7 @@ function hotel() {
   return (
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap grid   ">
-        <div className=" mx-8 rounded-md mt-[25px]  ">
+        <div className="md:mx-[200px] mx-8 rounded-md mt-[25px]  ">
           <div
             id="carouselExampleCaptions"
             className="carousel slide relative"
