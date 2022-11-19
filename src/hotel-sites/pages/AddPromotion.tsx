@@ -6,6 +6,7 @@ function AddPromotion() {
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
+     
       title: { value: string };
       percent: { value: string };
       description: { value: string };
@@ -15,10 +16,10 @@ function AddPromotion() {
     if (target.title.value == '') {
       alert('โปรดกำหนดหัวข้อ');
     } else if (target.description.value == '') {
-      alert('โปรดใสรายละเอียด');
+      alert('โปรดใส่รายละเอียด');
     } else {
       const jason = JSON.stringify({
-        _id: _id,
+        hotelId: _id,
         title: target.title.value,
         percent : target.percent.value,
         description: target.description.value,
@@ -118,15 +119,7 @@ function AddPromotion() {
                 className="text-gray-400 border-2 border-black-900 rounded-lg md:px-5 px-4"
               />
             </div>
-            <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
-              รูปภาพ
-            </p>
-            <input
-              type="file"
-              id="img"
-              accept="image/*"
-              className="block text-sm md:w-56 w-full text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue  -100 py-2"
-            />
+            
             <div className="py-2 flex justify-end">
               <input
                 type="submit"
