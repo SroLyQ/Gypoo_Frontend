@@ -18,7 +18,7 @@ import EditRoom from './hotel-sites/pages/EditRoom';
 import AddRoom from './hotel-sites/pages/AddRoom';
 import AddPromotion from './hotel-sites/pages/AddPromotion';
 import EditHotel from './hotel-sites/pages/EditHotel';
-//import Search from './client-sites/page/Search';
+import Search from './client-sites/page/Search';
 function App() {
   return (
     <>
@@ -39,8 +39,8 @@ function App() {
           <Route path="/hotel/:_id/editroom/:_roomid" element={<EditRoom />} />
           <Route path="/hotel/:_id/edit" element={<EditHotel />} />
           <Route path="/hotel/:_id/addroom" element={<AddRoom />} />
-          <Route path="/hotel/:_id/addpromotion" element={<AddPromotion/>} />
-          {/* <Route path="/search" element={<Search />} /> */}
+          <Route path="/hotel/:_id/addpromotion" element={<AddPromotion />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </>
