@@ -4,11 +4,10 @@ type room ={
     r:{
     _id: string;
     type: string;
+    guest: number;
     room: number;
     currentroom: number;
-    picture: {
-        src: string;
-    }[];
+    picture: string;
     price: number;
     discount: number;
     facilities: string[];
@@ -24,7 +23,7 @@ function RoomCard ({r}:room){
                         <div className="grid grid-flow-col grid-cols-3 ">
                             <div className='block'> 
                             <div >
-                                <img className='object-cover object-left' src='https://ygorganization.com/wp-content/uploads/2022/10/engagethumb.png'/>
+                                <img className='object-cover object-left' src={r.picture}/>
                             </div>
                             
                             </div>
@@ -53,16 +52,16 @@ function RoomCard ({r}:room){
                             )}
                             </div>
                            
-                            <div className='md:ml-20 '>
+                            <div className='md:ml-20 my-2'>
                             {r.discount == 0 ? (
-                                <div className="text-red-600">
+                                <div className="text-red-600 text-right pr-[3rem] text-[28px]">
                                 {r.price
                                     .toFixed(2)
                                     .toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 </div>
                             ) : (
-                                <div className='block text-right pr-[3rem]'>
+                                <div className='block text-right pr-[3rem] text-[28px]'>
                                 <div className=" text-red-600 line-through mr-1 md:text-xl text:sm">
                                     {r.price
                                     .toFixed(2)
@@ -77,8 +76,9 @@ function RoomCard ({r}:room){
                                 </div>
                                 </div>
                             )}
-                            <p className='md:text-xl text:xs md:text-right md:pr-[3rem]'>have {r.currentroom} room(s) left </p>
-                            <p className='md:text-xl text:xs md:text-right md:pr-[3rem]'>from {r.room} room(s)</p>
+                            <p className='md:text-xl text:xs md:text-right md:pr-[3rem] my-2'>capacity {r.guest} person </p>
+                            <p className='md:text-xl text:xs md:text-right md:pr-[3rem] my-2'>have {r.currentroom} room(s) left </p>
+                            <p className='md:text-xl text:xs md:text-right md:pr-[3rem] my-2'>from {r.room} room(s)</p>
                             </div>
                             </div>
                             
