@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 function Search() {
   // console.log(searchData);
@@ -144,9 +145,11 @@ function Search() {
       registered: '2015-07-15T09:59:40 -07:00',
     },
   ];
+  const name = useParams();
+  console.log(name);
   return (
     <div className="pt-24">
-      <div className="text-3xl font-kanit mx-52"> ที่พักใน ขอนแก่น </div>
+      <div className="text-3xl font-kanit mx-52"> ที่พักใน ขอนแก่น</div>
       <div className="search-post">
         {searchData.map((data, key) => {
           return (
