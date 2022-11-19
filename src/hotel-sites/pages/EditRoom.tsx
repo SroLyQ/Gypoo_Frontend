@@ -7,6 +7,7 @@ type datatype ={
 }
 function EditRoom() {
   const {_id,_roomid} = useParams();
+  const [dataHotel,setDataHotel] = useState({}); // ใช้รับข้อมูลจาก backend ที่ get มา
   const convenienceTypeForm = {
      isWifi: false ,
      isBreakfast: false ,
@@ -16,50 +17,62 @@ function EditRoom() {
      isOther: false ,
   };
 
+  useEffect(() => {
+    // getData();
+  },[])
+
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
-      roomtype:{value :string}
-      numberOfRooms: { value: string };
-      price: { value: string };
-      view: { value: string };
+      roomtype : {value:string};
+      roomcount: { value: number };
+      roomprice: { value: number };
+      guest: { value: number };
     };
-
-    if (target.numberOfRooms.value == '') {
+    if (target.roomtype.value == '') {
+      alert('โปรดเลือกประเภทห้อง');
+    } else if (target.roomcount.value <= 0 ) {
       alert('โปรดใสจำนวนห้อง');
-    } else if (target.price.value == '') {
+    } else if(target.roomprice.value <= 0 ) {
       alert('โปรดใส่ราคาของห้อง');
-    } else if(target.roomtype.value=='') {
-      alert('โปรดเลือกประเภทเตียงและห้อง');
-    } else if(target.view.value == '') {
-      alert('โปรดใสคำอธิบายของวิว');
+    } else if( target.guest.value <= 0 ) {
+      alert('โปรดใส่คำจำนวนคนเข้าพัก');
     } else {
       const jason = JSON.stringify({
-        _id : _id,
-        _roomid: _roomid,
-        roomtype: target.roomtype.value,
-        roomcount: target.numberOfRooms.value,
-        roomprice: target.price.value,
+        _id  : _id,
+        roomtype : target.roomtype.value,
+        roomcount : target.roomcount.value,
+        roomprice : target.roomprice.value,
+        guest : target.guest.value,
         conveniencetype: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
+
+      // try{
+      //   axios.post("http://localhost:8000/editroom",{
+      //     data : jason,
+      //   });
+      // } catch (err) {
+      //   console.log(err)
+      // }
     }
-    //window.location.assign(`/hotel/${_id}`);
-    
-    // await fetch('/route', {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     title: title.value,
-    //     description: description.value,
-    //     date: date.value,
-    //     file: img.value,
-    //   }),
-    // });
-    // }
+
+  // async function getData() {
+  //   try{
+  //     const response = await axios.get("http://localhost:8000/geteditroom",{
+  //       params:{
+  //         _id : _id,
+  //         _roomid : _roomid
+  //       }
+  //     });
+  //     console.log(response);
+  //     setDataHotel(response);
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   };
 
   return (
