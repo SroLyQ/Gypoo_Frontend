@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import testdata from './testroomdata.json'
-import HotelCard from '../components/HotelCard'
+import HistoryCard from '../components/HistoryCard'
+import historydata from './historydata.json'
 import { Routes,Route,Link } from 'react-router-dom'
 function HotelHistory() {
   const [renderData,setrenderData] = React.useState(testdata)
@@ -43,12 +44,11 @@ function HotelHistory() {
       </div>
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
       {
-        renderData.map((data,id)=>{
+        historydata.map((h,id)=>{
           return(
           <div className=" w-4/5 md:w-3/5 mx-auto p-0">
-          <Link to = {"/hotel/" + String(data.name).replace(" ","%20")}>
-            <HotelCard data = {data}/>
-          </Link>
+          <HistoryCard h = {h}/>
+         
          
           </div>
           )

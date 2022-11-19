@@ -1,0 +1,53 @@
+[
+    {
+      "_id": "6378f2bbbe5cf3265c43b915",
+      "index": 0,
+      
+      "price": 2765.55,
+      "picture": "http://placehold.it/32x32",
+      "name": "PROSELY",
+      "type": "duo",
+      "checkin": "2019-11-16",
+      "checkout": "2022-01-18"
+    },
+    {
+      "_id": "6378f2bb262c4ebe17abe1af",
+      "index": 1,
+      "price": 2891.04,
+      "picture": "http://placehold.it/32x32",
+      "name": "TASMANIA",
+      "type": "duo",
+      "checkin": "2020-09-13",
+      "checkout": "2021-01-14"
+    },
+    {
+      "_id": "6378f2bb32de4e08250520de",
+      "index": 2,
+      "price": 3528.88,
+      "picture": "http://placehold.it/32x32",
+      "name": "EXTRO",
+      "type": "squad",
+      "checkin": "2014-06-24",
+      "checkout": "2017-06-21"
+    },
+    {
+      "_id": "6378f2bb6b0a85b1fecaa4ca",
+      "index": 3,
+      "price": 2206.38,
+      "picture": "http://placehold.it/32x32",
+      "name": "COMVERGES",
+      "type": "squad",
+      "checkin": "2022-10-13",
+      "checkout": "2014-04-16"
+    },
+    {
+      "_id": "6378f2bb0ab009151166c8c6",
+      "index": 4,
+      "price": 2877.26,
+      "picture": "http://placehold.it/32x32",
+      "name": "QIMONK",
+      "type": "squad",
+      "checkin": "2015-09-30",
+      "checkout": "2014-11-08"
+    }
+  ]
