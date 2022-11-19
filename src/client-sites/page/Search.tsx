@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { FaMapMarkerAlt, FaAngleRight } from 'react-icons/fa';
 
 function Search() {
