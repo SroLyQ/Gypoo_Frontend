@@ -12,7 +12,8 @@ function AddPromotion() {
       description: { value: string };
       date: { value: string };
     };
-
+    const formdate = target.date.value.split("-") 
+    const newformdate = formdate[2] + "/" + formdate[1] + "/" + formdate[0];
     if (target.title.value == '') {
       alert('โปรดกำหนดหัวข้อ');
     } else if (target.description.value == '') {
@@ -23,9 +24,10 @@ function AddPromotion() {
         title: target.title.value,
         percent : target.percent.value,
         description: target.description.value,
-        date: target.date.value,
+        date: newformdate,
         //file: img.value,
       });
+      
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
     }
