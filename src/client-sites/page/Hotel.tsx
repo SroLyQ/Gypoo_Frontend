@@ -36,13 +36,13 @@ function hotel() {
   return (
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap grid   ">
-        <div className=" mx-8 rounded-md mt-[25px]  ">
+        <div className="mx-8 rounded-md mt-[25px]">
           <div
             id="carouselExampleCaptions"
             className="carousel slide relative"
             data-bs-ride="carousel"
           >
-            <div className="carousel-inner relative w-full overflow-hidden rounded-md ">
+            <div className="carousel-inner relative w-full overflow-hidden rounded-md">
               <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                   type="button"
@@ -143,119 +143,117 @@ function hotel() {
                 </button>
               </div>
             </div>
-            <div className="block">
+            <div className="mt-[2%]">
               <div className="md:hidden">
-                <div className="mt-[15px] ">
-                  <div className="w-full h-[60px] flex columns-4 gap-x-[2.7%]">
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleCaptions"
-                      data-bs-slide-to="0"
-                      className="active w-[23%]"
-                      aria-current="true"
-                      aria-label="Slide 1"
-                    >
-                      <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block rounded-md w-full h-full  "
-                        alt="..."
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleCaptions"
-                      className="w-[23%]"
-                      data-bs-slide-to="1"
-                      aria-label="Slide 2"
-                    >
-                      <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block rounded-md w-full h-full "
-                        alt="..."
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleCaptions"
-                      className="w-[23%]"
-                      data-bs-slide-to="2"
-                      aria-label="Slide 3"
-                    >
-                      <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block rounded-md w-full h-full "
-                        alt="..."
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleCaptions"
-                      className="w-[23%]"
-                      data-bs-slide-to="3"
-                      aria-label="Slide 4"
-                    >
-                      <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block rounded-md w-full h-full "
-                        alt="..."
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-[20px] hidden md:block">
-                <div className="w-full h-[152px] flex columns-4 gap-x-[2.7%]">
+                <div className="flex columns-4 gap-x-[2.7%] h-[59px] ss:h-[79px] sm:h-[100px]">
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
                     data-bs-slide-to="0"
-                    className="active w-[23%]"
+                    className="w-full"
                     aria-current="true"
                     aria-label="Slide 1"
                   >
                     <img
-                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      src="https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      className="rounded-md w-full h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="1"
                     aria-label="Slide 2"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="2"
                     aria-label="Slide 3"
                   >
                     <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>
                   <button
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
-                    className="w-[23%]"
+                    className="w-full"
                     data-bs-slide-to="3"
                     aria-label="Slide 4"
                   >
                     <img
+                      src="https://img.freepik.com/free-vector/japanese-wave-line-art-landscape-background-abstract-mountain-banner-design-pattern-vector-illustration-geometric-poster_90220-715.jpg?w=1380&t=st=1668416689~exp=1668417289~hmac=55b262e9e8d60e4dcf172bb54dcd86a887b12f5834c835426f5403b6b42c2430"
+                      className="rounded-md h-full object-cover"
+                      alt="..."
+                    />
+                  </button>
+                </div>
+              </div>
+
+              <div className="hidden md:block">
+                <div className="w-full flex columns-4 gap-x-[2.7%] h-[142px] lg:h-[158px] xl:h-[221px]">
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide-to="0"
+                    className="w-full"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                  >
+                    <img
                       src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                      className="block rounded-md w-full h-full "
+                      className="block rounded-md h-full object-cover"
+                      alt="..."
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    className="w-full"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                  >
+                    <img
+                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                      className="block rounded-md h-full object-cover"
+                      alt="..."
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    className="w-full"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                  >
+                    <img
+                      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                      className="block rounded-md h-full object-cover"
+                      alt="..."
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    className="w-full"
+                    data-bs-slide-to="3"
+                    aria-label="Slide 4"
+                  >
+                    <img
+                      src="https://img.freepik.com/free-vector/japanese-wave-line-art-landscape-background-abstract-mountain-banner-design-pattern-vector-illustration-geometric-poster_90220-715.jpg?w=1380&t=st=1668416689~exp=1668417289~hmac=55b262e9e8d60e4dcf172bb54dcd86a887b12f5834c835426f5403b6b42c2430"
+                      className="block rounded-md h-full object-cover"
                       alt="..."
                     />
                   </button>

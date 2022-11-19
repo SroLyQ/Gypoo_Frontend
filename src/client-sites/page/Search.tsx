@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { FaMapMarkerAlt, FaAngleRight } from "react-icons/fa";
 
 function Search() {
   // console.log(searchData);
@@ -159,13 +160,6 @@ function Search() {
     return arr;
   };
 
-  const cateSort = [
-    'ที่พักแนะนำตรงใจ',
-    'คะแนนรีวิวดีที่สุด',
-    'ราคาต่ำที่สุด',
-    'ระยะทางใกล้ที่สุด',
-  ];
-
   const name = useParams();
   console.log(name);
   return (
@@ -174,16 +168,16 @@ function Search() {
         <div className='w-full py-5'>
             <p className="text-center font-kanit">เรียงผลตาม</p>
         </div>
-        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] focus:bg-[#AACEDA] text-center font-kanit'>
           ที่พักแนะนำตรงใจ
         </button>
-        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] focus:bg-[#AACEDA] text-center font-kanit'>
           คะแนนรีวิวดีที่สุด
         </button>
-        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] focus:bg-[#AACEDA] text-center font-kanit'>
           ราคาต่ำที่สุด
         </button>
-        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] focus:bg-[#AACEDA] text-center font-kanit'>
           ระยะทางใกล้ที่สุด
         </button>
       </div>
@@ -201,9 +195,12 @@ function Search() {
                     />
                     <div className="col-span-2 p-5">
                       <p className="font-kanit text-4xl">{data.name}</p>
-                      <p className="font-kanit text-1xl text-blue-700">
-                        {data.address}
-                      </p>
+                      <div className='flex'>
+                        <FaMapMarkerAlt className='text-blue-700 min-w-[16px] mr-[5px]'/>
+                        <p className="font-kanit text-1xl text-blue-700">
+                          {data.address}
+                        </p>
+                      </div>
                       <p className="font-kanit text-1xl text-gray-500">
                         {data.about}
                       </p>
@@ -247,7 +244,7 @@ function Search() {
                       <div className="font-kanit text-1xl row-span-4 text-right ml-28 ">
                         69420 รีวิว
                       </div>
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+                      <button className="font-kanit bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
                         รายระเอียดเพิ่มเติม
                       </button>
                     </div>
