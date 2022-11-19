@@ -66,13 +66,13 @@ function topTown() {
   ];
 
   return (
-    <div className="my-10 w-[900px] mx-auto">
+    <div className="my-10  mx-auto">
       <p className=" font-kanit text-[30px] mb-5">จังหวัดยอดฮิต</p>
       {Datas.map((data) => {
         return (
-          <div className="flex mx-auto rounded-2xl w-[900px] shadow-2xl mb-5 ">
+          <div className="flex mx-auto rounded-2xl  shadow-2xl mb-5 ">
             <img
-              className="w-[300px] rounded-l-2xl h-[230px] object-cover object-left "
+              className=" rounded-l-2xl h-[230px] object-cover object-left "
               src={data.picture}
             ></img>
             <div className="flex flex-col font-kanit text-[20px] p-7">
