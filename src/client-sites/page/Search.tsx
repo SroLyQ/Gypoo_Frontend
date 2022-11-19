@@ -159,11 +159,35 @@ function Search() {
     return arr;
   };
 
+  const cateSort = [
+    'ที่พักแนะนำตรงใจ',
+    'คะแนนรีวิวดีที่สุด',
+    'ราคาต่ำที่สุด',
+    'ระยะทางใกล้ที่สุด',
+  ];
+
   const name = useParams();
   console.log(name);
   return (
     <div className="pt-24">
-      <div className="text-3xl font-kanit mx-52"> ที่พักใน ขอนแก่น</div>
+      <div className="mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
+        <div className='w-full py-5'>
+            <p className="text-center font-kanit">เรียงผลตาม</p>
+        </div>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+          ที่พักแนะนำตรงใจ
+        </button>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+          คะแนนรีวิวดีที่สุด
+        </button>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+          ราคาต่ำที่สุด
+        </button>
+        <button className='w-full py-5 rounded-xl hover:bg-[#AACEDA] text-center font-kanit'>
+          ระยะทางใกล้ที่สุด
+        </button>
+      </div>
+      <div className="text-3xl font-kanit mx-52 my-2"> ที่พักใน ขอนแก่น</div>
       <div className="search-post">
         {searchData.map((data, key) => {
           return (
@@ -221,7 +245,7 @@ function Search() {
                         })}
                       </div>
                       <div className="font-kanit text-1xl row-span-4 text-right ml-28 ">
-                        รีวิว 12345
+                        69420 รีวิว
                       </div>
                       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
                         รายระเอียดเพิ่มเติม
