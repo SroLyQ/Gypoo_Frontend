@@ -14,44 +14,40 @@ function AddRoom() {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       roomtype : {value:string};
-      numberOfRooms: { value: string };
-      price: { value: string };
-      view: { value: string };
+      roomcount: { value: number };
+      roomprice: { value: number };
+      guest: { value: number };
     };
-
-    if (target.numberOfRooms.value == '') {
+    if (target.roomtype.value == '') {
+      alert('โปรดเลือกประเภทห้อง');
+    } else if (target.roomcount.value <= 0 ) {
       alert('โปรดใสจำนวนห้อง');
-    } else if (target.price.value == '') {
+    } else if(target.roomprice.value <= 0 ) {
       alert('โปรดใส่ราคาของห้อง');
-    } else if(target.roomtype.value =='') {
-      alert('โปรดเลือกประเภทเตียงและห้อง');
-    } else if(target.view.value == '') {
-      alert('โปรดใส่คำอธิบายของวิว');
+    } else if( target.guest.value <= 0 ) {
+      alert('โปรดใส่คำจำนวนคนเข้าพัก');
     } else {
       const jason = JSON.stringify({
         _id  : _id,
         roomtype : target.roomtype.value,
-        roomcount: target.numberOfRooms.value,
-        roomprice: target.price.value,
+        roomcount : target.roomcount.value,
+        roomprice : target.roomprice.value,
+        guest : target.guest.value,
         conveniencetype: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
+
+      // try{
+      //   axios.post("http://localhost:8000/addroom",{
+      //     data : jason,
+      //   });
+      // } catch (err) {
+      //   console.log(err)
+      // }
+      
     }
-    // window.location.assign('/hotelhotels');
-    // await fetch('/route', {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     title: title.value,
-    //     description: description.value,
-    //     date: date.value,
-    //     file: img.value,
-    //   }),
-    // });
-    // }
+    
   };
 
   return (
@@ -105,7 +101,7 @@ function AddRoom() {
               <div className="py-1"></div>
             </div> */}
            <div className="">
-              <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
+              <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-1">
               ประเภทห้องพัก
             </p>
             <input
@@ -121,8 +117,8 @@ function AddRoom() {
               </p>
               <div className="px-2"></div>
               <input
-                type="text"
-                id="numberOfRooms"
+                type="number"
+                id="roomcount"
                 className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
                 placeholder="จำนวน"
               />
@@ -132,8 +128,8 @@ function AddRoom() {
               </p>
               <div className="px-2"></div>
               <input
-                type="text"
-                id="price"
+                type="number"
+                id="roomprice"
                 className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
                 placeholder="ราคา"
               />
@@ -142,14 +138,14 @@ function AddRoom() {
             
             
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2 ">
-              ประเภทวิว
+              จำนวนคนที่เข้าพัก
             </p>
             <div className="px-2"></div>
             <input
-              type="text"
-              id="view"
+              type="number"
+              id="guest"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ประเภทวิว"
+              placeholder="จำนวนคนที่เข้าพัก"
             />
             <div className="py-1"></div>
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
