@@ -12,41 +12,28 @@ import { useState } from 'react';
 import Topotown from '../components/topTown';
 import { Menu } from '@headlessui/react';
 
-import {
-  useSearchParams,
-  useNavigate,
-  createSearchParams,
-} from 'react-router-dom';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 
 // useEffect,
 function Main() {
   const [state, setState] = useState(0);
   const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
   const navigate = useNavigate();
-
   const [customOpen, setCustomOpen] = useState(false);
+  const [value, setValue] = useState('');
 
   function test() {
     const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
-
     const search = {
-      key: 'wdad',
+      key: value,
       guest: guestN.toString(),
     };
     navigate({
       pathname: '/search',
       search: `?${createSearchParams(search)}`,
     });
+    // navigate('/search', { state: { id: 1, name: 'sabaoon' } });
   }
-
-  // const test = (e) => {
-  //   const keyword = e.target.value;
-  //   if (keyword) {
-  //     setSearchParams({ keyword });
-  //   } else {
-  //     setSearchParams({});
-  //   }
-  // };
 
   function handleAdult(x: number) {
     if (x == 1) {
@@ -237,6 +224,8 @@ function Main() {
                 placeholder="Search for anything..."
                 type="text"
                 name="search"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
               />
             </div>
 
