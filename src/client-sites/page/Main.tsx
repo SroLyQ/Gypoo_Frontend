@@ -34,24 +34,20 @@ function Main() {
   function test() {
     console.log('Search : ' + search);
     console.log('Roomtype : ' + JSON.stringify(roomtype));
-    const CheckIn = dateCheckin.split('-');
-    const CheckOut = dateCheckout.split('-');
-    console.log(
-      'CheckIn : ' + CheckIn[2] + '-' + CheckIn[1] + '-' + CheckIn[0],
-    );
-    console.log(
-      'CheckOut : ' + CheckOut[2] + '-' + CheckOut[1] + '-' + CheckOut[0],
-    );
+    const tempIn = dateCheckin.split('-');
+    const tempOut = dateCheckout.split('-');
 
-    // const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
-    // const search = {
-    //   key: 'wdad',
-    //   guest: guestN.toString(),
-    // };
-    // navigate({
-    //   pathname: '/search',
-    //   search: `?${createSearchParams(search)}`,
-    // });
+    const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
+    const Search = {
+      key: search,
+      guest: guestN.toString(),
+      checkin: tempIn[2] + '-' + tempIn[1] + '-' + tempIn[0],
+      checkout: tempOut[2] + '-' + tempOut[1] + '-' + tempOut[0],
+    };
+    navigate({
+      pathname: '/search',
+      search: `?${createSearchParams(Search)}`,
+    });
   }
 
   // const test = (e) => {
@@ -65,7 +61,7 @@ function Main() {
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
     const temp = e.target.value;
-    console.log(temp);
+    // console.log(temp);
     setSearch(temp);
   };
 
