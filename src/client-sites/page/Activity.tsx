@@ -7,6 +7,7 @@ import 'tw-elements';
 import Imgslide from '../components/imgslide';
 import HotelCard from '../../hotel-sites/components/HotelCard'
 import testdata from '../../hotel-sites/pages/testdata.json'
+import GooGleMAP from '../components/googleMap';
 
 function Activity() {
   
@@ -83,7 +84,7 @@ function Activity() {
                 </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
-              <p className="mt-[15px]">mapImg</p>
+              <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
             </div>
 
           </div>
@@ -94,7 +95,7 @@ function Activity() {
               </div>
             </div>
             <div className="border border-[#D8D8D8]"></div>
-            <p className="mt-[15px]">mapImg</p>
+            <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
           </div>
         </div>
 
