@@ -1,6 +1,7 @@
 //for login and reg func
 import apiClient from '../api/apiClient';
 import config from '../config.json';
+
 interface loginProp {
   username: string;
   password: string;
