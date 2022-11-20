@@ -10,7 +10,7 @@ import testdata from '../../hotel-sites/pages/testdata.json'
 import GooGleMAP from '../components/googleMap';
 
 function Activity() {
-  
+
   return (
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
@@ -53,8 +53,8 @@ function Activity() {
                   </p>
                 </div>
 
-                <div className="mb-[5px]">  
-                <StarRate />
+                <div className="mb-[5px]">
+                  <StarRate />
                 </div>
 
                 <div>
@@ -175,7 +175,7 @@ function Activity() {
                 <div className="basis-1/4">
                   <p className="text-[18px]">Boom Burapee</p>
                   <div className="mb-[5px]">
-                  <StarRate />
+                    <StarRate />
                   </div>
                   <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
                 </div>
@@ -205,7 +205,7 @@ function Activity() {
               <div className="basis-1/4">
                 <p className="text-[20px]">Boom Burapee</p>
                 <div className="mb-[5px]">
-                <StarRate />
+                  <StarRate />
                 </div>
                 <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
               </div>
