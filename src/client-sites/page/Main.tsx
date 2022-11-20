@@ -23,20 +23,25 @@ function Main() {
   const [state, setState] = useState(0);
   const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
   const navigate = useNavigate();
-
   const [customOpen, setCustomOpen] = useState(false);
 
-  function test() {
-    const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
+  const [dateCheckin, setDateCheckin] = useState(Date());
+  const [dateCheckout, setDateCheckout] = useState(Date());
 
-    const search = {
-      key: 'wdad',
-      guest: guestN.toString(),
-    };
-    navigate({
-      pathname: '/search',
-      search: `?${createSearchParams(search)}`,
-    });
+  function test() {
+    alert(JSON.stringify(roomtype));
+    console.log('CheckIN : ' + dateCheckin);
+    console.log('CheckOut : ' + dateCheckout);
+
+    // const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
+    // const search = {
+    //   key: 'wdad',
+    //   guest: guestN.toString(),
+    // };
+    // navigate({
+    //   pathname: '/search',
+    //   search: `?${createSearchParams(search)}`,
+    // });
   }
 
   // const test = (e) => {
@@ -229,8 +234,8 @@ function Main() {
     if (state == 0) {
       return (
         <div className="py-10 my-10 bg-[#D9D9D9] rounded-xl  shadow-2xl">
-          <div className='block'>
-            <div className='md:hidden'>
+          <div className="block">
+            <div className="md:hidden">
               <div className="px-8  w-full">
                 <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
                   <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
@@ -241,19 +246,21 @@ function Main() {
                     name="search"
                   />
                 </div>
-                <div className=' bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center'>
+                <div className=" bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center">
                   <input
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
                     id="dayCheckIn"
                     name="dayCheckIn"
+                    onChange={(e) => setDateCheckin(e.target.value)}
                   ></input>
                   <div className=" border border-[#585858] "></div>
                   <input
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
-                    id="dayCheckIn"
-                    name="dayCheckIn"
+                    id="dayCheckOut"
+                    name="dayCheckOut"
+                    onChange={(e) => setDateCheckout(e.target.value)}
                   ></input>
                 </div>
 
@@ -262,7 +269,7 @@ function Main() {
                     {({ open }) => (
                       <>
                         <div className="flex mx-2">
-                          <Menu.Button >
+                          <Menu.Button>
                             <UserIcon className="h-5 w-5 text-[#6D6969] ml-3 mr-3" />
                           </Menu.Button>
 
@@ -270,7 +277,7 @@ function Main() {
                             <div className="text-[#585858] text-[15px] mr-2  my-2">
                               ผู้ใหญ่ {roomtype.adult} คน
                             </div>
-                            <div className=' my-2'>,</div>
+                            <div className=" my-2">,</div>
                             <div className="text-[#585858] text-[15px] mr-3 ml-2 my-2">
                               เด็ก {roomtype.children} คน
                             </div>
@@ -284,7 +291,6 @@ function Main() {
                           <ChevronDownIcon className="h-5 w-5 text-[#6D6969] " />
                         </Menu.Button>
 
-
                         {customOpen && (
                           <Menu.Items
                             static
@@ -297,8 +303,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -313,8 +320,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -331,8 +339,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -347,8 +356,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -365,8 +375,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -381,8 +392,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -407,9 +419,8 @@ function Main() {
                   </Menu>
                 </div>
               </div>
-
             </div>
-            <div className='px-16 hidden md:block'>
+            <div className="px-16 hidden md:block">
               <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3  shadow-sm sm:text-sm">
                 <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
                 <input
@@ -420,8 +431,7 @@ function Main() {
                 />
               </div>
               <div className=" my-3 w-full flex justify-between gap-x-5 ">
-
-                <div className=' bg-white flex rounded-md w-full justify-center'>
+                <div className=" bg-white flex rounded-md w-full justify-center">
                   <input
                     className="text-[#585858] focus:outline-none   px-2 rounded-md"
                     type="date"
@@ -442,7 +452,7 @@ function Main() {
                     {({ open }) => (
                       <>
                         <div className="flex">
-                          <Menu.Button >
+                          <Menu.Button>
                             <UserIcon className="h-5 w-5 text-[#6D6969]  ml-3 mr-5" />
                           </Menu.Button>
 
@@ -450,7 +460,7 @@ function Main() {
                             <div className="text-[#585858]  px-2 my-2">
                               ผู้ใหญ่ {roomtype.adult} คน
                             </div>
-                            <div className=' my-2'>,</div>
+                            <div className=" my-2">,</div>
                             <div className="text-[#585858]  pl-2 pr-5 my-2">
                               เด็ก {roomtype.children} คน
                             </div>
@@ -464,7 +474,6 @@ function Main() {
                           <ChevronDownIcon className="h-5 w-5 text-[#6D6969] " />
                         </Menu.Button>
 
-
                         {customOpen && (
                           <Menu.Items
                             static
@@ -477,8 +486,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -493,8 +503,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -511,8 +522,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -527,8 +539,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -545,8 +558,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -561,8 +575,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -596,14 +611,13 @@ function Main() {
           >
             ค้นหา
           </button>
-
         </div>
       );
     } else if (state == 1) {
       return (
         <div className="py-10 my-10 bg-[#D9D9D9] rounded-xl  shadow-2xl">
-          <div className='block'>
-            <div className='md:hidden'>
+          <div className="block">
+            <div className="md:hidden">
               <div className="px-8  w-full">
                 <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
                   <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
@@ -614,7 +628,7 @@ function Main() {
                     name="search"
                   />
                 </div>
-                <div className=' bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center'>
+                <div className=" bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center">
                   <input
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
@@ -635,7 +649,7 @@ function Main() {
                     {({ open }) => (
                       <>
                         <div className="flex mx-2">
-                          <Menu.Button >
+                          <Menu.Button>
                             <UserIcon className="h-5 w-5 text-[#6D6969] ml-3 mr-3" />
                           </Menu.Button>
 
@@ -643,7 +657,7 @@ function Main() {
                             <div className="text-[#585858] text-[15px] mr-2  my-2">
                               ผู้ใหญ่ {roomtype.adult} คน
                             </div>
-                            <div className=' my-2'>,</div>
+                            <div className=" my-2">,</div>
                             <div className="text-[#585858] text-[15px] mr-3 ml-2 my-2">
                               เด็ก {roomtype.children} คน
                             </div>
@@ -657,7 +671,6 @@ function Main() {
                           <ChevronDownIcon className="h-5 w-5 text-[#6D6969]" />
                         </Menu.Button>
 
-
                         {customOpen && (
                           <Menu.Items
                             static
@@ -670,8 +683,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -686,8 +700,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -704,8 +719,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -720,8 +736,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -738,8 +755,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -754,8 +772,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -780,9 +799,8 @@ function Main() {
                   </Menu>
                 </div>
               </div>
-
             </div>
-            <div className='px-16 hidden md:block'>
+            <div className="px-16 hidden md:block">
               <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3  shadow-sm sm:text-sm">
                 <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
                 <input
@@ -793,8 +811,7 @@ function Main() {
                 />
               </div>
               <div className=" my-3 w-full flex justify-between gap-x-5 ">
-
-                <div className=' bg-white flex rounded-md w-full justify-center'>
+                <div className=" bg-white flex rounded-md w-full justify-center">
                   <input
                     className="text-[#585858] focus:outline-none   px-2 rounded-md"
                     type="date"
@@ -815,7 +832,7 @@ function Main() {
                     {({ open }) => (
                       <>
                         <div className="flex">
-                          <Menu.Button >
+                          <Menu.Button>
                             <UserIcon className="h-5 w-5 text-[#6D6969]  ml-3 mr-5" />
                           </Menu.Button>
 
@@ -823,7 +840,7 @@ function Main() {
                             <div className="text-[#585858]  px-2 my-2">
                               ผู้ใหญ่ {roomtype.adult} คน
                             </div>
-                            <div className=' my-2'>,</div>
+                            <div className=" my-2">,</div>
                             <div className="text-[#585858]  pl-2 pr-5 my-2">
                               เด็ก {roomtype.children} คน
                             </div>
@@ -837,7 +854,6 @@ function Main() {
                           <ChevronDownIcon className="h-5 w-5 text-[#6D6969] " />
                         </Menu.Button>
 
-
                         {customOpen && (
                           <Menu.Items
                             static
@@ -850,8 +866,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -866,8 +883,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleAdult(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -884,8 +902,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -900,8 +919,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleChildren(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -918,8 +938,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(0)}
                                     >
                                       <div className="px-2">-</div>
@@ -934,8 +955,9 @@ function Main() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <button
-                                      className={`${active && 'bg-[#005A76] rounded-md'
-                                        }`}
+                                      className={`${
+                                        active && 'bg-[#005A76] rounded-md'
+                                      }`}
                                       onClick={() => handleRoom(1)}
                                     >
                                       <div className="px-2">+</div>
@@ -969,7 +991,6 @@ function Main() {
           >
             ค้นหา
           </button>
-
         </div>
       );
     } else if (state == 2) {
@@ -1025,24 +1046,20 @@ function Main() {
     }
   }
   return (
-
     <div className="pt-[120px] md:mx-[300px] xs:mx-8 ">
       <div>
         <img
-          className="object-cover mx-auto  w-full"
+          className="object-cover mx-auto w-full px-0 md:px-20"
           src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         />
       </div>
 
-      <div className='mt-10'>
+      <div className="mt-10">
         <Menuselect />
       </div>
       <Menuu />
       <Topotown />
-
     </div>
-
-
   );
 }
 
