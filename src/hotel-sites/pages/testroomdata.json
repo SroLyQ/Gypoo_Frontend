@@ -1,6 +1,6 @@
 [
     {
-        "_id": "6360d07ef5fbc336368d9d61",
+        "id": "6360d07ef5fbc336368d9d61",
         "index": 0,
         "isAviable": true,
         "price": 1394.36,
@@ -22,7 +22,7 @@
         "reviews": 237,
       "room": [
         {
-          "_id": "636f65cdc95ce5b621c86fd6",
+          "idRoom": "636f65cdc95ce5b621c86fd6",
           "type": "duo",
           "guest" : 2,
           "room": 2,
@@ -48,7 +48,7 @@
     }
     ,
     {
-        "_id": "6360d07e55b7b409d900ef45",
+        "id": "6360d07e55b7b409d900ef45",
         "index": 1,
         "isAviable": false,
         "price": 2502.31,
@@ -69,7 +69,7 @@
         "reviews": 1234,
       "room": [
         {
-          "_id": "636f65cd1b977e3b81dafa58",
+          "idRoom": "636f65cd1b977e3b81dafa58",
           "type": "duo",
           "guest" : 2,
           "room": 5,
@@ -85,7 +85,7 @@
           
         },
         {
-          "_id": "636f65cdeb78171bbf67e8bd",
+          "idRoom": "636f65cdeb78171bbf67e8bd",
           "type": "duo",
           "guest" : 2,
           "room": 4,
@@ -113,7 +113,7 @@
         ]
     },
     {
-        "_id": "6360d07e6bc0a44549ca2b2b",
+        "id": "6360d07e6bc0a44549ca2b2b",
         "index": 2,
         "isAviable": true,
         "price": 1412.13,
@@ -134,7 +134,7 @@
         "reviews": 76,
       "room": [
         {
-            "_id": "636f65cd7fed48d656f0ed68",
+            "idRoom": "636f65cd7fed48d656f0ed68",
           "type": "single",
           "guest" : 2,
           "room": 5,
@@ -159,7 +159,7 @@
         ]
     },
     {
-        "_id": "6360d07e13b8774430a36aed",
+        "id": "6360d07e13b8774430a36aed",
         "index": 3,
         "isAviable": false,
         "price": 3526.8,
@@ -180,7 +180,7 @@
         "reviews": 123,
       "room": [
         {
-            "_id": "636f65cd1cfa104a4e116a3a",
+            "idRoom": "636f65cd1cfa104a4e116a3a",
           "type": "duo",
           "guest" : 2,
           "room": 0,
@@ -196,7 +196,7 @@
           ]
         },
         {
-            "_id": "636f65cda4f9b544a47ca233",
+            "idRoom": "636f65cda4f9b544a47ca233",
           "type": "suite",
           "guest" : 2,
           "room": 2,
@@ -211,7 +211,7 @@
           ]
         },
         {
-            "_id": "636f65cd3d7ed0e93dbebcfc",
+            "idRoom": "636f65cd3d7ed0e93dbebcfc",
           "type": "single",
           "guest" : 2,
           "room": 2,
@@ -237,7 +237,7 @@
         ]
     },
     {
-        "_id": "6360d07e015a13236426abb5",
+        "id": "6360d07e015a13236426abb5",
         "index": 4,
         "isAviable": true,
         "price": 1497.82,
@@ -258,7 +258,7 @@
         "reviews": 29,
       "room": [
         {
-            "_id": "636f65cd2ff4bc93f22826b3",
+            "idRoom": "636f65cd2ff4bc93f22826b3",
           "type": "duo",
           "guest" : 2,
           "room": 2,
@@ -274,7 +274,7 @@
           ]
         },
         {
-            "_id": "636f65cd2ff4bc93f22826b3",
+            "idRoom": "636f65cd2ff4bc93f22826b3",
           "type": "suite",
           "guest" : 2,
           "room": 3,
@@ -289,7 +289,7 @@
           ]
         },
         {
-            "_id": "636f65cdc9e926bd7249ac2f",
+            "idRoom": "636f65cdc9e926bd7249ac2f",
           "type": "suite",
           "guest" : 2,
           "room": 1,

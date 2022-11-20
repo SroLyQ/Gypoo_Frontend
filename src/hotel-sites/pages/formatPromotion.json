@@ -1,0 +1,10 @@
+[
+    {
+        "id":"63793555140d4c5dc44441c2",
+        "hotelId":"6378f367971755444e1a5139",
+        "title":"50% off","percent":20,
+        "description":"This is a code for 50% off in our hotel",
+        "startDate":"20/11/2022","endDate":"22/11/2022",
+        "ownerID":"6378ca0a297675a2b1863c5d"
+    }
+]
