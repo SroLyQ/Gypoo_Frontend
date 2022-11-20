@@ -21,17 +21,27 @@ import {
 // useEffect,
 function Main() {
   const [state, setState] = useState(0);
-  const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
+
   const navigate = useNavigate();
   const [customOpen, setCustomOpen] = useState(false);
 
-  const [dateCheckin, setDateCheckin] = useState(Date());
-  const [dateCheckout, setDateCheckout] = useState(Date());
+  const [phai, setPhai] = useState('');
+
+  const [dateCheckin, setDateCheckin] = useState('');
+  const [dateCheckout, setDateCheckout] = useState('');
+  const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
 
   function test() {
-    alert(JSON.stringify(roomtype));
-    console.log('CheckIN : ' + dateCheckin);
-    console.log('CheckOut : ' + dateCheckout);
+    console.log('Search : ' + phai);
+    console.log('Roomtype : ' + JSON.stringify(roomtype));
+    const CheckIn = dateCheckin.split('-');
+    const CheckOut = dateCheckout.split('-');
+    console.log(
+      'CheckIn : ' + CheckIn[2] + '-' + CheckIn[1] + '-' + CheckIn[0],
+    );
+    console.log(
+      'CheckOut : ' + CheckOut[2] + '-' + CheckOut[1] + '-' + CheckOut[0],
+    );
 
     // const guestN = (roomtype.adult + roomtype.children) / roomtype.room;
     // const search = {
@@ -52,6 +62,13 @@ function Main() {
   //     setSearchParams({});
   //   }
   // };
+
+  const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // e.preventDefault();
+    const temp = e.target.value;
+    console.log(temp);
+    setPhai(temp);
+  };
 
   function handleAdult(x: number) {
     if (x == 1) {
@@ -242,8 +259,11 @@ function Main() {
                   <input
                     className="placeholder:italic placeholder:text-[#7e7e7e] text-[15px]  w-full mr-5  focus:outline-none"
                     placeholder="Search for anything..."
+                    id="search"
                     type="text"
-                    name="search"
+                    value={phai}
+                    onChange={handleText}
+                    key={'dwadwadaawdw'}
                   />
                 </div>
                 <div className=" bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center">
@@ -251,16 +271,16 @@ function Main() {
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
                     id="dayCheckIn"
-                    name="dayCheckIn"
-                    onChange={(e) => setDateCheckin(e.target.value)}
-                  ></input>
+                    value={dateCheckin}
+                    onChange={(event) => setDateCheckin(event.target.value)}
+                  />
                   <div className=" border border-[#585858] "></div>
                   <input
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
                     id="dayCheckOut"
-                    name="dayCheckOut"
-                    onChange={(e) => setDateCheckout(e.target.value)}
+                    value={dateCheckout}
+                    onChange={(event) => setDateCheckout(event.target.value)}
                   ></input>
                 </div>
 
