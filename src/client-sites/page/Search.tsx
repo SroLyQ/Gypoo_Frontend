@@ -185,7 +185,6 @@ function Search() {
       });
       console.log(res.data);
       setItems(res.data);
-      console.log(items.hotels[0].id);
     };
     getAll();
   }, []);
@@ -202,9 +201,14 @@ function Search() {
     return arr;
   };
 
-  const hotelCheck = (checkIn: string, checkOut: string) => {
-    console.log('checkIn:');
-    console.log('checkOut:');
+  const hotelCheck = (
+    checkIn: number | null,
+    checkOut: number | null,
+    room: number | null,
+  ) => {
+    console.log('checkIn:', checkIn);
+    console.log('checkOut:', checkOut);
+    console.log('Room:', room);
     return true;
   };
 
@@ -212,7 +216,7 @@ function Search() {
   const searchGuest = searchParams.get('guest');
   const checkIn = searchParams.get('checkin');
   const checkOut = searchParams.get('checkout');
-
+  const room = searchParams.get('room');
   return (
     <div className="pt-24">
       <div className="mx-8 md:mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
@@ -235,9 +239,10 @@ function Search() {
 
       <div className="mx-52">
         key : {searchKey} <br />
-        guest : {searchGuest} <br />
+        guest/room : {searchGuest} <br />
+        Room : {room} <br />
         checkin : {checkIn?.split('-')} <br />
-        checkout : {checkOut?.split('-')}
+        checkout : {checkOut?.split('-')} <br />
       </div>
 
       <div className="search-post">

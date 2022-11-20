@@ -41,6 +41,7 @@ function Main() {
     const Search = {
       key: search,
       guest: guestN.toString(),
+      room: roomtype.room.toString(),
       checkin: tempIn[2] + '-' + tempIn[1] + '-' + tempIn[0],
       checkout: tempOut[2] + '-' + tempOut[1] + '-' + tempOut[0],
     };
