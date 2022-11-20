@@ -25,14 +25,14 @@ function Main() {
   const navigate = useNavigate();
   const [customOpen, setCustomOpen] = useState(false);
 
-  const [phai, setPhai] = useState('');
+  const [search, setSearch] = useState('');
 
   const [dateCheckin, setDateCheckin] = useState('');
   const [dateCheckout, setDateCheckout] = useState('');
   const [roomtype, setRoomtype] = useState({ adult: 1, children: 0, room: 1 });
 
   function test() {
-    console.log('Search : ' + phai);
+    console.log('Search : ' + search);
     console.log('Roomtype : ' + JSON.stringify(roomtype));
     const CheckIn = dateCheckin.split('-');
     const CheckOut = dateCheckout.split('-');
@@ -64,10 +64,9 @@ function Main() {
   // };
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // e.preventDefault();
     const temp = e.target.value;
     console.log(temp);
-    setPhai(temp);
+    setSearch(temp);
   };
 
   function handleAdult(x: number) {
@@ -256,14 +255,15 @@ function Main() {
               <div className="px-8  w-full">
                 <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
                   <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
+
                   <input
                     className="placeholder:italic placeholder:text-[#7e7e7e] text-[15px]  w-full mr-5  focus:outline-none"
                     placeholder="Search for anything..."
                     id="search"
                     type="text"
-                    value={phai}
+                    value={search}
+                    autoFocus
                     onChange={handleText}
-                    key={'dwadwadaawdw'}
                   />
                 </div>
                 <div className=" bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center">
@@ -446,8 +446,11 @@ function Main() {
                 <input
                   className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
                   placeholder="Search for anything..."
+                  id="search"
                   type="text"
-                  name="search"
+                  value={search}
+                  autoFocus
+                  onChange={handleText}
                 />
               </div>
               <div className=" my-3 w-full flex justify-between gap-x-5 ">
@@ -456,14 +459,16 @@ function Main() {
                     className="text-[#585858] focus:outline-none   px-2 rounded-md"
                     type="date"
                     id="dayCheckIn"
-                    name="dayCheckIn"
+                    value={dateCheckin}
+                    onChange={(event) => setDateCheckin(event.target.value)}
                   ></input>
                   <div className=" border border-[#585858] "></div>
                   <input
                     className="text-[#585858] focus:outline-none  px-2 rounded-md"
                     type="date"
-                    id="dayCheckIn"
-                    name="dayCheckIn"
+                    id="dayCheckOut"
+                    value={dateCheckout}
+                    onChange={(event) => setDateCheckout(event.target.value)}
                   ></input>
                 </div>
 
@@ -641,11 +646,15 @@ function Main() {
               <div className="px-8  w-full">
                 <div className="bg-white w-full border flex border-slate-300 rounded-lg py-3 shadow-sm sm:text-sm">
                   <MagnifyingGlassIcon className="h-5 w-5 text-[#585858] mx-5 " />
+
                   <input
                     className="placeholder:italic placeholder:text-[#7e7e7e] text-[15px]  w-full mr-5  focus:outline-none"
                     placeholder="Search for anything..."
+                    id="search"
                     type="text"
-                    name="search"
+                    value={search}
+                    autoFocus
+                    onChange={handleText}
                   />
                 </div>
                 <div className=" bg-white flex rounded-md w-full px-3 py-2 my-3 justify-center">
@@ -653,14 +662,16 @@ function Main() {
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
                     id="dayCheckIn"
-                    name="dayCheckIn"
-                  ></input>
+                    value={dateCheckin}
+                    onChange={(event) => setDateCheckin(event.target.value)}
+                  />
                   <div className=" border border-[#585858] "></div>
                   <input
                     className="text-[#585858] focus:outline-none text-[15px]  px-2 rounded-md"
                     type="date"
-                    id="dayCheckIn"
-                    name="dayCheckIn"
+                    id="dayCheckOut"
+                    value={dateCheckout}
+                    onChange={(event) => setDateCheckout(event.target.value)}
                   ></input>
                 </div>
 
@@ -688,7 +699,7 @@ function Main() {
                           </div>
                         </div>
                         <Menu.Button onClick={buttonClicked}>
-                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969]" />
+                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969] " />
                         </Menu.Button>
 
                         {customOpen && (
@@ -826,8 +837,11 @@ function Main() {
                 <input
                   className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
                   placeholder="Search for anything..."
+                  id="search"
                   type="text"
-                  name="search"
+                  value={search}
+                  autoFocus
+                  onChange={handleText}
                 />
               </div>
               <div className=" my-3 w-full flex justify-between gap-x-5 ">
@@ -836,14 +850,16 @@ function Main() {
                     className="text-[#585858] focus:outline-none   px-2 rounded-md"
                     type="date"
                     id="dayCheckIn"
-                    name="dayCheckIn"
+                    value={dateCheckin}
+                    onChange={(event) => setDateCheckin(event.target.value)}
                   ></input>
                   <div className=" border border-[#585858] "></div>
                   <input
                     className="text-[#585858] focus:outline-none  px-2 rounded-md"
                     type="date"
-                    id="dayCheckIn"
-                    name="dayCheckIn"
+                    id="dayCheckOut"
+                    value={dateCheckout}
+                    onChange={(event) => setDateCheckout(event.target.value)}
                   ></input>
                 </div>
 
@@ -1023,7 +1039,9 @@ function Main() {
                 className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
                 placeholder="Search for anything..."
                 type="text"
-                name="search"
+                value={search}
+                autoFocus
+                onChange={handleText}
               />
             </div>
 
@@ -1047,7 +1065,9 @@ function Main() {
                 className="placeholder:italic placeholder:text-[#7e7e7e]  w-full mr-5  focus:outline-none"
                 placeholder="Search for anything..."
                 type="text"
-                name="search"
+                value={search}
+                autoFocus
+                onChange={handleText}
               />
             </div>
 
