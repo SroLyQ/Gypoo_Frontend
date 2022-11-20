@@ -92,14 +92,14 @@ function Main() {
       return (
         <div className="flex flex-row justify-evenly py-5 shadow-2xl rounded-xl bg-white">
           <button
-            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
+            className="bg-[#AACEDA] my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]   "
             onClick={() => setState(0)}
           >
             <HomeModernIcon className="h-9 w-9 text-gray-800 mx-auto " />
             <p className="font-kanit">ทั้งหมด</p>
           </button>
           <button
-            className="bg-[#AACEDA] my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
+            className="bg-white my-auto h-24 w-32 rounded-xl duration-100 hover:bg-[#AACEDA]"
             onClick={() => setState(1)}
           >
             <HomeIcon className="h-9 w-9 text-gray-800 mx-auto " />
@@ -257,7 +257,7 @@ function Main() {
                   ></input>
                 </div>
 
-                <div className="bg-white  flex rounded-md w-full ">
+                <div className="bg-white  flex rounded-md w-full justify-center">
                   <Menu>
                     {({ open }) => (
                       <>
@@ -281,7 +281,7 @@ function Main() {
                           </div>
                         </div>
                         <Menu.Button onClick={buttonClicked}>
-                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969] ml-2" />
+                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969] " />
                         </Menu.Button>
 
 
@@ -630,7 +630,7 @@ function Main() {
                   ></input>
                 </div>
 
-                <div className="bg-white  flex rounded-md w-full ">
+                <div className="bg-white  flex rounded-md w-full justify-center">
                   <Menu>
                     {({ open }) => (
                       <>
@@ -654,7 +654,7 @@ function Main() {
                           </div>
                         </div>
                         <Menu.Button onClick={buttonClicked}>
-                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969] ml-2" />
+                          <ChevronDownIcon className="h-5 w-5 text-[#6D6969]" />
                         </Menu.Button>
 
 
