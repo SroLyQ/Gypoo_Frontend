@@ -53,7 +53,7 @@ function Search() {
 
   return (
     <div className="pt-24">
-      <div className="mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
+      <div className="mx-8 md:mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
         <div className="w-full py-5">
           <p className="text-center font-kanit">เรียงผลตาม</p>
         </div>
