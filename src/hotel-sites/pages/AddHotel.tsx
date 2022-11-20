@@ -1,13 +1,13 @@
-import config from '../../config.json'  
+import config from '../../config.json';
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react';
 import apiClient from '../../api/apiClient';
 // import { getCurrentUser } from '../../services/userService'; // ต้องใช้
 
 function AddHotel() {
   const locationTypeForm = {
-     isHotel: false ,
-     isRestaurant: false ,
-     isTravel: false ,
+    isHotel: false,
+    isRestaurant: false,
+    isTravel: false,
   };
   // const useData = getCurrentUser(); // ต้องใช้
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
@@ -26,17 +26,17 @@ function AddHotel() {
     } else if (target.about.value == '') {
       alert('โปรดใสรายละเอียด');
     } else if (
-      !locationTypeForm.isHotel&&
+      !locationTypeForm.isHotel &&
       !locationTypeForm.isRestaurant &&
       !locationTypeForm.isTravel
     ) {
       alert('โปรดเลือกประเภทของสถานที่');
-      console.log(locationTypeForm)
-    } else if (target.email.value == ''){
+      console.log(locationTypeForm);
+    } else if (target.email.value == '') {
       alert('โปรดใส่อีเมล');
-    } else if (target.phone.value == ''){
+    } else if (target.phone.value == '') {
       alert('โปรดใส่เบอร์โทรศัพท์');
-    } else if (target.address.value == ''){
+    } else if (target.address.value == '') {
       alert('โปรดใส่ที่อยู่');
     } else if (target.mapURL.value == '') {
       alert('โปรดใส่ลิงก์แผนที่');
@@ -45,9 +45,9 @@ function AddHotel() {
         name: target.name.value,
         about: target.about.value,
         mapURL: target.mapURL.value,
-        email:target.mapURL.value,
-        phone:target.phone.value,
-        address:target.address.value,
+        email: target.mapURL.value,
+        phone: target.phone.value,
+        address: target.address.value,
         locationType: locationTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
@@ -63,14 +63,14 @@ function AddHotel() {
     // }
   };
 
-  const uploadImg = async (e:ChangeEvent<HTMLInputElement>) => {
+  const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const body = {
-      files : e.target.value
-    }
+      files: e.target.value,
+    };
     // const res = await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',data : body})
-    console.log(body)
-  }
+    console.log(body);
+  };
 
   return (
     <div className="pt-28">
@@ -122,26 +122,51 @@ function AddHotel() {
               ประเภทของสถานที่
             </p>
             <div className="py-2 truncate">
+              <input
+                id="isHotel"
+                className="md:w-4 md:h-4w-3 h-3 pt-2"
+                type="radio"
+                name="status"
+                onChange={(event) => {
+                  locationTypeForm.isHotel = event.target.checked;
+                }}
+              />
+              <label htmlFor="isHotel" className="px-2">
+                ที่พัก
+              </label>
+              <a className="sm:hidden">
+                <br />
+              </a>
+              <input
+                id="isRestaurant"
+                className="md:w-4 md:h-4w-3 h-3 pt-2"
+                type="radio"
+                name="status"
+                onChange={(event) => {
+                  locationTypeForm.isRestaurant = event.target.checked;
+                }}
+              />
+              <label htmlFor="isRestaurant" className="px-2">
+                ร้านอาหาร
+              </label>
+              <a className="sm:hidden">
+                <br />
+              </a>
+              <input
+                id="isTravel"
+                className="md:w-4 md:h-4w-3 h-3 pt-2"
+                type="radio"
+                name="status"
+                onChange={(event) => {
+                  locationTypeForm.isTravel = event.target.checked;
+                }}
+              />
+              <label htmlFor="isTravel" className="px-2">
+                สถานที่ท่องเที่ยว
+              </label>
+            </div>
 
-              <input id="isHotel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isHotel = event.target.checked
-              }}/>
-              <label htmlFor="isHotel" className="px-2">ที่พัก</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="isRestaurant" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isRestaurant = event.target.checked
-              }}/>
-              <label htmlFor="isRestaurant" className="px-2">ร้านอาหาร</label>
-              <a className="sm:hidden"><br /></a>
-              <input id="isTravel" className="md:w-4 md:h-4w-3 h-3 pt-2" type="radio" name="status" onChange={(event) => {
-                locationTypeForm.isTravel = event.target.checked
-              }}/>
-              <label htmlFor="isTravel" className="px-2">สถานที่ท่องเที่ยว</label>
-            </div> 
-            
-            <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
-              อีเมล
-            </p>
+            <p className="text-gray-600 md:text-lg sm:text-sm text-sm">อีเมล</p>
             <p className="py-1"></p>
             <input
               type="text"
@@ -188,7 +213,7 @@ function AddHotel() {
               type="file"
               id="img"
               accept="image/*"
-              onChange = {uploadImg}
+              onChange={uploadImg}
               multiple
               className="block text-sm md:w-56 w-full text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue  -100 py-2"
             />
@@ -205,7 +230,6 @@ function AddHotel() {
                 >
                   ยกเลิก
                 </button>
-                
               </a>
             </div>
           </form>
