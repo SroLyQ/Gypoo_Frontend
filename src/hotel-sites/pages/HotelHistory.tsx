@@ -38,10 +38,7 @@ function HotelHistory() {
     })
   return (
     <div className="pt-24">
-      <div>
-          <p>aaaaa</p>
-          <input className="" type="text" placeholder="search si ai sus" onChange={e => handleFilter(e.target.value)}/>
-      </div>
+      
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
       {
         historydata.map((h,id)=>{

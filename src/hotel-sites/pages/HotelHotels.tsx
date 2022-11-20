@@ -4,9 +4,14 @@ import HotelCard from '../components/HotelCard'
 import { Routes,Route,Link } from 'react-router-dom'
 import HotelInnerCard from '../components/HotelInnerCard'
 import EditHotel from './EditHotel'
+import config from '../../config.json'  
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService'
+import formatHotel from './formatHotel.json'
+
 function HotelHotels() {
-  const [renderData,setrenderData] = React.useState(testdata)
-  const originaldata = testdata
+  const [renderData,setrenderData] = React.useState(formatHotel)
+  const [originaldata,setOriginaldata] = React.useState(formatHotel)
   const [searchWord,setsearchWord] = useState("");
   const excludeColumns = ["name","address"];
   const [selectDelete,setSelectDelete] = useState(false)
@@ -15,7 +20,7 @@ function HotelHotels() {
   const [selectEditId,setSelectEditId] = useState("")
   const [selectStatus,setSelectStatus] = useState(Array(testdata.length).fill(false))
   const [deletedData,setDeletedData] = useState<string[]>([])
-  const handleFilter = (e:string)=>{
+  const handleFilter = (e:string)=>{/*
         setsearchWord(e.toLowerCase());
         console.log(e.toString());
         const newFilter = renderData.filter((item:any)=>{
@@ -30,20 +35,33 @@ function HotelHotels() {
         }
         else{
            setrenderData(newFilter)
-        }
+        }*/
         
   }
   
   useEffect(()=>{
-        if(renderData===originaldata){
-            setrenderData(originaldata); 
-        } 
-        else if(renderData.length==0){
-            if (searchWord==""){
-            setrenderData(originaldata);
-            }
-        } 
-    })
+      const userData:any = getCurrentUser() ;
+      //console.log(userData.userID)
+      const originaldat = async () =>{ 
+      const res = await apiClient(`${config.api_url.localHost}/Hotel/myHotel/${userData.userID}`,{method : 'GET',}) 
+      console.log("hotel");
+      console.log(res.data.hotels);
+      setrenderData(res.data.hotels);
+      return res.data;
+      }
+      originaldat()
+      
+      
+        // if(renderData===originaldata){
+        //     setrenderData(originaldata); 
+        // } 
+        // else if(renderData.length==0){
+        //     if (searchWord==""){
+        //     setrenderData(originaldata);
+        //     }
+        // } 
+    },[])
+    
     const toggleDelete = () =>{
       setSelectDelete(!selectDelete)
       if(selectDelete){
@@ -56,10 +74,10 @@ function HotelHotels() {
       const updatedStatus = selectStatus.map((status,i)=>{
         if (i==index){
           if (!status){
-          deletedData.push(testdata[i]._id)
+          deletedData.push(testdata[i].id)
           }
           else {
-          setDeletedData(deletedData.filter(data => data!== testdata[i]._id))
+          setDeletedData(deletedData.filter(data => data!== testdata[i].id))
           }
           return !status
         }
@@ -116,11 +134,8 @@ function HotelHotels() {
           </div>:
           ''
       }
-      <div className = "md:justify-self-center">
-          <p>aaaaa</p>
-          <input className="" type="text" placeholder="search si ai sus" onChange={e => handleFilter(e.target.value)}/>
-      </div>
-      <div className="md:grid md:grid-flow-col md:justify-self-center ">
+      
+      <div className="md:grid md:grid-flow-col md:justify-self-center mt-5">
           <div className=" w-96 "></div>
           <div className=" w-96 "></div>
           <div className="flex space-x-4 ml-72 md:ml-0">
@@ -175,14 +190,14 @@ function HotelHotels() {
           <div className=" " ></div>
           <div className=" col-span-4 w-auto ">
           <div className="flex justify-end relative" >
-            <Link to = {`/hotel/${data._id}/addpromotion/`} >
+            <Link to = {`/hotel/${data.id}/addpromotion/`} >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute top-7 right-[13%] md:right-[8%]"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" /></svg>
             </Link>
-            <Link to = {`/hotel/${data._id}/edit`} >
+            <Link to = {`/hotel/${data.id}/edit`} >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute top-7 right-[3%] md:right-[4%]"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
             </Link>
           </div>
-          <Link to = {`/hotel/${data._id}`} >
+          <Link to = {`/hotel/${data.id}`} >
             <HotelCard data = {data} />
           </Link>
           </div>

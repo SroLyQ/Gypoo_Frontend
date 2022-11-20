@@ -2,21 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 type dataType = {
   data:{
-    _id: string;
-    index: number;
-    isAviable: boolean;
-    price: number;
-    picture: Array<string>;
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    about: string;
-    discount : number;
-    rating: number;
-    reviews: number;
-    room: Array<any>;
-    }
+        id: string;
+        isAvailable :boolean;
+        name:string;
+        email:string;
+        phone:string;
+        address:string;
+        about:string;
+        mapURL:string;
+        ownerID:string;
+        locationType:any;
+        picture:Array<string>;
+        price:number;
+        discount:number;
+        rating:number;
+        review:number;
+        room: Array<any>;
+  }
 };
 const Star = (n: number) => {
   const arr = new Array(5);
@@ -31,6 +33,7 @@ const Star = (n: number) => {
   return arr;
 };
 const HotelCard = ({ data }: dataType) => {
+  console.log(data)
   return (
     <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5 pr-7">
     <div className="w-1/4 ">
@@ -102,7 +105,7 @@ const HotelCard = ({ data }: dataType) => {
           })}
         </div>
         <div className="text-right text-sm md:text-base">
-          {data.reviews} รีวิว
+          {data.review} รีวิว
         </div>
         <div>
           {data.discount == 0 ? (
@@ -142,7 +145,7 @@ const HotelCard = ({ data }: dataType) => {
           )}
         </div>
         <div className=" text-center">
-          {data.isAviable ? (
+          {data.isAvailable ? (
             <button className="rounded-lg bg-green-500 p-2 text-white">
               มีห้องว่าง
             </button>
