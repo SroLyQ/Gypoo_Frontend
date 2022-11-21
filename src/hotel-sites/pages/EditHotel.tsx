@@ -1,16 +1,28 @@
 import { useEffect, useState, FormEvent,ChangeEvent } from 'react';
 import {useParams} from 'react-router-dom';
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService'; // ต้องใช้
+import config from '../../config.json';
+import formatroom from './formatRoomtype.json'
 function EditHotel() {
   const {id} = useParams();
-  const [dataHotel,setDataHotel] = useState({}); // ใช้รับข้อมูลจาก backend ที่ get มา
+  const [dataHotel,setDataHotel] = useState(formatroom); // ใช้รับข้อมูลจาก backend ที่ get มา
   const locationTypeForm = {
     isHotel: false ,
     isRestaurant: false ,
     isTravel: false ,
  };
-
-  useEffect(() => {
-    // getData();
+ const [ownerID,setownerID] = useState('')
+ const image :Array<string> = []
+ useEffect(()=>{
+  const originaldat = async () =>{ 
+  const res = await apiClient(`${config.api_url.localHost}/Hotel/${id}`,{method : 'GET',}) 
+  //console.log("kuy")
+  //console.log(res.data.hotel)
+  setDataHotel(res.data.hotel)
+  return res.data;
+  }
+  originaldat()
   },[])
 
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
@@ -24,41 +36,27 @@ function EditHotel() {
       mapURL: { value: string };
     };
 
-    if (target.name.value == '') {
-      alert('โปรดกำหนดหัวข้อ');
-    } else if (target.about.value == '') {
-      alert('โปรดใสรายละเอียด');
-    } else if (
-      !locationTypeForm.isHotel&&
-      !locationTypeForm.isRestaurant &&
-      !locationTypeForm.isTravel
-    ) {
-      alert('โปรดเลือกประเภทของสถานที่');
-      console.log(locationTypeForm)
-    } else if (target.email.value == ''){
-      alert('โปรดใส่อีเมล');
-    } else if (target.phone.value == ''){
-      alert('โปรดใส่เบอร์โทรศัพท์');
-    } else if (target.address.value == ''){
-      alert('โปรดใส่ที่อยู่');
-    } else if (target.mapURL.value == '') {
-      alert('โปรดใส่ลิงก์แผนที่');
-    } else {
-      const jason = JSON.stringify({
-        name: target.name.value,
+    
+    const jason = JSON.stringify({
+        name: target.name.value == '' ? dataHotel: target.name.value,
+        email: target.email.value,
+        phone: target.phone.value,
+        address: target.address.value,
         about: target.about.value,
         mapURL: target.mapURL.value,
-        email:target.mapURL.value,
-        phone:target.phone.value,
-        address:target.address.value,
+        ownerID : ownerID,
         locationType: locationTypeForm,
+        picture : image
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-    }
-
+      const res =
+        await apiClient(`${config.api_url.localHost}/Hotel/{id}`,{method : 'PUT',headers :{"Content-Type" : "application/json"} ,data : jason})
+        console.log("ok");
+        console.log(res.data);
+    
     // try{
-    //   axios.post("http://localhost:8000/edithotel",{
+    //   axios.post("http://localhost:8000/addhotel",{
     //     data : jason,
     //   });
     // } catch (err) {
@@ -66,28 +64,20 @@ function EditHotel() {
     // }
   };
 
-  // async function getData() {
-  //   try{
-  //     const response = await axios.get("http://localhost:8000/getedithotel",{
-  //       params:{
-  //         _id : _id,
-  //       }
-  //     });
-  //     console.log(response);
-  //     setDataHotel(response);
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  const uploadImg = async (e:ChangeEvent<HTMLInputElement>) => {
+  const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const body = {
-      files : e.target.value
+    console.log("upload");
+    
+    const formData = new FormData();
+    if (e.target.files){
+      formData.append("files",e.target.files[0])
     }
-    // const res = await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',data : body})
-    console.log(body)
-  }
+    const res =  await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',headers :{"Content-Type" : "multipart/form-data"} ,data : formData})
+    console.log(res)
+    image.push(res.data.imgPath[0])
+    console.log(image)
+  };
+  
 
   return (
     <div className="pt-28">
@@ -125,7 +115,9 @@ function EditHotel() {
               type="text"
               id="title"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ชื่อที่พัก ร้านอาหาร หรือสถานที่ท่องเที่ยว"
+              placeholder= {dataHotel.name}
+              //value= {dataHotel.name}
+              
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
               รายละเอียด
@@ -133,7 +125,7 @@ function EditHotel() {
             <textarea
               id="description"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 pt-1 h-32 md:h-64 w-full"
-              placeholder="รายละเอียด"
+              placeholder={dataHotel.about}
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
               ประเภทของสถานที่
@@ -162,7 +154,7 @@ function EditHotel() {
               type="text"
               id="email"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="อีเมล"
+              placeholder={dataHotel.email}
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
               เบอร์โทรศัพท์
@@ -172,7 +164,7 @@ function EditHotel() {
               type="text"
               id="phone"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="เบอร์โทรศัพท์"
+              placeholder={dataHotel.phone}
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
               ที่อยู่
@@ -182,7 +174,7 @@ function EditHotel() {
               type="text"
               id="address"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ที่อยู่"
+              placeholder={dataHotel.address}
             />
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm">
               แผนที่
@@ -192,7 +184,7 @@ function EditHotel() {
               type="text"
               id="mapURL"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ลิงก์แผนที่"
+              placeholder={dataHotel.mapURL} 
             />
             <p className="py-1"></p>
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">

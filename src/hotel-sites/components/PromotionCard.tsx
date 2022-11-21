@@ -44,6 +44,7 @@ function PromotionCard ({p}:promo){
                             </div>
                             <div className=' col-span-3'>
                             <div className='block space-y-1 ml-5'>
+                                <div className='text-2xl mt-5'>{p.title}</div>
                                 <div className='text-xl mt-5'>ส่วนลด {p.percent}%</div>
                                 <div className='text-xl mt-5'>จาก {name}</div>
                                 <div className=' text-blue-400'>ตั้งแต่ {p.startDate}</div>
