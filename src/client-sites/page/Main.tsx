@@ -1141,18 +1141,18 @@ function Main() {
                       src="https://img.redbull.com/images/c_crop,x_982,y_0,h_2133,w_1280/c_fill,w_400,h_660/q_auto,f_auto/redbullcom/2022/6/7/ay947dlkelia2kvgkstd/michaela-mimi-lintrup-portrait"
                       className=" w-[390px] object-cover rounded-l-xl"
                     />
-                    <div className="col-span-2 p-2 md:p-5">
-                      <p className="font-kanit xs:text-xl md:text-4xl">{data.name}</p>
+                    <div className="col-span-2 p-2 md:p-5 lg:p-5 xl:p-5">
+                      <p className="font-kanit md:text-4xl">{data.name}</p>
                       <div className="flex">
-                        <p className="font-kanit text-sm md:text-1xl text-blue-700">
+                        <p className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg text-blue-700">
                           {data.address}
                         </p>
                       </div>
-                      <p className="font-kanit text-sm md:text-1xl text-gray-500 truncate">
+                      <p className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg text-gray-500 truncate">
                         {data.about}
                       </p>
                     </div>
-                    <div className="grid grid-flow-rows md:grid-rows-6 p-2 md:p-5 border-l border-[#D8D8D8]">
+                    <div className="grid grid-flow-rows md:grid-rows-6 lg:grid-rows-6 xl:grid-rows-6 p-2 md:p-5 lg:p-5 xl:p-5 border-l border-[#D8D8D8]">
                       <div className="flex justify-end">
                         {Star(data.rating).map((s: number, i) => {
                           return s ? (
@@ -1188,23 +1188,23 @@ function Main() {
                           );
                         })}
                       </div>
-                      <div className="font-kanit text-sm md:text-1xl md:row-span-1 text-right">
+                      <div className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg md:row-span-1 lg:row-span-1 xl:row-span-1 text-right">
                         {data.review} รีวิว
                       </div>
-                      <div className="font-kanit text-sm md:text-1xl md:row-span-1  md:ml-28 bg-red-500 text-right my-auto text-white ">
+                      <div className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg md:row-span-1 lg:row-span-1 xl:row-span-1  md:ml-28 bg-red-500 text-right my-auto text-white ">
                         {/* {data.discount > 0 ? (
                           <div>SALE ! ลด {data.discount}% วันนี้</div>
                         ) : (
                           ''
                         )} */}
                       </div>
-                      <div className="font-kanit text-sm md:text-1xl md:row-span-2 text-right">
+                      <div className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg md:row-span-2 lg:row-span-12 xl:row-span-2 text-right">
                         <div>ราคาเริ่มต้น (ต่อคืน)</div>
-                        <div className="text-red-500 md:text-[30px] font-bold">
+                        <div className="text-red-500 md:text-[30px] lg:text-[30px] xl:text-[30px] font-bold">
                           ฿ 2000
                         </div>
                       </div>
-                      <button className="font-kanit bg-blue-500 hover:bg-blue-700 text-sm md:row-span-1  text-white font-bold rounded">
+                      <button className="font-kanit bg-blue-500 hover:bg-blue-700 text-sm md:row-span-1 lg:row-span-1 xl:row-span-1 md:text-lg lg:text-lg xl:text-lg text-white font-bold rounded">
                         รายระเอียดเพิ่มเติม
                       </button>
                     </div>
