@@ -5,14 +5,13 @@ import 'tw-elements';
 import Imgslide from '../components/imgslide';
 import GooGleMAP from '../components/googleMap';
 import apiClient from '../../api/apiClient';
-import config from '../../config.json'
-import { useSearchParams } from 'react-router-dom';
+import config from '../../config.json';
+import { useParams } from 'react-router-dom';
 import { getCurrentUser } from '../../services/userService';
 
-
 function Activity() {
-
-
+  const params = useParams();
+  console.log(params.id);
   const [items, setItems] = useState({
     hotels: [
       {
@@ -39,30 +38,35 @@ function Activity() {
     ],
   });
 
-  const [sendContent, setSendContent] = useState("");
+  const [sendContent, setSendContent] = useState('');
 
+  const [commentObject, setCommentObject] = useState({
+    content: sendContent,
+    commentBy: ' ',
+    commentOn: '637b8bf80d570d6712626f1f',
+    rating: 5,
+  });
 
-  const [commentObject,setCommentObject] = useState({
-      content: sendContent,
-      commentBy: ' ',
-      commentOn: '637b8bf80d570d6712626f1f',
-      rating: 5,
-  })
+  const useOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setSendContent(e.target.value);
+  };
 
-  const useOnChange = (e : React.ChangeEvent<HTMLTextAreaElement>) => {
-    setSendContent(e.target.value)
-  }
-
-  const sentComment = async() => {
-    const user : any = getCurrentUser();
-    setCommentObject({...commentObject, content : sendContent})
-    setCommentObject({...commentObject, commentBy : user.userID})
-    const res = await apiClient(`${config.api_url.localHost}/Comment`, { method: 'POST', headers : {"Content-Type" : "application/json"},data : commentObject});
-    console.log("ok");
-  }
+  const sentComment = async () => {
+    const user: any = getCurrentUser();
+    setCommentObject({ ...commentObject, content: sendContent });
+    setCommentObject({ ...commentObject, commentBy: user.userID });
+    const res = await apiClient(`${config.api_url.localHost}/Comment`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: commentObject,
+    });
+    console.log('ok');
+  };
   useEffect(() => {
     const getAll = async () => {
-      const res = await apiClient(`${config.api_url.localHost}/Hotel`, { method: 'GET', });
+      const res = await apiClient(`${config.api_url.localHost}/Hotel`, {
+        method: 'GET',
+      });
       console.log(res.data.hotels);
       setItems(res.data);
       // console.log(items.);
@@ -95,14 +99,12 @@ function Activity() {
           <div className="container mx-auto flex-wrap">
             <div key={key}>
               <Imgslide />
-              <div className='block'>
-                <div className='md:hidden'>
+              <div className="block">
+                <div className="md:hidden">
                   <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
                     <div className="mb-[5px]">
                       <div className="mb-[5px]">
-                        <p className="text-[20px] font-semibold">
-                          {data.name}
-                        </p>
+                        <p className="text-[20px] font-semibold">{data.name}</p>
                       </div>
 
                       <div className="mb-[5px] flex">
@@ -146,19 +148,14 @@ function Activity() {
                       </div>
                     </div>
                     <div className="border border-[#D8D8D8]"></div>
-                    <p className="mt-[10px] text-[15px]">
-                      {data.about}
-                    </p>
+                    <p className="mt-[10px] text-[15px]">{data.about}</p>
                   </div>
-
                 </div>
                 <div>
                   <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
                     <div className="mb-[5px]">
                       <div className="mb-[5px]">
-                        <p className="text-[26px] font-semibold">
-                          {data.name}
-                        </p>
+                        <p className="text-[26px] font-semibold">{data.name}</p>
                       </div>
 
                       <div className="mb-[5px] flex">
@@ -202,17 +199,13 @@ function Activity() {
                       </div>
                     </div>
                     <div className="border border-[#D8D8D8]"></div>
-                    <p className="mt-[15px]">
-                      {data.about}
-                    </p>
+                    <p className="mt-[15px]">{data.about}</p>
                   </div>
-
                 </div>
-
               </div>
 
-              <div className='block'>
-                <div className='md:hidden'>
+              <div className="block">
+                <div className="md:hidden">
                   <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
                     <div className="mb-[5px]">
                       <div className="mb-[5px]">
@@ -220,9 +213,10 @@ function Activity() {
                       </div>
                     </div>
                     <div className="border border-[#D8D8D8]"></div>
-                    <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
+                    <p className="mt-[15px]">
+                      <GooGleMAP></GooGleMAP>
+                    </p>
                   </div>
-
                 </div>
                 <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
                   <div className="mb-[5px]">
@@ -231,7 +225,9 @@ function Activity() {
                     </div>
                   </div>
                   <div className="border border-[#D8D8D8]"></div>
-                  <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
+                  <p className="mt-[15px]">
+                    <GooGleMAP></GooGleMAP>
+                  </p>
                 </div>
               </div>
 
@@ -259,7 +255,11 @@ function Activity() {
                             onChange={useOnChange}
                           />
                           <div className="flex flex-row-reverse">
-                            <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]" type = "button" onClick= {sentComment}>
+                            <button
+                              className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]"
+                              type="button"
+                              onClick={sentComment}
+                            >
                               ยืนยัน
                             </button>
                           </div>
@@ -269,7 +269,7 @@ function Activity() {
                   </div>
                 </div>
 
-                <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block " >
+                <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block ">
                   <div className="mb-[14px]">
                     <p className="text-[26px]">Boom Burapee</p>
                   </div>
@@ -284,16 +284,19 @@ function Activity() {
                     </div>
                     <div className="border border-[#D8D8D8]"></div>
 
-                    <form className="w-[75%]" 
-                    >
-                      <div className="border rounded-md border-[#D8D8D8] p-3 text-slate-500" >
+                    <form className="w-[75%]">
+                      <div className="border rounded-md border-[#D8D8D8] p-3 text-slate-500">
                         <textarea
                           className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none text-[15px]"
                           placeholder="Write a comment..."
                           onChange={useOnChange}
                         />
-                        <div className="flex flex-row-reverse" >
-                          <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%] " type = "button" onClick= {sentComment}>
+                        <div className="flex flex-row-reverse">
+                          <button
+                            className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%] "
+                            type="button"
+                            onClick={sentComment}
+                          >
                             ยืนยัน
                           </button>
                         </div>
@@ -352,13 +355,14 @@ function Activity() {
                       </div>
                       <div className="border border-[#D8D8D8] my-5"></div>
 
-                      <form className="w-full" >
+                      <form className="w-full">
                         <div className=" text-slate-500 text-[15px]">
                           <div className="px-2 py-3 w-full h-full grow resize-none focus:outline-none">
-                            A little out of the way but tucked nicely away from the
-                            noise and traffic. Spotless rooms and general areas. Staff
-                            very friendly and although not much English spoken we got by
-                            with smiles and Google translate.
+                            A little out of the way but tucked nicely away from
+                            the noise and traffic. Spotless rooms and general
+                            areas. Staff very friendly and although not much
+                            English spoken we got by with smiles and Google
+                            translate.
                           </div>
                         </div>
                       </form>
@@ -417,23 +421,21 @@ function Activity() {
                     <form className="w-[75%]">
                       <div className=" text-slate-500">
                         <div className="px-2 py-3 w-full h-full grow resize-none focus:outline-none">
-                          A little out of the way but tucked nicely away from the
-                          noise and traffic. Spotless rooms and general areas. Staff
-                          very friendly and although not much English spoken we got by
-                          with smiles and Google translate.
+                          A little out of the way but tucked nicely away from
+                          the noise and traffic. Spotless rooms and general
+                          areas. Staff very friendly and although not much
+                          English spoken we got by with smiles and Google
+                          translate.
                         </div>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-
             </div>
-
           </div>
         );
       })}
-
     </div>
   );
 }
