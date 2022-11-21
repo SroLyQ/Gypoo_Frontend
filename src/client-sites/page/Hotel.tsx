@@ -12,13 +12,6 @@ import apiClient from '../../api/apiClient';
 import { getCurrentUser } from '../../services/userService';
 import { useParams } from 'react-router-dom';
 import StarRate from '../components/StarRate';
-const testFaci = [
-  'อาหารเช้า',
-  'สัตว์เลี้ยงเข้าพักได้',
-  'ที่จอดรถ',
-  'ปิ้งบาร์บีคิว',
-  'Free Wi-Fi',
-];
 const tempId = '637b8bf80d570d6712626f1f';
 interface hotel {
   id: string;
