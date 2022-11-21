@@ -1132,14 +1132,14 @@ function Main() {
       <div>
         {items.hotels.map((data) => {
           return (
-            <div className="mx-8 mb-4 md:mx-52 ">
-              <div className="border-2 rounded-xl shadow-md  ">
+            <div className="mb-4">
+              <div className="border-2 rounded-xl shadow-md">
                 <div>
                   <div className="grid grid-cols-4 grid-flow-row">
                     <img
                       // src={config.api_url.imgHost + data.picture[0]}
                       src="https://img.redbull.com/images/c_crop,x_982,y_0,h_2133,w_1280/c_fill,w_400,h_660/q_auto,f_auto/redbullcom/2022/6/7/ay947dlkelia2kvgkstd/michaela-mimi-lintrup-portrait"
-                      className=" w-[390px] h-72 object-cover "
+                      className=" w-[390px] object-cover rounded-l-xl"
                     />
                     <div className="col-span-2 p-5">
                       <p className="font-kanit text-4xl">{data.name}</p>
@@ -1148,7 +1148,7 @@ function Main() {
                           {data.address}
                         </p>
                       </div>
-                      <p className="font-kanit text-1xl text-gray-500">
+                      <p className="font-kanit text-1xl text-gray-500 truncate">
                         {data.about}
                       </p>
                     </div>
@@ -1162,7 +1162,7 @@ function Main() {
                               viewBox="0 0 24 24"
                               stroke-width="1"
                               stroke="#EDEA10 "
-                              className="md:w-8 w-4 md:h-8 h-4"
+                              className=""
                             >
                               <path
                                 stroke-linecap="round"
@@ -1177,7 +1177,7 @@ function Main() {
                               viewBox="0 0 24 24"
                               stroke-width="1"
                               stroke="#EDEA10 "
-                              className="md:w-8 w-4 md:h-8 h-4"
+                              className=""
                             >
                               <path
                                 stroke-linecap="round"
@@ -1188,7 +1188,7 @@ function Main() {
                           );
                         })}
                       </div>
-                      <div className="font-kanit text-1xl row-span-1 text-right ml-28 text-gray-500">
+                      <div className="font-kanit text-1xl row-span-1 text-right">
                         {data.review} รีวิว
                       </div>
                       <div className="font-kanit text-1xl row-span-1  ml-28 bg-red-500 text-center my-auto text-white ">
@@ -1198,7 +1198,7 @@ function Main() {
                           ''
                         )} */}
                       </div>
-                      <div className="font-kanit text-1xl row-span-2 text-right ml-28 ">
+                      <div className="font-kanit text-1xl row-span-2 text-right">
                         <div>ราคาเริ่มต้น (ต่อคืน)</div>
                         <div className="text-red-500 text-[30px] font-bold">
                           ฿ 2000
