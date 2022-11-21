@@ -244,7 +244,6 @@ function Activity() {
                       <div className="basis-1/4 mb-5">
                         <p className="text-[18px]">ให้คะแนนที่พัก</p>
                         <div className="mb-[5px]">
-                          <StarRating starSize={'24px'} />
                         </div>
                       </div>
 
@@ -280,7 +279,7 @@ function Activity() {
                     <div className="basis-1/4">
                       <p className="text-[20px]">ให้คะแนนที่พัก</p>
                       <div className="mb-[5px]">
-                        <StarRating starSize={'24px'} />
+                        {'Star Rating'}
                       </div>
                     </div>
                     <div className="border border-[#D8D8D8]"></div>
