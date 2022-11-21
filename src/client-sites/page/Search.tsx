@@ -5,16 +5,23 @@ import { FaMapMarkerAlt, FaAngleRight } from 'react-icons/fa';
 
 import apiClient from '../../api/apiClient';
 import config from '../../config.json';
+import hotel from './Hotel';
 
 function Search() {
   const [searchParams] = useSearchParams();
   let show = 0;
+  const searchKey = searchParams.get('key');
+  const searchGuest = searchParams.get('guest');
+  const checkIn = searchParams.get('checkin');
+  const checkOut = searchParams.get('checkout');
+  const room = searchParams.get('room');
+
   const [items, setItems] = useState<any>({
     hotels: [
       {
         id: '637b8bf80d570d6712626f1f',
         isAvailable: true,
-        name: 'Hotel Makasan',
+        name: 'error',
         email: 'Makasan@gmail.com',
         phone: '0954785214',
         address: '255/90',
@@ -44,7 +51,7 @@ function Search() {
       });
       show = 0;
       console.log('get', res.data);
-      hotelFitter(checkIn, checkOut, room, res.data);
+      hotelFitter(searchKey, checkIn, checkOut, room, searchGuest, res.data);
     };
     getAll();
   }, []);
@@ -61,64 +68,77 @@ function Search() {
     return arr;
   };
 
-  const hotelFitter = (
-    checkIn: any | null,
-    checkOut: any | null,
-    room: any | null,
+  const getRoom = async (Roomid: any) => {
+    const res = await apiClient(
+      `${config.api_url.localHost}/Room/getroom/${Roomid}`,
+      {
+        method: 'GET',
+      },
+    );
+    // console.log(res.data);
+    return res.data;
+  };
+
+  const hotelFitter = async (
+    searchKey: any,
+    checkIn: any,
+    checkOut: any,
+    room: any,
+    guest: any,
     hotelCheck: any,
   ) => {
-    console.log('checkIn:', checkIn);
-    console.log('checkOut:', checkOut);
-    console.log('Room:', room);
-    console.log('roomCheck:', hotelCheck);
-    let Checking = false;
-    let isFree = false;
-
-    if (room != null) {
-      for (const i of hotelCheck) {
-        if (checkIn == Number(i.date.replaceAll('/', ''))) {
-          //console.log('start:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-          } else {
-            isFree = false;
-            break;
-          }
-          Checking = true;
-        } else if (checkOut == Number(i.date.replaceAll('/', ''))) {
-          //console.log('end:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-            break;
-          } else {
-            isFree = false;
-            break;
-          }
-        } else if (Checking == true) {
-          //console.log('check:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-          } else {
-            isFree = false;
-            break;
+    for (let i = 0; i < hotelCheck.hotels.length; i++) {
+      let isHotelAvalible = false;
+      for (let j = 0; j < hotelCheck.hotels[i].room.length; j++) {
+        const roomCheck = await getRoom(hotelCheck.hotels[i].room[j]);
+        let Checking = false;
+        console.log(hotelCheck.hotels[i].name, searchKey);
+        if (
+          hotelCheck.hotels[i].room[j] != null &&
+          roomCheck.guest >= guest &&
+          (hotelCheck.hotels[i].name.includes(searchKey) ||
+            hotelCheck.hotels[i].about.includes(searchKey) ||
+            hotelCheck.hotels[i].address.includes(searchKey))
+        ) {
+          for (const data of roomCheck.roomCount30Day) {
+            if (checkIn.replaceAll('-', '') == data.date.replaceAll('/', '')) {
+              Checking = true;
+              if (Number(data.count) >= Number(room)) {
+                isHotelAvalible = true;
+              } else {
+                isHotelAvalible = false;
+                break;
+              }
+            } else if (
+              checkOut.replaceAll('-', '') == data.date.replaceAll('/', '')
+            ) {
+              Checking = false;
+              if (Number(data.count) >= Number(room)) {
+                isHotelAvalible = true;
+                break;
+              } else {
+                isHotelAvalible = false;
+                break;
+              }
+            } else if (Checking == true) {
+              //console.log('check:', Number(data.date.replaceAll('/', '')));
+              if (Number(data.count) >= Number(room)) {
+                isHotelAvalible = true;
+              } else {
+                isHotelAvalible = false;
+                break;
+              }
+            }
           }
         }
       }
+      if (isHotelAvalible == false) {
+        delete hotelCheck.hotels[i];
+      }
     }
-    if (isFree == true) {
-      return <div className=" bg-green-600 text-white   ">ได้</div>;
-    } else {
-      return <div className=" bg-red-600 text-white   ">ไม่ได้</div>;
-    }
-
     setItems(hotelCheck);
   };
 
-  const searchKey = searchParams.get('key');
-  const searchGuest = searchParams.get('guest');
-  const checkIn = searchParams.get('checkin');
-  const checkOut = searchParams.get('checkout');
-  const room = searchParams.get('room');
   return (
     <div className="pt-24">
       <div className="mx-8 md:mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
@@ -139,25 +159,15 @@ function Search() {
         </button>
       </div>
 
-      <div className="mx-52">
-        key : {searchKey} <br />
-        guest/room : {searchGuest} <br />
-        Room : {room} <br />
-        checkin : {checkIn?.replaceAll('-', '')} <br />
-        checkout : {checkOut?.replaceAll('-', '')} <br />
-      </div>
-
       <div className="search-post">
         {items.hotels.map((data: any, key: any) => {
           return (
             <div className="mx-8 mb-4 md:mx-52 ">
-              <div>{data.room.length > 0 ? <div>มีห้อง</div> : ''}</div>
-
               <div className="border-2 rounded-xl shadow-md  ">
                 <div key={key}>
                   <div className="grid grid-cols-4 grid-flow-row">
                     <img
-                      // src={config.api_url.imgHost + data.picture[0]}
+                      //src={config.api_url.imgHost + data.picture[0]}
                       src="https://img.redbull.com/images/c_crop,x_982,y_0,h_2133,w_1280/c_fill,w_400,h_660/q_auto,f_auto/redbullcom/2022/6/7/ay947dlkelia2kvgkstd/michaela-mimi-lintrup-portrait"
                       className=" w-[390px] h-72 object-cover "
                     />
