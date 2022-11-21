@@ -1,7 +1,7 @@
 import { useEffect, useState, FormEvent,ChangeEvent } from 'react';
 import {useParams} from 'react-router-dom';
 function EditHotel() {
-  const {_id} = useParams();
+  const {id} = useParams();
   const [dataHotel,setDataHotel] = useState({}); // ใช้รับข้อมูลจาก backend ที่ get มา
   const locationTypeForm = {
     isHotel: false ,
