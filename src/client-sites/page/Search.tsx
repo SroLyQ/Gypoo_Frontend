@@ -395,9 +395,12 @@ function Search() {
                               ฿ {data.price}
                             </div>
                           </div>
+                          <a href="/restaurant">
                           <button className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-white font-bold rounded">
                             รายระเอียดเพิ่มเติม
                           </button>
+                          </a>
+                          
                         </div>
                       </div>
                     </div>

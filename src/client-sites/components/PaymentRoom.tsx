@@ -16,7 +16,9 @@ function PaymentRoom() {
             ],
             day: 1,
             coupon: 50,
+
         },
+
     ];
     return (
 
