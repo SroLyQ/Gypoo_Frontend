@@ -27,9 +27,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/hotel" element={<Hotel />} />
-          <Route path="/restaurant" element={<Restaurant />} />
-          <Route path="/activity" element={<Activity />} />
           <Route path="/hotelhotels" element={<HotelHotels />} />
           <Route path="/addhotel" element={<AddHotel />} />
           <Route path="/hotelhistory" element={<HotelHistory />} />
@@ -42,6 +39,10 @@ function App() {
           <Route path="/hotel/:id/addpromotion" element={<AddPromotion />} />
           <Route path="/search" element={<Search />} />
           <Route path="/renthotel" element={<RentHotel />} />
+
+          <Route path="/hotel/:id" element={<Hotel />} />
+          <Route path="/activity/:id" element={<Activity />} />
+          <Route path="/restaurant/:id" element={<Restaurant />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -231,7 +231,6 @@ function Search() {
 
   //   return true;
   // };
-  
 
   const searchKey = searchParams.get('key');
   const searchGuest = searchParams.get('guest');
@@ -267,7 +266,7 @@ function Search() {
         checkout : {checkOut?.split('-')} <br />
       </div> */}
 
-      <div className="search-post">
+      {/* <div className="search-post">
         {items.hotels.map((data, key) => {
           if (data.room.length) {
             if (
@@ -281,14 +280,7 @@ function Search() {
               show += 1;
               return (
                 <div className="mx-8 mb-4 md:mx-52 ">
-                  <div>
-                    {/* {hotelCheck(
-                      Number(checkIn?.replaceAll('-', '')),
-                      Number(checkOut?.replaceAll('-', '')),
-                      Number(room),
-                      data.room[0].roomCount30Day,
-                    )} */}
-                  </div>
+                  <div></div>
                   <div className="border-2 rounded-xl shadow-md  ">
                     <div key={key}>
                       <div className="grid grid-cols-4 grid-flow-row">
@@ -305,13 +297,6 @@ function Search() {
                             </p>
                           </div>
                           <p className="font-kanit text-1xl text-gray-500">
-                            {/* {data.room[0].roomCount30Day.map((data) => {
-                          return (
-                            <div>
-                              {data.date?.split('/')} {data.count}
-                            </div>
-                          );
-                        })} */}
                             {data.about}
                           </p>
                         </div>
@@ -368,11 +353,10 @@ function Search() {
                             </div>
                           </div>
                           <a href="/restaurant">
-                          <button className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-white font-bold rounded">
-                            รายระเอียดเพิ่มเติม
-                          </button>
+                            <button className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-white font-bold rounded">
+                              รายระเอียดเพิ่มเติม
+                            </button>
                           </a>
-                          
                         </div>
                       </div>
                     </div>
@@ -389,7 +373,7 @@ function Search() {
         ) : (
           ''
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
