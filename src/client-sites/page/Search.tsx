@@ -8,8 +8,6 @@ import config from '../../config.json';
 
 function Search() {
   const [searchParams] = useSearchParams();
-  const searchKey = searchParams.get('key');
-  const searchGuest = searchParams.get('guest');
 
   const [items, setItems] = useState({
     hotels: [
@@ -187,7 +185,6 @@ function Search() {
       });
       console.log(res.data);
       setItems(res.data);
-      console.log(items.hotels[0].id);
     };
     getAll();
   }, []);
@@ -201,10 +198,25 @@ function Search() {
       }
       arr[i] = str;
     }
-
     return arr;
   };
 
+  const hotelCheck = (
+    checkIn: number | null,
+    checkOut: number | null,
+    room: number | null,
+  ) => {
+    console.log('checkIn:', checkIn);
+    console.log('checkOut:', checkOut);
+    console.log('Room:', room);
+    return true;
+  };
+
+  const searchKey = searchParams.get('key');
+  const searchGuest = searchParams.get('guest');
+  const checkIn = searchParams.get('checkin');
+  const checkOut = searchParams.get('checkout');
+  const room = searchParams.get('room');
   return (
     <div className="pt-24">
       <div className="mx-8 md:mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
@@ -224,7 +236,14 @@ function Search() {
           ระยะทางใกล้ที่สุด
         </button>
       </div>
-      {/* <div className=" mt-16">{items.hotels[0].id}</div> */}
+
+      <div className="mx-52">
+        key : {searchKey} <br />
+        guest/room : {searchGuest} <br />
+        Room : {room} <br />
+        checkin : {checkIn?.split('-')} <br />
+        checkout : {checkOut?.split('-')} <br />
+      </div>
 
       <div className="search-post">
         {items.hotels.map((data, key) => {
@@ -234,7 +253,7 @@ function Search() {
                 <div key={key}>
                   <div className="grid grid-cols-4 grid-flow-row">
                     <img
-                      src="https://i.pinimg.com/originals/2f/42/67/2f42676a6c2ec816f4c191ccb271dd53.jpg"
+                      src={data.picture[0]}
                       className=" w-[390px] h-72 object-cover "
                     />
                     <div className="col-span-2 p-5">
@@ -246,6 +265,13 @@ function Search() {
                         </p>
                       </div>
                       <p className="font-kanit text-1xl text-gray-500">
+                        {/* {data.room[0].roomCount30Day.map((data) => {
+                          return (
+                            <div>
+                              {data.date?.split('/')} {data.count}
+                            </div>
+                          );
+                        })} */}
                         {data.about}
                       </p>
                     </div>

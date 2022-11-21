@@ -2,9 +2,13 @@ import React,{useState,useEffect} from 'react'
 import testdata from './testpromotion.json'
 import PromotionCard from '../components/PromotionCard'
 import { Routes,Route,Link } from 'react-router-dom'
+import config from '../../config.json'  
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService'
+import formatPromotion from './formatPromotion.json'
 function HotelDiscount() {
-  const [renderData,setrenderData] = React.useState(testdata)
-  const originaldata = testdata
+  const [renderData,setrenderData] = React.useState(formatPromotion)
+  const originaldata = formatPromotion
   const [searchWord,setsearchWord] = useState("");
   const excludeColumns = ["name","address"];
   const handleFilter = (e:string)=>{
@@ -25,22 +29,32 @@ function HotelDiscount() {
         }
         
   }
+  // useEffect(()=>{
+  //       if(renderData===originaldata){
+  //           setrenderData(originaldata); 
+  //       } 
+  //       else if(renderData.length==0){
+  //           if (searchWord==""){
+  //           setrenderData(originaldata);
+  //           }
+  //       } 
+  //   })
   useEffect(()=>{
-        if(renderData===originaldata){
-            setrenderData(originaldata); 
-        } 
-        else if(renderData.length==0){
-            if (searchWord==""){
-            setrenderData(originaldata);
-            }
-        } 
-    })
+      const userData:any = getCurrentUser() ;
+      //console.log(userData.userID)
+      const originaldat = async () =>{ 
+      const res = await apiClient(`${config.api_url.localHost}/Promotion/my_promotion/${userData.userID}`,{method : 'GET',}) 
+      console.log("promotion");
+      console.log(res.data.promotions);
+      setrenderData(res.data.promotions);
+      return res.data;
+      }
+      originaldat()
+  },[])
+    
   return (
     <div className="pt-24">
-      <div>
-          <p>aaaaa</p>
-          <input className="" type="text" placeholder="search si ai sus" onChange={e => handleFilter(e.target.value)}/>
-      </div>
+      
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
       {
         renderData.map((data,id)=>{

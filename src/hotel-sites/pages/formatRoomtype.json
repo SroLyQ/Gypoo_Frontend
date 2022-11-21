@@ -1,0 +1,37 @@
+{
+        "id":"637a46251a451ba0de2dd734",
+        "isAvailable":true,
+        "name":"Test1 Hotel",
+        "email":"test1@gmail.com",
+        "phone":"0111111111",
+        "address":"11/11 11 Bankok Kanbob 21111",
+        "about":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lorem elit, iaculis sit amet semper id, feugiat id lectus. Maecenas mattis vestibulum lacinia. Integer sollicitudin justo eu venenatis viverra. Nunc sed urna sagittis metus laoreet sodales eu et odio. Cras posuere feugiat orci, nec pretium nisl ultricies sit amet. Aenean facilisis laoreet diam vitae fermentum. Phasellus vitae ipsum sit amet lectus volutpat ullamcorper vel at lectus. Integer tincidunt ultrices est, quis vulputate ante iaculis eu. Praesent consectetur elit id sem hendrerit porta. Ut id placerat arcu.",
+        "mapURL":"https://somethingMap.com",
+        "ownerID":"6378ca0a297675a2b1863c5d",
+        "locationType":{"isHotel":true,"isRestaurant":true,"isTravel":true},
+        "picture":["string"],
+        "price":500,
+        "discount":0,
+        "rating":0,
+        "review":0,
+        "room":[
+            {
+                "idRoom":"637a470d1a451ba0de2dd739",
+                "roomType":"L",
+                "guest":4,
+                "roomCount":0,
+                "currentRoom":0,
+                "discount":0,
+                "picture":["kRoomPic"],
+                "roomPrice":500,
+                "roomCount30Day":[{"date":"20/11/2022","count":0},{"date":"21/11/2022","count":0},{"date":"22/11/2022","count":0},{"date":"23/11/2022","count":0},{"date":"24/11/2022","count":0},{"date":"25/11/2022","count":0},{"date":"26/11/2022","count":0},{"date":"27/11/2022","count":0},{"date":"28/11/2022","count":0},{"date":"29/11/2022","count":0},{"date":"30/11/2022","count":0},{"date":"01/12/2022","count":0},{"date":"02/12/2022","count":0},{"date":"03/12/2022","count":0},{"date":"04/12/2022","count":0},{"date":"05/12/2022","count":0},{"date":"06/12/2022","count":0},{"date":"07/12/2022","count":0},{"date":"08/12/2022","count":0},{"date":"09/12/2022","count":0},{"date":"10/12/2022","count":0},{"date":"11/12/2022","count":0},{"date":"12/12/2022","count":0},{"date":"13/12/2022","count":0},{"date":"14/12/2022","count":0},{"date":"15/12/2022","count":0},{"date":"16/12/2022","count":0},{"date":"17/12/2022","count":0},{"date":"18/12/2022","count":0},{"date":"19/12/2022","count":0}],
+                "service":{
+                    "isWifi":true,"isParking":true,"isAnimals":true,"isBreakFast":true,"isBuffet":true,"isOther":true
+                }
+                }
+                ],
+                "comments":[]
+}
+            
+
+
