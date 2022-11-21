@@ -1,14 +1,24 @@
 import { useEffect, useState, FormEvent } from 'react';
 import {useParams} from 'react-router-dom';
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService'; // ต้องใช้
+import config from '../../config.json';
 function AddPromotion() {
-  const {_id} = useParams();
+  const {id} = useParams();
   const [date, setDate] = useState('01-01-2022');
+  const [ownerID, setOwnerId] = useState('');
+  useEffect(()=>{
+    const userData:any = getCurrentUser() ;
+    setOwnerId(userData.userID)
+    //console.log(userData.userID)
+    
+  },[])
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
      
       title: { value: string };
-      percent: { value: string };
+      percent: { value: number };
       description: { value: string };
       date: { value: string };
     };
@@ -20,17 +30,23 @@ function AddPromotion() {
       alert('โปรดใส่รายละเอียด');
     } else {
       const jason = JSON.stringify({
-        hotelId: _id,
+        hotelId: id,
         title: target.title.value,
         percent : target.percent.value,
         description: target.description.value,
-        date: newformdate,
+        endDate: newformdate,
+        ownerID : ownerID
         //file: img.value,
       });
       
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
+      const res =
+      await apiClient(`${config.api_url.localHost}/Promotion`,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
+      console.log("ok prom0tion");
+      console.log(res.data);
     }
+    
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',

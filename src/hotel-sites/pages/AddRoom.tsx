@@ -1,7 +1,11 @@
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent,ChangeEvent } from 'react';
 import { useParams} from 'react-router-dom';
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService'; // ต้องใช้
+import config from '../../config.json';
 function AddRoom() {
-  const {_id} = useParams()
+  const {id} = useParams()
+  console.log(id)
   const convenienceTypeForm = {
      isWifi: false ,
      isBreakfast: false ,
@@ -10,6 +14,14 @@ function AddRoom() {
      isBuffet: false ,
      isOther: false ,
   };
+  const [ownerID,setownerID] = useState('')
+  const image :Array<string> = []
+  useEffect(()=>{
+    const userData:any = getCurrentUser() ;
+    setownerID(userData.userID)
+    //console.log(userData.userID)
+    
+  },[])
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -18,6 +30,7 @@ function AddRoom() {
       roomprice: { value: number };
       guest: { value: number };
     };
+    
     if (target.roomtype.value == '') {
       alert('โปรดเลือกประเภทห้อง');
     } else if (target.roomcount.value <= 0 ) {
@@ -25,19 +38,23 @@ function AddRoom() {
     } else if(target.roomprice.value <= 0 ) {
       alert('โปรดใส่ราคาของห้อง');
     } else if( target.guest.value <= 0 ) {
-      alert('โปรดใส่คำจำนวนคนเข้าพัก');
+      alert('โปรดใส่ค่าจำนวนคนเข้าพัก');
     } else {
       const jason = JSON.stringify({
-        _id  : _id,
-        roomtype : target.roomtype.value,
-        roomcount : target.roomcount.value,
-        roomprice : target.roomprice.value,
+        idHotel  : id,
+        roomType : target.roomtype.value,
         guest : target.guest.value,
-        conveniencetype: convenienceTypeForm,
+        roomCount : target.roomcount.value,
+        roomprice : target.roomprice.value,
+        picture : image,
+        service: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-
+      const res =
+      await apiClient(`${config.api_url.localHost}/Room `,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
+      console.log("okAdd");
+      console.log(res.data);
       // try{
       //   axios.post("http://localhost:8000/addroom",{
       //     data : jason,
@@ -50,6 +67,19 @@ function AddRoom() {
     
   };
 
+  const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    console.log("upload");
+    
+    const formData = new FormData();
+    if (e.target.files){
+      formData.append("files",e.target.files[0])
+    }
+    const res =  await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',headers :{"Content-Type" : "multipart/form-data"} ,data : formData})
+    console.log(res)
+    image.push(res.data.imgPath[0])
+    console.log(image)
+  };
   return (
     <div className="pt-28">
       <div className="block w-screen ">
@@ -138,7 +168,7 @@ function AddRoom() {
             
             
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2 ">
-              จำนวนคนที่เข้าพัก
+              จำนวนคนที่เข้าพักสูงสุดต่อห้อง
             </p>
             <div className="px-2"></div>
             <input
