@@ -70,7 +70,7 @@ function AddHotel() {
       
       
     }
-    
+    window.location.assign('/hotelhotels');
     // try{
     //   axios.post("http://localhost:8000/addhotel",{
     //     data : jason,

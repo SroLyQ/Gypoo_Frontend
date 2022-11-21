@@ -36,7 +36,7 @@ function App() {
           <Route path="/hotelprofile" element={<HotelProfile />} />
           <Route path="/hoteldiscount" element={<HotelDiscount />} />
           <Route path="/myhotel/:id" element={<HotelInnerRoomCard />} />
-          <Route path="/hotel/:id/editroom/:_roomid" element={<EditRoom />} />
+          <Route path="/hotel/:id/editroom/:idRoom" element={<EditRoom />} />
           <Route path="/hotel/:id/edit" element={<EditHotel />} />
           <Route path="/hotel/:id/addroom" element={<AddRoom />} />
           <Route path="/hotel/:id/addpromotion" element={<AddPromotion />} />

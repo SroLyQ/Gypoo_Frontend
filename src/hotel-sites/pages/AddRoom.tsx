@@ -45,7 +45,7 @@ function AddRoom() {
         roomType : target.roomtype.value,
         guest : target.guest.value,
         roomCount : target.roomcount.value,
-        roomprice : target.roomprice.value,
+        roomPrice : target.roomprice.value,
         picture : image,
         service: convenienceTypeForm,
       });
@@ -64,7 +64,8 @@ function AddRoom() {
       // }
       
     }
-    
+    const path = "/myhotel/" + id
+    window.location.assign(path);
   };
 
   const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
