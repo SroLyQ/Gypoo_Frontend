@@ -46,7 +46,7 @@ function AddPromotion() {
       console.log("ok prom0tion");
       console.log(res.data);
     }
-    
+    window.location.assign('/hotelhotels');
     // await fetch('/route', {
     //   headers: {
     //     'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ const HotelCard = ({ data }: dataType) => {
   return (
     <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5 pr-7">
     <div className="w-1/4 ">
-        <img src = {data.picture[0]} className="object-cover object-left"/>
+        <img src = {"https://image.makewebeasy.net/makeweb/0/oDgJmY2kJ/DefaultData/%E0%B8%97%E0%B8%B5%E0%B8%A5%E0%B8%AD%E0%B8%8B%E0%B8%B9.png"} className="object-cover object-left"/>
     </div>
     <div className="block w-2/5 md:w-3/5  space-y-2">
         <p className="text-base md:text-xl">
