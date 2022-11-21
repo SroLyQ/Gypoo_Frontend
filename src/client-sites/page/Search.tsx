@@ -202,6 +202,14 @@ function Search() {
     return arr;
   };
 
+  const search = (data: Array<any>, key: string) => {
+    return data.filter(
+      (item) =>
+        item.name.toLowerCase().includes(key.toLowerCase()) ||
+        item.about.toLowerCase().includes(key.toLowerCase()),
+    );
+  };
+
   const hotelCheck = (
     checkIn: number | null,
     checkOut: number | null,
@@ -258,6 +266,7 @@ function Search() {
   const checkIn = searchParams.get('checkin');
   const checkOut = searchParams.get('checkout');
   const room = searchParams.get('room');
+
   return (
     <div className="pt-24">
       <div className="mx-8 md:mx-52 my-6 border-2 rounded-xl shadow-md grid grid-cols-5">
@@ -288,18 +297,19 @@ function Search() {
 
       <div className="search-post">
         {items.hotels.map((data, key) => {
-          if (
-            hotelCheck(
-              Number(checkIn?.replaceAll('-', '')),
-              Number(checkOut?.replaceAll('-', '')),
-              Number(room),
-              data.room[0].roomCount30Day,
-            )
-          ) {
-            show += 1;
-            return (
-              <div className="mx-8 mb-4 md:mx-52 ">
-                {/* <div>
+          if (data.room.length) {
+            if (
+              hotelCheck(
+                Number(checkIn?.replaceAll('-', '')),
+                Number(checkOut?.replaceAll('-', '')),
+                Number(room),
+                data.room[0].roomCount30Day,
+              )
+            ) {
+              show += 1;
+              return (
+                <div className="mx-8 mb-4 md:mx-52 ">
+                  {/* <div>
                 {hotelCheck(
                   Number(checkIn?.replaceAll('-', '')),
                   Number(checkOut?.replaceAll('-', '')),
@@ -307,93 +317,94 @@ function Search() {
                   data.room[0].roomCount30Day,
                 )}
               </div> */}
-                <div className="border-2 rounded-xl shadow-md  ">
-                  <div key={key}>
-                    <div className="grid grid-cols-4 grid-flow-row">
-                      <img
-                        src={data.picture[0]}
-                        className=" w-[390px] h-72 object-cover "
-                      />
-                      <div className="col-span-2 p-5">
-                        <p className="font-kanit text-4xl">{data.name}</p>
-                        <div className="flex">
-                          <FaMapMarkerAlt className="text-blue-700 min-w-[16px] mr-[5px]" />
-                          <p className="font-kanit text-1xl text-blue-700">
-                            {data.address}
-                          </p>
-                        </div>
-                        <p className="font-kanit text-1xl text-gray-500">
-                          {/* {data.room[0].roomCount30Day.map((data) => {
+                  <div className="border-2 rounded-xl shadow-md  ">
+                    <div key={key}>
+                      <div className="grid grid-cols-4 grid-flow-row">
+                        <img
+                          src={data.picture[0]}
+                          className=" w-[390px] h-72 object-cover "
+                        />
+                        <div className="col-span-2 p-5">
+                          <p className="font-kanit text-4xl">{data.name}</p>
+                          <div className="flex">
+                            <FaMapMarkerAlt className="text-blue-700 min-w-[16px] mr-[5px]" />
+                            <p className="font-kanit text-1xl text-blue-700">
+                              {data.address}
+                            </p>
+                          </div>
+                          <p className="font-kanit text-1xl text-gray-500">
+                            {/* {data.room[0].roomCount30Day.map((data) => {
                           return (
                             <div>
                               {data.date?.split('/')} {data.count}
                             </div>
                           );
                         })} */}
-                          {data.about}
-                        </p>
-                      </div>
-                      <div className="grid grid-flow-rows grid-rows-6 p-5 border-l border-[#D8D8D8]">
-                        <div className="flex justify-end">
-                          {Star(data.rating).map((s: number, i) => {
-                            return s ? (
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="#EDEA10"
-                                viewBox="0 0 24 24"
-                                stroke-width="1"
-                                stroke="#EDEA10 "
-                                className="md:w-8 w-4 md:h-8 h-4"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1"
-                                stroke="#EDEA10 "
-                                className="md:w-8 w-4 md:h-8 h-4"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                                />
-                              </svg>
-                            );
-                          })}
+                            {data.about}
+                          </p>
                         </div>
-                        <div className="font-kanit text-1xl row-span-1 text-right ml-28 text-gray-500">
-                          {data.review} รีวิว
-                        </div>
-                        <div className="font-kanit text-1xl row-span-1  ml-28 bg-red-500 text-center my-auto text-white ">
-                          {data.discount > 0 ? (
-                            <div>SALE ! ลด {data.discount}% วันนี้</div>
-                          ) : (
-                            ''
-                          )}
-                        </div>
-                        <div className="font-kanit text-1xl row-span-2 text-right ml-28 ">
-                          <div>ราคาเริ่มต้น (ต่อคืน)</div>
-                          <div className="text-red-500 text-[30px] font-bold">
-                            ฿ {data.price}
+                        <div className="grid grid-flow-rows grid-rows-6 p-5 border-l border-[#D8D8D8]">
+                          <div className="flex justify-end">
+                            {Star(data.rating).map((s: number, i) => {
+                              return s ? (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="#EDEA10"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1"
+                                  stroke="#EDEA10 "
+                                  className="md:w-8 w-4 md:h-8 h-4"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                                  />
+                                </svg>
+                              ) : (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="1"
+                                  stroke="#EDEA10 "
+                                  className="md:w-8 w-4 md:h-8 h-4"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                                  />
+                                </svg>
+                              );
+                            })}
                           </div>
+                          <div className="font-kanit text-1xl row-span-1 text-right ml-28 text-gray-500">
+                            {data.review} รีวิว
+                          </div>
+                          <div className="font-kanit text-1xl row-span-1  ml-28 bg-red-500 text-center my-auto text-white ">
+                            {data.discount > 0 ? (
+                              <div>SALE ! ลด {data.discount}% วันนี้</div>
+                            ) : (
+                              ''
+                            )}
+                          </div>
+                          <div className="font-kanit text-1xl row-span-2 text-right ml-28 ">
+                            <div>ราคาเริ่มต้น (ต่อคืน)</div>
+                            <div className="text-red-500 text-[30px] font-bold">
+                              ฿ {data.price}
+                            </div>
+                          </div>
+                          <button className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-white font-bold rounded">
+                            รายระเอียดเพิ่มเติม
+                          </button>
                         </div>
-                        <button className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-white font-bold rounded">
-                          รายระเอียดเพิ่มเติม
-                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
+              );
+            }
           }
         })}
         {show <= 0 ? (
