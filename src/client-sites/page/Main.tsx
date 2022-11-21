@@ -75,6 +75,7 @@ function Main() {
           isRestaurant: true,
           isTravel: true,
         },
+        price: 0,
         picture: ['string'],
         rating: 0,
         review: 0,
@@ -1200,13 +1201,16 @@ function Main() {
                       </div>
                       <div className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg md:row-span-2 lg:row-span-12 xl:row-span-2 text-right">
                         <div>ราคาเริ่มต้น (ต่อคืน)</div>
-                        <div className="text-red-500 md:text-[30px] lg:text-[30px] xl:text-[30px] font-bold">
-                          ฿ 2000
+                        <div className="text-red-500 text-[30px] font-bold">
+                          ฿ {data.price}
                         </div>
                       </div>
-                      <button className="font-kanit bg-blue-500 hover:bg-blue-700 text-sm md:row-span-1 lg:row-span-1 xl:row-span-1 md:text-lg lg:text-lg xl:text-lg text-white font-bold rounded">
+                      <a
+                        className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1  text-white font-bold rounded"
+                        href={'hotel/' + data.id}
+                      >
                         รายระเอียดเพิ่มเติม
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
