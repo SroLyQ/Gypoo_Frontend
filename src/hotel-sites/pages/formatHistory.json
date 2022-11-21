@@ -1,0 +1,17 @@
+[{
+    "_id": "637bd71212568b65b96151e6",
+    "index": 0,
+    "idHotel": "637bbda5907c8869740d6127",
+    "idRoom": "637bbdf8907c8869740d6129",
+    "idUser": "6378ca0a297675a2b1863c5d",
+    "firstName": "Makasan",
+    "lastName": "Kawaii",
+    "email": "Makasan@Kawaii.vrchat",
+    "phone": "01252724272",
+    "payment": "KBank",
+    "roomBooking": "1",
+    "dateBooking": [
+      "22/11/2022"
+    ],
+    "price": 4500
+}]
