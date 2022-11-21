@@ -202,64 +202,36 @@ function Search() {
     return arr;
   };
 
-  const search = (data: Array<any>, key: string) => {
-    return data.filter(
-      (item) =>
-        item.name.toLowerCase().includes(key.toLowerCase()) ||
-        item.about.toLowerCase().includes(key.toLowerCase()),
-    );
-  };
+  // const hotelCheck = async (
+  //   checkIn: number | null,
+  //   checkOut: number | null,
+  //   room: number | null,
+  //   roomCheck: Array<any>,
+  // ) => {
+  //   console.log('checkIn:', checkIn);
+  //   console.log('checkOut:', checkOut);
+  //   console.log('Room:', room);
+  //   console.log('roomCheck:', roomCheck);
 
-  const hotelCheck = (
-    checkIn: number | null,
-    checkOut: number | null,
-    room: number | null,
-    roomCheck: Array<any>,
-  ) => {
-    // console.log('checkIn:', checkIn);
-    // console.log('checkOut:', checkOut);
-    // console.log('Room:', room);
-    // console.log('Room:', roomCheck);
-    let Checking = false;
-    let isFree = false;
-    if (room != null) {
-      for (const i of roomCheck) {
-        if (checkIn == Number(i.date.replaceAll('/', ''))) {
-          //console.log('start:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-          } else {
-            isFree = false;
-            break;
-          }
-          Checking = true;
-        } else if (checkOut == Number(i.date.replaceAll('/', ''))) {
-          //console.log('end:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-            break;
-          } else {
-            isFree = false;
-            break;
-          }
-        } else if (Checking == true) {
-          //console.log('check:', Number(i.date.replaceAll('/', '')));
-          if (Number(i.count) >= room) {
-            isFree = true;
-          } else {
-            isFree = false;
-            break;
-          }
-        }
-      }
-    }
-    // if (isFree == true) {
-    //   return <div className=" bg-green-600 text-white   ">ได้</div>;
-    // } else {
-    //   return <div className=" bg-red-600 text-white   ">ไม่ได้</div>;
-    // }
-    return isFree;
-  };
+  //   const getRoomCheck = async (roomcheck: string) => {
+  //     const res = await apiClient(
+  //       `${config.api_url.localHost}/Room/getroom/${roomcheck}`,
+  //       {
+  //         method: 'GET',
+  //       },
+  //     );
+  //     console.log(res.data.roomCount30Day);
+  //     return res.data.roomCount30Day;
+  //   };
+
+  //   const roomCheckk = await getRoomCheck(roomCheck[0]);
+  //   console.log('check', roomCheckk);
+
+  //   // getRoomCheck(roomCheck[1]);
+
+  //   return true;
+  // };
+  
 
   const searchKey = searchParams.get('key');
   const searchGuest = searchParams.get('guest');
@@ -303,25 +275,25 @@ function Search() {
                 Number(checkIn?.replaceAll('-', '')),
                 Number(checkOut?.replaceAll('-', '')),
                 Number(room),
-                data.room[0].roomCount30Day,
+                data.room,
               )
             ) {
               show += 1;
               return (
                 <div className="mx-8 mb-4 md:mx-52 ">
-                  {/* <div>
-                {hotelCheck(
-                  Number(checkIn?.replaceAll('-', '')),
-                  Number(checkOut?.replaceAll('-', '')),
-                  Number(room),
-                  data.room[0].roomCount30Day,
-                )}
-              </div> */}
+                  <div>
+                    {/* {hotelCheck(
+                      Number(checkIn?.replaceAll('-', '')),
+                      Number(checkOut?.replaceAll('-', '')),
+                      Number(room),
+                      data.room[0].roomCount30Day,
+                    )} */}
+                  </div>
                   <div className="border-2 rounded-xl shadow-md  ">
                     <div key={key}>
                       <div className="grid grid-cols-4 grid-flow-row">
                         <img
-                          src={data.picture[0]}
+                          src={config.api_url.imgHost + data.picture[0]}
                           className=" w-[390px] h-72 object-cover "
                         />
                         <div className="col-span-2 p-5">
