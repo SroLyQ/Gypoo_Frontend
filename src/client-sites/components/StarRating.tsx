@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const StarRating = (props: { starSize: any }) => {
-  const { starSize } = props;
+const StarRating = (props: { starSize: any; setParentRating: any }) => {
+  const { starSize, setParentRating } = props;
   const stars = Array(5).fill(0);
   const [rating, setRating] = React.useState(0);
   const [hover, setHover] = React.useState(0);
@@ -18,7 +18,7 @@ const StarRating = (props: { starSize: any }) => {
               type="radio"
               name="rating"
               value={ratingValue}
-              onClick={() => setRating(ratingValue)}
+              onClick={() => props.setParentRating(ratingValue)}
             ></input>
             <FaStar
               className="cursor-pointer duration-[200ms]"
