@@ -11,7 +11,6 @@ import { getCurrentUser } from '../../services/userService';
 
 function Activity() {
   const params = useParams();
-  console.log(params.id);
   const [items, setItems] = useState({
     hotels: [
       {
@@ -43,7 +42,7 @@ function Activity() {
   const [commentObject, setCommentObject] = useState({
     content: sendContent,
     commentBy: ' ',
-    commentOn: '637b8bf80d570d6712626f1f',
+    commentOn: ' ',
     rating: 5,
   });
 
@@ -53,14 +52,16 @@ function Activity() {
 
   const sentComment = async () => {
     const user: any = getCurrentUser();
+    const hotel: any = params.id;
     setCommentObject({ ...commentObject, content: sendContent });
     setCommentObject({ ...commentObject, commentBy: user.userID });
+    setCommentObject({ ...commentObject, commentOn: hotel});
     const res = await apiClient(`${config.api_url.localHost}/Comment`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: commentObject,
     });
-    console.log('ok');
+    console.log(commentObject);
   };
   useEffect(() => {
     const getAll = async () => {
