@@ -1,22 +1,18 @@
 import React from 'react';
+type dataType = {
+  rentroom:{
+    name: string
+    price: number
+    guest: number
+    img: string
+    facilities: string[]
+    day: number
+    coupon: number
+  }[]
+};
 
-function Rentroom() {
-  const rentroom = [
-    {
-      name: 'ห้องเชือด',
-      price: 2000,
-      guest: 2,
-      img: 'https://pix8.agoda.net/hotelImages/223/2239454/2239454_17101020200057610834.jpg?ca=6&ce=1&s=208x117&ar=16x9',
-      facilities: [
-        'ที่จอดรถ',
-        'เช็คอินด่วน',
-        ' ฟรีอินเทอร์เน็ตไร้สาย (Wi-Fi)',
-        'มีค่าธรรมเนียมหากยกเลิกการจอง',
-      ],
-      day: 1,
-    },
-
-  ];
+function Rentroom({rentroom}:dataType) {
+  
   return (
 
     
