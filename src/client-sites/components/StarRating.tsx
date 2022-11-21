@@ -18,14 +18,24 @@ const StarRating = (props: { starSize: any; setParentRating: any }) => {
               type="radio"
               name="rating"
               value={ratingValue}
-              onClick={() => props.setParentRating(ratingValue)}
+              onClick={() => {
+                setHover(ratingValue);
+                setRating(ratingValue);
+                props.setParentRating(ratingValue);
+              }}
             ></input>
             <FaStar
               className="cursor-pointer duration-[200ms]"
               fontSize={starSize}
               color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
               onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(0)}
+              onMouseLeave={() => {
+                if (rating > 0) {
+                  setHover(rating);
+                } else {
+                  setHover(0);
+                }
+              }}
             ></FaStar>
           </label>
         );

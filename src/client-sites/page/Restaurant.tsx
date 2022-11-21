@@ -5,8 +5,8 @@ import StarRate from '../components/StarRate';
 import { Listbox } from '@headlessui/react';
 import 'tw-elements';
 import Imgslide from '../components/imgslide';
-import HotelCard from '../../hotel-sites/components/HotelCard'
-import testdata from '../../hotel-sites/pages/testdata.json'
+import HotelCard from '../../hotel-sites/components/HotelCard';
+import testdata from '../../hotel-sites/pages/testdata.json';
 import GooGleMAP from '../components/googleMap';
 
 function Restaurant() {
@@ -14,8 +14,8 @@ function Restaurant() {
     <div className="pt-[95px]">
       <div className="container mx-auto flex-wrap">
         <Imgslide />
-        <div className='block'>
-          <div className='md:hidden'>
+        <div className="block">
+          <div className="md:hidden">
             <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
               <div className="mb-[5px]">
                 <div className="mb-[5px]">
@@ -25,7 +25,7 @@ function Restaurant() {
                 </div>
 
                 <div className="mb-[5px]">
-                  <StarRate />
+                  <StarRate rating={0} />
                 </div>
 
                 <div>
@@ -41,7 +41,6 @@ function Restaurant() {
                 ทริปยังไม่จบถ้าไม่ได้แวะไปที่เที่ยวชื่อดังอย่าง พระธาตุขามแก่น
               </p>
             </div>
-
           </div>
           <div>
             <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
@@ -52,8 +51,8 @@ function Restaurant() {
                   </p>
                 </div>
 
-                <div className="mb-[5px]">  
-                <StarRate />
+                <div className="mb-[5px]">
+                  <StarRate rating={0} />
                 </div>
 
                 <div>
@@ -69,13 +68,11 @@ function Restaurant() {
                 ทริปยังไม่จบถ้าไม่ได้แวะไปที่เที่ยวชื่อดังอย่าง พระธาตุขามแก่น
               </p>
             </div>
-
           </div>
-
         </div>
 
-        <div className='block'>
-          <div className='md:hidden'>
+        <div className="block">
+          <div className="md:hidden">
             <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
               <div className="mb-[5px]">
                 <div className="mb-[5px]">
@@ -83,9 +80,10 @@ function Restaurant() {
                 </div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
-              <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
+              <p className="mt-[15px]">
+                <GooGleMAP></GooGleMAP>
+              </p>
             </div>
-
           </div>
           <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
             <div className="mb-[5px]">
@@ -94,7 +92,9 @@ function Restaurant() {
               </div>
             </div>
             <div className="border border-[#D8D8D8]"></div>
-            <p className="mt-[15px]"><GooGleMAP></GooGleMAP></p>
+            <p className="mt-[15px]">
+              <GooGleMAP></GooGleMAP>
+            </p>
           </div>
         </div>
 
@@ -109,8 +109,7 @@ function Restaurant() {
               <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] gap-x-5 px-5 ">
                 <div className="basis-1/4 mb-5">
                   <p className="text-[18px]">ให้คะแนนที่พัก</p>
-                  <div className="mb-[5px]">
-                  </div>
+                  <div className="mb-[5px]">{'Star Rating'}</div>
                 </div>
 
                 <form className="w-[100%]">
@@ -139,8 +138,7 @@ function Restaurant() {
             <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex gap-x-5 px-5 ">
               <div className="basis-1/4">
                 <p className="text-[20px]">ให้คะแนนที่พัก</p>
-                <div className="mb-[5px]">
-                </div>
+                <div className="mb-[5px]">{'Star Rating'}</div>
               </div>
               <div className="border border-[#D8D8D8]"></div>
 
@@ -172,7 +170,7 @@ function Restaurant() {
                 <div className="basis-1/4">
                   <p className="text-[18px]">Boom Burapee</p>
                   <div className="mb-[5px]">
-                  <StarRate />
+                    <StarRate rating={0} />
                   </div>
                   <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
                 </div>
@@ -202,7 +200,7 @@ function Restaurant() {
               <div className="basis-1/4">
                 <p className="text-[20px]">Boom Burapee</p>
                 <div className="mb-[5px]">
-                <StarRate />
+                  <StarRate rating={0} />
                 </div>
                 <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
               </div>

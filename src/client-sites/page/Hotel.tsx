@@ -11,6 +11,7 @@ import config from '../../config.json';
 import apiClient from '../../api/apiClient';
 import { getCurrentUser } from '../../services/userService';
 import { useParams } from 'react-router-dom';
+import StarRate from '../components/StarRate';
 const testFaci = [
   'อาหารเช้า',
   'สัตว์เลี้ยงเข้าพักได้',
@@ -80,14 +81,22 @@ function hotel() {
     setComment(e.target.value);
     console.log(comment);
   };
-  const commentSubmitHandler = (e: any) => {
-    // const body = {
-    //   content : comment,
-    //   commentBy : userID,
-    //   commentOn : tempId,
-    //   rating : rating
-    // }
-    // const res = await apiClient(`${config.api_url.localHost}/Comment/hotel/${tempId}`,{method : 'POST',data:})
+  const commentSubmitHandler = async (e: any) => {
+    e.preventDefault();
+    const body = {
+      content: comment,
+      commentBy: userID,
+      commentOn: tempId,
+      rating: rating,
+    };
+    console.log(body);
+    const res = await apiClient(`${config.api_url.localHost}/Comment`, {
+      method: 'POST',
+      data: body,
+    });
+    if (res) {
+      window.location.reload();
+    }
   };
   return (
     <div className="pt-[95px]">
@@ -101,7 +110,7 @@ function hotel() {
                 <p className="text-[26px] font-semibold">{post?.name}</p>
               </div>
               <div className="mb-[5px]">
-                <StarRating starSize={'32px'} setParentRating={setRating} />
+                <StarRate rating={post?.rating || 0} />
               </div>
               <div>
                 <p className="text-[20px]">{'rating : ' + post?.rating}</p>
@@ -154,7 +163,10 @@ function hotel() {
                     onChange={onChangeCommentHandler}
                   />
                   <div className="flex flex-row-reverse">
-                    <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]">
+                    <button
+                      className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]"
+                      onClick={commentSubmitHandler}
+                    >
                       ยืนยัน
                     </button>
                   </div>
@@ -177,10 +189,7 @@ function hotel() {
                   <div className="basis-1/4 max-md:basis-full">
                     <p className="text-[20px]">{comment.usernameComment}</p>
                     <div className="my-[5px] flex flex-row">
-                      <StarRating
-                        starSize={'25px'}
-                        setParentRating={setRating}
-                      />
+                      <StarRate rating={comment.rating} />
                     </div>
                     <p className="text-[16px] text-sky-500">
                       {comment.rating + ' Rating'}
