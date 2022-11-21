@@ -65,7 +65,7 @@ function Activity() {
   };
   useEffect(() => {
     const getAll = async () => {
-      const res = await apiClient(`${config.api_url.localHost}/Hotel`, {
+      const res = await apiClient(`${config.api_url.localHost}/Hotel/${params.id}`, {
         method: 'GET',
       });
       console.log(res.data.hotels);
