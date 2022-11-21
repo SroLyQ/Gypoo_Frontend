@@ -1,7 +1,7 @@
 import config from '../../config.json';
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react';
 import apiClient from '../../api/apiClient';
-// import { getCurrentUser } from '../../services/userService'; // ต้องใช้
+import { getCurrentUser } from '../../services/userService'; // ต้องใช้
 
 function AddHotel() {
   const locationTypeForm = {
