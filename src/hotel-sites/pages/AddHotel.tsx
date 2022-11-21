@@ -1,14 +1,22 @@
-import config from '../../config.json';
+
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react';
 import apiClient from '../../api/apiClient';
 import { getCurrentUser } from '../../services/userService'; // ต้องใช้
-
+import config from '../../config.json';
 function AddHotel() {
   const locationTypeForm = {
     isHotel: false,
     isRestaurant: false,
     isTravel: false,
   };
+  const [ownerID,setownerID] = useState('')
+  const image :Array<string> = []
+  useEffect(()=>{
+    const userData:any = getCurrentUser() ;
+    setownerID(userData.userID)
+    //console.log(userData.userID)
+    
+  },[])
   // const useData = getCurrentUser(); // ต้องใช้
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,17 +51,26 @@ function AddHotel() {
     } else {
       const jason = JSON.stringify({
         name: target.name.value,
-        about: target.about.value,
-        mapURL: target.mapURL.value,
-        email: target.mapURL.value,
+        email: target.email.value,
         phone: target.phone.value,
         address: target.address.value,
+        about: target.about.value,
+        mapURL: target.mapURL.value,
+        ownerID : ownerID,
         locationType: locationTypeForm,
+        picture : image
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
+      const res =
+        await apiClient(`${config.api_url.localHost}/Hotel`,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
+        console.log("ok");
+        console.log(res.data);
+        
+      
+      
     }
-
+    
     // try{
     //   axios.post("http://localhost:8000/addhotel",{
     //     data : jason,
@@ -65,11 +82,16 @@ function AddHotel() {
 
   const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const body = {
-      files: e.target.value,
-    };
-    // const res = await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',data : body})
-    console.log(body);
+    console.log("upload");
+    
+    const formData = new FormData();
+    if (e.target.files){
+      formData.append("files",e.target.files[0])
+    }
+    const res =  await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',headers :{"Content-Type" : "multipart/form-data"} ,data : formData})
+    console.log(res)
+    image.push(res.data.imgPath[0])
+    console.log(image)
   };
 
   return (
