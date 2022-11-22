@@ -13,6 +13,7 @@ import 'tw-elements';
 function RentHotel() {
     
     const [dataParams] = useSearchParams();
+    const paramIdRoom = dataParams.get('booking');
     const paramBooking = dataParams.get('booking');
     const paramCheckIn = dataParams.get('checkin');
     const paramCheckOut = dataParams.get('checkout');
@@ -42,7 +43,8 @@ function RentHotel() {
         phone : ""
     });
     const [payment,setPayment] = useState('');
-    
+
+
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUseGuestForm({ ...useGuestForm, [event.currentTarget.name]: event.currentTarget.value });
     };
