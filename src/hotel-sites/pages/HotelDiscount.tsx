@@ -53,7 +53,10 @@ function HotelDiscount() {
   },[])
     
   return (
-    <div className="pt-24">
+    <div className="pt-24 font-kanit">
+      <div className='mt-5 text-center text-2xl '>
+        คูปองส่วนลด
+      </div>
       
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
       {
