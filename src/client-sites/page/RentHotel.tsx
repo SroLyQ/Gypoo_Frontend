@@ -77,10 +77,8 @@ function RentHotel() {
             email : useGuest.email,
             phone : useGuest.phone,
             payment : payment,
-            dateIn : "",
-            dateOut : "",
-            roomcount : 0,
-            roomprice : 0,
+            roomBooking : 0,
+            roomprice : 0
         });
 
         const res = await apiClient(`${config.api_url.localHost}/renthotel `,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
