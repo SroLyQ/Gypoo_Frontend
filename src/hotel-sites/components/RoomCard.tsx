@@ -1,27 +1,34 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { FaCheck, FaBed, FaRegCalendar,FaStar } from 'react-icons/fa';
-type room ={
-    r:{
-    idRoom: string;
-    roomType: string;
-    guest: number;
-    roomCount: number;
-    currentRoom: number;
-    discount: number;
-    picture: string[];
-    roomPrice: number;
-    service: any;
-    roomCount30Day: any;
-
-    }
+import formatcard from '../pages/formatRoom.json'
+import { getCurrentUser } from '../../services/userService';
+import config from '../../config.json'  
+import apiClient from '../../api/apiClient';
+type ro ={
+    ro:string
 }
-function RoomCard ({r}:room){
-    console.log(r);
+function RoomCard (ro:ro){
+    const [r,setR] = useState(formatcard)
+    useEffect(()=>{
+        const originaldat = async () =>{ 
+        const res = await apiClient(`${config.api_url.localHost}/Room/getroom/${ro.ro}`,{method : 'GET',})
+        console.log("kuyinroomcrd")
+        console.log(res.data)
+       
+        setR(res.data)
+
+        }
+        originaldat()
+        //setData(data)
+        
+      },[ro,])
+    
+    //r.discount = room.discount;
     const serv = [];
     if (r.service.isAnimals){
         serv.push("Can Take Animal")
     }
-    if (r.service.isBreakfast){
+    if (r.service.isBreakFast){
         serv.push("Have Brakefast")
     }
     if (r.service.isBuffet){
@@ -42,7 +49,7 @@ function RoomCard ({r}:room){
                         <div className="grid grid-flow-col grid-cols-3 ">
                             <div className='block'> 
                             <div >
-                                <img className='object-cover object-left' src={r.picture[0]}/>
+                                <img className='object-cover object-left' src={"https://cdn.britannica.com/16/99616-050-72CD201A/Colosseum-Rome.jpg"}/>
                             </div>
                             
                             </div>

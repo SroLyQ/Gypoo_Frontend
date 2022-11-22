@@ -1,155 +1,154 @@
-import React from 'react';
-import { FaCheck, FaBed, FaRegCalendar } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
 import StarRating from '../components/StarRating';
-import StarRate from '../components/StarRate';
-import { Listbox } from '@headlessui/react';
+import GooGleMAP from '../components/googleMap';
 import 'tw-elements';
 import Imgslide from '../components/imgslide';
-import HotelCard from '../../hotel-sites/components/HotelCard';
-import testdata from '../../hotel-sites/pages/testdata.json';
-import GooGleMAP from '../components/googleMap';
-
+import config from '../../config.json';
+import apiClient from '../../api/apiClient';
+import { getCurrentUser } from '../../services/userService';
+import { useParams } from 'react-router-dom';
+import StarRate from '../components/StarRate';
+const tempId = '637b8bf80d570d6712626f1f';
+interface hotel {
+  id: string;
+  isAvailable: boolean;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  about: string;
+  mapURL: string;
+  ownerID: string;
+  locationType: locationType;
+  picture: [string];
+  price: number;
+  discount: number;
+  rating: number;
+  review: number;
+  room: [string];
+  comments: [string];
+}
+interface locationType {
+  isHotel: boolean;
+  isRestaurant: boolean;
+  isTravel: boolean;
+}
 function Restaurant() {
+  const { id } = useParams();
+  const [post, setPost] = useState<hotel>();
+  const [error, setError] = useState(null);
+  const [username, setUsername] = useState<string>('Guest');
+  const [userID, setUserID] = useState<string>('');
+  const [comment, setComment] = useState<string>('No comment');
+  const [hotelComment, setHotelComment] = useState<[any]>();
+  const [rating, setRating] = useState<any>(0);
+  useEffect(() => {
+    const getHotelData = async () => {
+      const res = await apiClient(
+        `${config.api_url.localHost}/Hotel/${tempId}`,
+        { method: 'GET' },
+      );
+      setPost(res.data.hotel);
+    };
+    getHotelData();
+    const getCommentHotel = async () => {
+      const res = await apiClient(
+        `${config.api_url.localHost}/Comment/hotel/${tempId}`,
+        { method: 'GET' },
+      );
+      setHotelComment(res.data.comments);
+    };
+    getCommentHotel();
+    const getUserData = async () => {
+      const userData: any = await getCurrentUser();
+      setUsername(userData.username);
+      setUserID(userData.userID);
+    };
+    getUserData();
+  }, []);
+  const onChangeCommentHandler = (e: any) => {
+    setComment(e.target.value);
+    console.log(comment);
+  };
+  const commentSubmitHandler = async (e: any) => {
+    e.preventDefault();
+    const body = {
+      content: comment,
+      commentBy: userID,
+      commentOn: tempId,
+      rating: rating,
+    };
+    console.log(body);
+    const res = await apiClient(`${config.api_url.localHost}/Comment`, {
+      method: 'POST',
+      data: body,
+    });
+    if (res) {
+      window.location.reload();
+    }
+  };
   return (
     <div className="pt-[95px]">
-      <div className="container mx-auto flex-wrap">
+      <div className="container mx-auto flex-wrap grid">
         <Imgslide />
-        <div className="block">
-          <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
-              <div className="mb-[5px]">
-                <div className="mb-[5px]">
-                  <p className="text-[20px] font-semibold">
-                    กัสเซอร์ปาร์ค อพาร์ตเมนท์
-                  </p>
-                </div>
-
-                <div className="mb-[5px]">
-                  <StarRate rating={0} />
-                </div>
-
-                <div>
-                  <p className="text-[16px]">10.00 very good</p>
-                </div>
-              </div>
-              <div className="border border-[#D8D8D8]"></div>
-              <p className="mt-[10px] text-[15px]">
-                ที่พักให้บริการที่จอดรถฟรีเพื่อการเดินทางเข้าออกที่พักได้อย่างสะดวกสบาย
-                รวมถึง Wi-Fi ฟรี ให้ท่องเน็ตได้ทุกเมื่อ
-                ที่พักตั้งอยู่ในย่านตัวเมืองของขอนแก่น
-                ผู้เข้าพักจึงได้อยู่ใกล้สถานที่ท่องเที่ยวน่าสนใจและร้านอาหารอร่อยๆ
-                ทริปยังไม่จบถ้าไม่ได้แวะไปที่เที่ยวชื่อดังอย่าง พระธาตุขามแก่น
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
-              <div className="mb-[5px]">
-                <div className="mb-[5px]">
-                  <p className="text-[26px] font-semibold">
-                    กัสเซอร์ปาร์ค อพาร์ตเมนท์
-                  </p>
-                </div>
-
-                <div className="mb-[5px]">
-                  <StarRate rating={0} />
-                </div>
-
-                <div>
-                  <p className="text-[16px]">10.00 very good</p>
-                </div>
-              </div>
-              <div className="border border-[#D8D8D8]"></div>
-              <p className="mt-[15px]">
-                ที่พักให้บริการที่จอดรถฟรีเพื่อการเดินทางเข้าออกที่พักได้อย่างสะดวกสบาย
-                รวมถึง Wi-Fi ฟรี ให้ท่องเน็ตได้ทุกเมื่อ
-                ที่พักตั้งอยู่ในย่านตัวเมืองของขอนแก่น
-                ผู้เข้าพักจึงได้อยู่ใกล้สถานที่ท่องเที่ยวน่าสนใจและร้านอาหารอร่อยๆ
-                ทริปยังไม่จบถ้าไม่ได้แวะไปที่เที่ยวชื่อดังอย่าง พระธาตุขามแก่น
-              </p>
-            </div>
-          </div>
-        </div>
 
         <div className="block">
-          <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
-              <div className="mb-[5px]">
-                <div className="mb-[5px]">
-                  <p className="mb-[14px] text-[20px]">แผนที่</p>
-                </div>
-              </div>
-              <div className="border border-[#D8D8D8]"></div>
-              <p className="mt-[15px]">
-                <GooGleMAP></GooGleMAP>
-              </p>
-            </div>
-          </div>
-          <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block">
+          <div className="mx-48 max-md:mx-8 border rounded-md border-[#999999] p-[25px] pt-[15px] mt-[25px]">
             <div className="mb-[5px]">
               <div className="mb-[5px]">
-                <p className="mb-[14px] text-[26px]">แผนที่</p>
+                <p className="text-[26px] font-semibold">{post?.name}</p>
+              </div>
+              <div className="mb-[5px]">
+                <StarRate rating={post?.rating || 0} />
+              </div>
+              <div>
+                <p className="text-[20px]">{'rating : ' + post?.rating}</p>
               </div>
             </div>
             <div className="border border-[#D8D8D8]"></div>
-            <p className="mt-[15px]">
-              <GooGleMAP></GooGleMAP>
-            </p>
+            <p className="mt-[15px]">{post?.about}</p>
           </div>
         </div>
 
-        <div className="block ">
-          <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
-              <div className="mb-[14px]">
-                <p className="text-[20px]">Boom Burapee</p>
-              </div>
+        <div className="block">
+          <div className="mx-48 max-md:mx-8 mt-[25px] gap-x-8 gap-y-6">
+            <div className="border rounded-md border-[#999999] p-[25px] pt-[15px]">
+              <p className="mb-[14px] text-[26px]">แผนที่</p>
               <div className="border border-[#D8D8D8]"></div>
-
-              <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] gap-x-5 px-5 ">
-                <div className="basis-1/4 mb-5">
-                  <p className="text-[18px]">ให้คะแนนที่พัก</p>
-                  <div className="mb-[5px]">{'Star Rating'}</div>
-                </div>
-
-                <form className="w-[100%]">
-                  <div className="border rounded-md border-[#D8D8D8] p-3 text-slate-500">
-                    <textarea
-                      className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none"
-                      placeholder="Write a comment..."
-                    />
-                    <div className="flex flex-row-reverse">
-                      <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]">
-                        ยืนยัน
-                      </button>
-                    </div>
-                  </div>
-                </form>
+              <div className="mt-[15px]">
+                <GooGleMAP></GooGleMAP>
               </div>
             </div>
           </div>
-
-          <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block ">
+        </div>
+        <div className="block">
+          <div className="mx-48 max-md:mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
             <div className="mb-[14px]">
-              <p className="text-[26px]">Boom Burapee</p>
+              <p className="text-[26px]">{username}</p>
             </div>
             <div className="border border-[#D8D8D8]"></div>
 
-            <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex gap-x-5 px-5 ">
-              <div className="basis-1/4">
-                <p className="text-[20px]">ให้คะแนนที่พัก</p>
-                <div className="mb-[5px]">{'Star Rating'}</div>
+            <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex max-md:flex-wrap gap-x-5 px-5 ">
+              <div className="basis-1/4 max-md:mb-5 max-md:basis-full">
+                <p className="text-[20px]">ให้คะแนนร้านอาหาร</p>
+                <div className="my-[5px] flex flex-row">
+                  <StarRating starSize={'25px'} setParentRating={setRating} />
+                </div>
               </div>
-              <div className="border border-[#D8D8D8]"></div>
+              <div className="border border-[#D8D8D8] max-md:hidden"></div>
 
-              <form className="w-[75%]">
+              <form className="w-[75%] max-md:w-[100%]">
                 <div className="border rounded-md border-[#D8D8D8] p-3 text-slate-500">
                   <textarea
-                    className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none text-[15px]"
+                    className=" px-2 py-3 w-full h-full grow resize-none focus:outline-none"
                     placeholder="Write a comment..."
+                    onChange={onChangeCommentHandler}
                   />
                   <div className="flex flex-row-reverse">
-                    <button className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]">
+                    <button
+                      className="border rounded-md border-sky-500 bg-sky-500 text-white py-[1%] px-[5%]"
+                      onClick={commentSubmitHandler}
+                    >
                       ยืนยัน
                     </button>
                   </div>
@@ -158,67 +157,42 @@ function Restaurant() {
             </div>
           </div>
         </div>
+        {/*  */}
         <div className="block">
-          <div className="md:hidden">
-            <div className="mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%]">
-              <div className="mb-[14px]">
-                <p className="text-[20px]">ความคิดเห็น</p>
-              </div>
-              <div className="border border-[#D8D8D8]"></div>
-
-              <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] gap-x-5 px-5 ">
-                <div className="basis-1/4">
-                  <p className="text-[18px]">Boom Burapee</p>
-                  <div className="mb-[5px]">
-                    <StarRate rating={0} />
-                  </div>
-                  <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
-                </div>
-                <div className="border border-[#D8D8D8] my-5"></div>
-
-                <form className="w-full">
-                  <div className=" text-slate-500 text-[15px]">
-                    <div className="px-2 py-3 w-full h-full grow resize-none focus:outline-none">
-                      A little out of the way but tucked nicely away from the
-                      noise and traffic. Spotless rooms and general areas. Staff
-                      very friendly and although not much English spoken we got
-                      by with smiles and Google translate.
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div className="mx-48 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[2%] hidden md:block ">
+          <div className="mx-48 max-md:mx-8 border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px]">
             <div className="mb-[14px]">
               <p className="text-[26px]">ความคิดเห็น</p>
             </div>
             <div className="border border-[#D8D8D8]"></div>
 
-            <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[2%] flex gap-x-5 px-5 ">
-              <div className="basis-1/4">
-                <p className="text-[20px]">Boom Burapee</p>
-                <div className="mb-[5px]">
-                  <StarRate rating={0} />
-                </div>
-                <p className="text-[16px] text-sky-500">9.6/10 ดีมาก</p>
-              </div>
-              <div className="border border-[#D8D8D8]"></div>
-
-              <form className="w-[75%]">
-                <div className=" text-slate-500">
-                  <div className="px-2 py-3 w-full h-full grow resize-none focus:outline-none">
-                    A little out of the way but tucked nicely away from the
-                    noise and traffic. Spotless rooms and general areas. Staff
-                    very friendly and although not much English spoken we got by
-                    with smiles and Google translate.
+            {hotelComment?.map((comment: any) => {
+              return (
+                <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex max-md:flex-wrap gap-x-5 px-5 ">
+                  <div className="basis-1/4 max-md:basis-full">
+                    <p className="text-[20px]">{comment.usernameComment}</p>
+                    <div className="my-[5px] flex flex-row">
+                      <StarRate rating={comment.rating} />
+                    </div>
+                    <p className="text-[16px] text-sky-500">
+                      {comment.rating + ' Rating'}
+                    </p>
+                    <p className="text-[14px]">{comment.date}</p>
                   </div>
+                  <div className="border border-[#D8D8D8] max-md:my-3 max-md:w-[100%]"></div>
+
+                  <form className="w-[75%] max-md:w-[100%]">
+                    <div className=" text-slate-500">
+                      <div className="px-2 py-3 w-full h-full grow resize-none focus:outline-none">
+                        {comment.content}
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </form>
-            </div>
+              );
+            })}
           </div>
         </div>
+        {/*  */}
       </div>
     </div>
   );
