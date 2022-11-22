@@ -173,7 +173,6 @@ function hotel() {
               <p className="text-[26px]">ความคิดเห็น</p>
             </div>
             <div className="border border-[#D8D8D8]"></div>
-
             {hotelComment?.map((comment: any) => {
               return (
                 <div className="border rounded-md border-[#D8D8D8] py-[15px] mt-[25px] flex max-md:flex-wrap gap-x-5 px-5 ">
