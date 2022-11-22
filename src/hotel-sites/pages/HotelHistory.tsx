@@ -43,9 +43,14 @@ function HotelHistory() {
   },[])
   
   return (
-    <div className="pt-24">
+    <div className="pt-24 font-kanit">
+      <div className='mt-5 mx-16  md:mx-64 lg:mx-[380px] md:text-2xl '>
+          ประวัติการให้บริการที่พัก
+        </div>
+
       
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
+        
       {
         renderData.map((h,id)=>{
           return(
