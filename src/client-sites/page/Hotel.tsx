@@ -46,12 +46,14 @@ function hotel() {
   const [comment, setComment] = useState<string>('No comment');
   const [hotelComment, setHotelComment] = useState<[any]>();
   const [rating, setRating] = useState<any>(0);
+  const [Room, setRoom] = useState<[string]>(['']);
   useEffect(() => {
     const getHotelData = async () => {
       const res = await apiClient(`${config.api_url.localHost}/Hotel/${id}`, {
         method: 'GET',
       });
       setPost(res.data.hotel);
+      setRoom(res.data.hotel.room);
     };
     getHotelData();
     const getCommentHotel = async () => {
@@ -62,6 +64,7 @@ function hotel() {
       setHotelComment(res.data.comments);
     };
     getCommentHotel();
+
     const getUserData = async () => {
       const userData: any = await getCurrentUser();
       setUsername(userData.username);
@@ -69,6 +72,7 @@ function hotel() {
     };
     getUserData();
   }, []);
+
   const onChangeCommentHandler = (e: any) => {
     setComment(e.target.value);
     console.log(comment);
@@ -127,7 +131,10 @@ function hotel() {
 
         <div className="block">
           <div className="mx-48 max-md:mx-8">
-            <Roomtype idHotel = {post?.id} />
+            <p className="text-2xl mt-[40px]">ห้องพัก {Room.length} ประเภท</p>
+            {Room.map((data) => {
+              return <Roomtype idRoom={data} />;
+            })}
           </div>
         </div>
 
