@@ -1,13 +1,18 @@
 import { type } from 'os';
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent, ChangeEvent } from 'react';
 import { useParams} from 'react-router-dom';
+import { getCurrentUser } from '../../services/userService'; // ต้องใช้
+import config from '../../config.json';
+import formatroomOld from './formatOldHotelRoomtype.json'
+import apiClient from '../../api/apiClient';
 type datatype ={
-    _id : string,
-    _roomid: string
+    id : string,
+    idRoom: string
 }
 function EditRoom() {
-  const {_id,_roomid} = useParams();
-  const [dataHotel,setDataHotel] = useState({}); // ใช้รับข้อมูลจาก backend ที่ get มา
+  const {id,idRoom} = useParams();
+  const [dataRoom,setDataRoom] = useState(formatroomOld); // ใช้รับข้อมูลจาก backend ที่ get มา
+  const [room,setRoom] = useState(formatroomOld.room[0])
   const convenienceTypeForm = {
      isWifi: false ,
      isBreakfast: false ,
@@ -16,39 +21,52 @@ function EditRoom() {
      isBuffet: false ,
      isOther: false ,
   };
-
-  useEffect(() => {
-    // getData();
+  const [ownerID,setownerID] = useState('')
+  const image :Array<string> = []
+  useEffect(()=>{
+    const userData:any = getCurrentUser() ;
+    setownerID(userData.userID)
+    //console.log(userData.userID)
+    
   },[])
-
+  useEffect(()=>{
+    const originaldat = async () =>{ 
+    const res = await apiClient(`${config.api_url.localHost}/Room/getroom/${idRoom}`,{method : 'GET',}) 
+    //console.log("kuy")
+    //console.log(res.data.hotel)
+    //setDataRoom(res.data)
+    setRoom(res.data)
+    //console.log(room)
+    
+    
+    console.log(room)
+    return res.data;
+    }
+    originaldat()
+    },[])
   const sendForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
-      roomtype : {value:string};
+      roomType : {value:string};
       roomcount: { value: number };
       roomprice: { value: number };
       guest: { value: number };
     };
-    if (target.roomtype.value == '') {
-      alert('โปรดเลือกประเภทห้อง');
-    } else if (target.roomcount.value <= 0 ) {
-      alert('โปรดใสจำนวนห้อง');
-    } else if(target.roomprice.value <= 0 ) {
-      alert('โปรดใส่ราคาของห้อง');
-    } else if( target.guest.value <= 0 ) {
-      alert('โปรดใส่คำจำนวนคนเข้าพัก');
-    } else {
-      const jason = JSON.stringify({
-        _id  : _id,
-        roomtype : target.roomtype.value,
-        roomcount : target.roomcount.value,
-        roomprice : target.roomprice.value,
-        guest : target.guest.value,
-        conveniencetype: convenienceTypeForm,
+    const jason = JSON.stringify({
+        idHotel  : id,
+        roomType : target.roomType.value =='' ? room.roomType : target.roomType.value,
+        guest : target.guest.value == 0 ? room.guest : target.guest.value,
+        roomCount : target.roomcount.value == 0 ? room.roomCount : target.roomcount.value,
+        roomPrice : target.roomprice.value == 0 ? room.roomPrice : target.roomprice.value,
+        picture : image,
+        service: convenienceTypeForm,
       });
       //const jasonArr = JSON.parse(jason);
       console.log(jason);
-
+      const res =
+        await apiClient(`${config.api_url.localHost}/Room/${idRoom}`,{method : 'PUT',headers :{"Content-Type" : "application/json"} ,data : jason})
+        console.log("okroom");
+        console.log(res.data);
       // try{
       //   axios.post("http://localhost:8000/editroom",{
       //     data : jason,
@@ -56,7 +74,7 @@ function EditRoom() {
       // } catch (err) {
       //   console.log(err)
       // }
-    }
+    
 
   // async function getData() {
   //   try{
@@ -72,9 +90,22 @@ function EditRoom() {
   //     console.log(err)
   //   }
   // }
-
+  window.location.assign(`/myhotel/${id}`);
   };
-
+  const uploadImg = async (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    console.log("upload");
+    
+    const formData = new FormData();
+    if (e.target.files){
+      formData.append("files",e.target.files[0])
+    }
+    const res =  await apiClient(`${config.api_url.localHost}/upload`,{method : 'POST',headers :{"Content-Type" : "multipart/form-data"} ,data : formData})
+    console.log(res)
+    image.push(res.data.imgPath[0])
+    console.log(image)
+  };
+  
   return (
     <div className="pt-28">
       <div className="block w-screen ">
@@ -93,7 +124,7 @@ function EditRoom() {
               sendForm(e);
             }}
           >
-            
+           
             {/* <div className='hidden sm:block'>
               <div className="flex py-1">
                 <div className="flex-initial w-1/2">  
@@ -125,15 +156,15 @@ function EditRoom() {
               </div>
               <div className="py-1"></div>
             </div> */}
-            <div className="">
-              <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
+           <div className="">
+              <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-1">
               ประเภทห้องพัก
             </p>
             <input
                 type="text"
-                id="roomtype"
+                id="roomType"
                 className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-                placeholder="ประเภทห้อง"
+                placeholder={room.roomType}
               />
             </div>
             <div className="">
@@ -142,10 +173,10 @@ function EditRoom() {
               </p>
               <div className="px-2"></div>
               <input
-                type="text"
-                id="numberOfRooms"
+                type="number"
+                id="roomcount"
                 className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-                placeholder="จำนวน"
+                placeholder= {room.roomCount.toString()}
               />
               <div className="px-2"></div>
               <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2">
@@ -153,24 +184,24 @@ function EditRoom() {
               </p>
               <div className="px-2"></div>
               <input
-                type="text"
-                id="price"
+                type="number"
+                id="roomprice"
                 className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-                placeholder="ราคา"
+                placeholder={room.roomPrice.toString()}
               />
               <div className="py-1"></div>
             </div>
             
-          
+            
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm py-2 ">
-              ประเภทวิว
+              จำนวนคนที่เข้าพักสูงสุดต่อห้อง
             </p>
             <div className="px-2"></div>
             <input
-              type="text"
-              id="view"
+              type="number"
+              id="guest"
               className="border-2 border-black-900 rounded-lg md:px-5 px-4 py-1 w-full"
-              placeholder="ประเภทวิว"
+              placeholder={room.guest.toString()}
             />
             <div className="py-1"></div>
             <p className="text-gray-600 md:text-lg sm:text-sm text-sm ">
@@ -226,7 +257,7 @@ function EditRoom() {
                   }}
                   className=" md:w-4 md:h-4w-3 h-3 pt-2"
                 />
-                <a className="px-2">นำสัตว์เลี่ยงเข้าพักได้</a>
+                <a className="px-2">นำสัตว์เลี้ยงเข้าพักได้</a>
               </label>
               <a className="sm:hidden">
                 <br />
@@ -290,5 +321,6 @@ function EditRoom() {
     </div>
   );
 }
+
 
 export default EditRoom;

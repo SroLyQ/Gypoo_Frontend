@@ -48,16 +48,15 @@ function hotel() {
   const [rating, setRating] = useState<any>(0);
   useEffect(() => {
     const getHotelData = async () => {
-      const res = await apiClient(
-        `${config.api_url.localHost}/Hotel/${tempId}`,
-        { method: 'GET' },
-      );
+      const res = await apiClient(`${config.api_url.localHost}/Hotel/${id}`, {
+        method: 'GET',
+      });
       setPost(res.data.hotel);
     };
     getHotelData();
     const getCommentHotel = async () => {
       const res = await apiClient(
-        `${config.api_url.localHost}/Comment/hotel/${tempId}`,
+        `${config.api_url.localHost}/Comment/hotel/${id}`,
         { method: 'GET' },
       );
       setHotelComment(res.data.comments);
@@ -79,7 +78,7 @@ function hotel() {
     const body = {
       content: comment,
       commentBy: userID,
-      commentOn: tempId,
+      commentOn: id,
       rating: rating,
     };
     console.log(body);

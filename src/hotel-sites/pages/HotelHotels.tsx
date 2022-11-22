@@ -44,8 +44,8 @@ function HotelHotels() {
       //console.log(userData.userID)
       const originaldat = async () =>{ 
       const res = await apiClient(`${config.api_url.localHost}/Hotel/myHotel/${userData.userID}`,{method : 'GET',}) 
-      console.log("hotel");
-      console.log(res.data.hotels);
+     // console.log("hotel");
+     // console.log(res.data.hotels);
       setrenderData(res.data.hotels);
       return res.data;
       }
@@ -65,7 +65,7 @@ function HotelHotels() {
     const toggleDelete = () =>{
       setSelectDelete(!selectDelete)
       if(selectDelete){
-        console.log(deletedData.toString())
+       // console.log(deletedData.toString())
         setSelectStatus(Array(testdata.length).fill(false))
         setDeletedData([])
       }
@@ -86,7 +86,7 @@ function HotelHotels() {
         
       })
       setSelectStatus(updatedStatus)
-      console.log(selectStatus.toString())
+     // console.log(selectStatus.toString())
     }
   const toggleConfirm = () =>{
         setSelectConfirm(!selectConfirm)
@@ -96,7 +96,7 @@ function HotelHotels() {
      const jason = JSON.stringify({
              deletedData
          })
-    console.log(jason)
+    //console.log(jason)
     // await fetch('/route',{
     //   headers:{
     //     'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ function HotelHotels() {
     }
   }
   const makeEditform = (dataId:string)=>{
-    console.log(dataId)
+    //console.log(dataId)
     toggleEdit()
     setSelectEditId(dataId)
   }
