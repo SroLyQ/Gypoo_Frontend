@@ -13,7 +13,7 @@ interface room {
   picture: string[],
   roomPrice: number,
   discount: number,
-  roomCount30Day: never[],
+  roomCount30Day: string[],
   service : {
     isWifi: boolean,
     isParking: boolean,
@@ -24,36 +24,20 @@ interface room {
   }
 }
 
-const roomTemp = 
-{
-  idRoom: "637bdd93d65f4573f18451af",
-  idHotel: "637bdd82a9389f613f93ea27",
-  roomType: "Makasan",
-  guest: 1,
-  roomCount: 1,
-  currentRoom: 1,
-  picture: [
-    "https://media.discordapp.net/attachments/1022834305971531798/1044375797177274470/unknownmark.png",
-  ],
-  roomPrice: 9000,
-  discount: 0,
-  roomCount30Day: [],
-  service: {
-    isWifi: true,
-    isParking: true,
-    isAnimals: true,
-    isBreakFast: false,
-    isBuffet: true,
-    isOther: true
-  }
-}
-
 function Rentroom(dataRent:any) {
   
-  const [rentroom,setRentroom] = useState<room>(roomTemp);
-  useEffect(()=>{
-    console.log(dataRent)
-  },[])
+  useEffect(() => {
+    
+    const getRoomData = async () => {
+        const res = await apiClient(`${config.api_url.localHost}/Room/getroom/${dataRent.idRoom}`, {
+          method: 'GET',
+        });
+        setRentroom(res.data);
+      };
+    getRoomData();
+}, []);
+  
+  const [rentroom,setRentroom] = useState<room>();
   return (
     <div className='block'>
       <div className='md:hidden'>
@@ -68,42 +52,42 @@ function Rentroom(dataRent:any) {
               
               <div className="border p-3 my-3 rounded-md">
                 <p className="font-bold ">สิทธิประโยชน์</p>
-                {rentroom.service.isAnimals ? (
+                {rentroom?.service.isAnimals ? (
                     <div>
                       - นำสัตว์เลี่ยงเข้าพักได้
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isBreakFast ? (
+                  {rentroom?.service.isBreakFast ? (
                     <div>
                       - มีอาหารเช้า
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isBuffet ? (
+                  {rentroom?.service.isBuffet ? (
                     <div>
                       - ปิ้งย่าง ชาบู
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isWifi ? (
+                  {rentroom?.service.isWifi ? (
                     <div>
                       - FREE WI-FI
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isParking ? (
+                  {rentroom?.service.isParking ? (
                     <div>
                       - ที่จอดรถ
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isOther ? (
+                  {rentroom?.service.isOther ? (
                     <div>
                       - อื่นๆ
                     </div>
@@ -152,42 +136,42 @@ function Rentroom(dataRent:any) {
               <div className=" col-span-2 border-l-2 px-3 flex justify-center">
                 <div>
                 <p className="font-bold ">สิทธิประโยชน์</p>
-                  {rentroom.service.isAnimals ? (
+                  {rentroom?.service.isAnimals ? (
                     <div>
                       - นำสัตว์เลี่ยงเข้าพักได้
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isBreakFast ? (
+                  {rentroom?.service.isBreakFast ? (
                     <div>
                       - มีอาหารเช้า
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isBuffet ? (
+                  {rentroom?.service.isBuffet ? (
                     <div>
                       - ปิ้งย่าง ชาบู
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isWifi ? (
+                  {rentroom?.service.isWifi ? (
                     <div>
                       - FREE WI-FI
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isParking ? (
+                  {rentroom?.service.isParking ? (
                     <div>
                       - ที่จอดรถ
                     </div>
                   ) : (
                     <div className='hidden'></div>
                   ) }
-                  {rentroom.service.isOther ? (
+                  {rentroom?.service.isOther ? (
                     <div>
                       - อื่นๆ
                     </div>
