@@ -31,10 +31,10 @@ function RentHotel() {
     
     const [isOpen, setIsOpen] = useState(true);
     const [useGuest,setUseGuest] = useState({
-        firstName : "โปรดใสข้อมูล",
-        lastName : "โปรดใสข้อมูล",
-        email : "โปรดใสข้อมูล",
-        phone : "โปรดใสข้อมูล"
+        firstName : "โปรดใส่ข้อมูล",
+        lastName : "โปรดใส่ข้อมูล",
+        email : "โปรดใส่ข้อมูล",
+        phone : "โปรดใส่ข้อมูล"
     });
     const [useGuestForm,setUseGuestForm] = useState({
         firstName : "",
@@ -81,8 +81,10 @@ function RentHotel() {
             email : useGuest.email,
             phone : useGuest.phone,
             payment : payment,
-            roomBooking : 0,
-            roomprice : 0
+            dateIn : "",
+            dateOut : "",
+            roomcount : 0,
+            roomprice : 0,
         });
 
         const res = await apiClient(`${config.api_url.localHost}/renthotel `,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
