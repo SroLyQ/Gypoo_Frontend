@@ -38,7 +38,6 @@ function App() {
           <Route path="/hotel/:id/addroom" element={<AddRoom />} />
           <Route path="/hotel/:id/addpromotion" element={<AddPromotion />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/renthotel" element={<RentHotel />} />
 
           <Route path="/hotel/:id" element={<Hotel />} />
           <Route path="/activity/:id" element={<Activity />} />

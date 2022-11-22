@@ -127,7 +127,7 @@ function hotel() {
 
         <div className="block">
           <div className="mx-48 max-md:mx-8">
-            <Roomtype />
+            <Roomtype idHotel = {post?.id} />
           </div>
         </div>
 

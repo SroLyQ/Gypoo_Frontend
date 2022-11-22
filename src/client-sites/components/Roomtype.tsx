@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState,useEffect } from 'react';
 
-function Roomtype() {
+function Roomtype(idHotel:any) {
+
   const roomtype = [
     {
       name: 'ห้องเชือด',
@@ -39,6 +41,9 @@ function Roomtype() {
       ],
     },
   ];
+
+  const [booking,setBooking] = useState('1')
+
   return (
     <div>
       <p className="mx-8 text-2xl mt-[40px]">
@@ -72,12 +77,13 @@ function Roomtype() {
                 <div className="grid grid-cols-2 text-center  ">
                   <form>
                     <input
+                      onChange={(e) => {setBooking(e.target.value)}}
                       type="number"
                       id="quantity"
                       name="quantity"
                       min="1"
                       max="5"
-                      value={1}
+                      value={booking}
                     />
                   </form>
                   <div className="col-span-1 ">
