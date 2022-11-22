@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import config from '../../config.json'  
+import apiClient from '../../api/apiClient';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 
 function Roomtype(data: any) {
   const roomtype = [
@@ -40,14 +43,28 @@ function Roomtype(data: any) {
       ],
     },
   ];
-
-  const [booking, setBooking] = useState('1');
+  
+  const [roomBooking , setRoomBooking ] = useState('1');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  return (
+
+  const navigate = useNavigate();
+  const gotoRentHotel = () =>{
+    const dataRentRoom = {
+      booking : roomBooking,
+      checkin : checkIn,
+      checkout : checkOut,
+    };
+    navigate({
+      pathname: '/renthotel',
+      search: `?${createSearchParams(dataRentRoom)}`,
+    });
+  }
+  
+  return (  
     <div>
       <p className="mx-8 text-2xl mt-[40px]">
-        ห้องพัก {roomtype.length} ประเภท
+        ห้องพัก {roomtype.length} ประเภท {}
       </p>
       {roomtype.map((data) => {
         return (
@@ -97,14 +114,14 @@ function Roomtype(data: any) {
                 <form className="text-center mt-9">
                   <input
                     onChange={(e) => {
-                      setBooking(e.target.value);
+                      setRoomBooking (e.target.value);
                     }}
                     type="number"
                     id="quantity"
                     name="quantity"
                     min="1"
                     max="5"
-                    value={booking}
+                    value={roomBooking }
                     className="text-center bg-gray-200 border-black border-2 "
                   />
                 </form>
@@ -113,9 +130,7 @@ function Roomtype(data: any) {
                 <p className="font-bold mb-3 text-center ">🔻 จองเลย 🔻</p>
                 <button
                   className=" bg-[#07ffff] py-3 px-4 mx-4 mt-3 rounded-xl hover:bg-[#128e8e]"
-                  onClick={(e) => {
-                    console.log(checkIn, checkOut, booking);
-                  }}
+                  onClick={gotoRentHotel}
                 >
                   จองเลย
                 </button>
