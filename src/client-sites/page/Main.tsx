@@ -1201,15 +1201,15 @@ function Main() {
                       </div>
                       <div className="font-kanit text-sm md:text-lg lg:text-lg xl:text-lg md:row-span-2 lg:row-span-12 xl:row-span-2 text-right">
                         <div>ราคาเริ่มต้น (ต่อคืน)</div>
-                        <div className="text-red-500 text-[30px] font-bold">
+                        <div className="text-red-500  font-bold ">
                           ฿ {data.price}
                         </div>
                       </div>
                       <a
-                        className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1  text-white font-bold rounded"
+                        className="font-kanit bg-blue-500 hover:bg-blue-700 row-span-1 text-center md:pt-3 lg:pt-5 xl:pt-7 text-white font-bold rounded text-sm md:text-lg lg:text-lg xl:text-lg"
                         href={'hotel/' + data.id}
                       >
-                        รายระเอียดเพิ่มเติม
+                        รายละเอียดเพิ่มเติม
                       </a>
                     </div>
                   </div>
