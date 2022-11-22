@@ -112,15 +112,33 @@ function RentHotel() {
         {
             if(Number(dateIn[2]) == Number(dateOut[2]))
             {
-                dateList.push('' + dateIn[2].toString() + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+                let num = "";
+                if(Number(dateIn[2]) < 10) 
+                {
+                    num = '0' + (Number(dateIn[2])).toString();
+                    dateList.push('' + num + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+                }
+                else
+                {
+                    dateList.push('' + dateIn[2].toString() + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+                }
             }
             else if (Number(dateIn[2]) <= Number(dateOut[2]))
             {
                 const max = Number(dateOut[2]) - Number(dateIn[2]);
                 for(let i = 0;i <= max;i++)
                 {
-                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
-                    
+                    let num = "";
+                    if(Number(dateIn[2]) + i < 10) 
+                    {
+                        num = '0' + (Number(dateIn[2]) + i).toString();
+                        dateList.push('' + num + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+                    }
+                    else
+                    {
+                        dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
+                    }
+                      
                 }
             }
         }
@@ -136,9 +154,17 @@ function RentHotel() {
                         dateIn[1] = 12; 
                         numDate = 0;
                     }
-                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
+                    let num = "";
+                    if(Number(dateIn[2]) < 10) 
+                    {
+                        num = '0'+ (Number(dateIn[2]) + i).toString();
+                        dateList.push('' + num + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+                    }
+                    else
+                    {
+                        dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
+                    }
                     numDate = numDate + 1;
-                    
                 }
         }
         console.log(dateList)
@@ -159,7 +185,7 @@ function RentHotel() {
 
         const res = await apiClient(`${config.api_url.localHost}/History`,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
         const ress = await apiClient(`${config.api_url.localHost}/Room/booking/${dataRoom?.idRoom}?numBooking=${Number(paramBooking)}`,{method : 'PUT',headers :{"Content-Type" : "application/json"} ,data : dateList})
-        // console.log(res.data);
+        //console.log(res.data);
         console.log(ress.data);
         // console.log(jasonDate)
 

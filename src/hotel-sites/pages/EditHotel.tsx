@@ -89,7 +89,7 @@ function EditHotel() {
       <div className="block w-screen ">
         <div className=" mx-auto border-2 border-black-900 lg:w-3/5 md:w-2/3 w-2/3 rounded-lg md:px-16 sm:px-12 px-10 py-10 ">
           <div className="flex">
-            <p className=" md:text-2xl sm:text-base text-base">เพิ่มที่พัก</p>
+            <p className=" md:text-2xl sm:text-base text-base">แก้ไขที่พัก</p>
             <div className="px-1"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
