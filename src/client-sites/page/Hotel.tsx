@@ -5,13 +5,13 @@ import StarRating from '../components/StarRating';
 import GooGleMAP from '../components/googleMap';
 import Roomtype from '../components/Roomtype';
 import 'tw-elements';
-import axios from 'axios';
 import Imgslide from '../components/imgslide';
 import config from '../../config.json';
 import apiClient from '../../api/apiClient';
 import { getCurrentUser } from '../../services/userService';
 import { useParams } from 'react-router-dom';
 import StarRate from '../components/StarRate';
+
 const testFaci = [
   'อาหารเช้า',
   'สัตว์เลี้ยงเข้าพักได้',
