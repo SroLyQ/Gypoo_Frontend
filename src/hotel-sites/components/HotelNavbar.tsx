@@ -55,30 +55,6 @@ function HotelNavbar() {
               </a>
             </div>
           </a>
-          <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1">
-            <ul className="hidden md:flex space-x-2 pr-12">
-              <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-                <a href="/" className="text-black text-xl">
-                  หน้าหลัก
-                </a>
-              </li>
-              <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-                <a href="/hotel" className="text-black text-xl">
-                  ที่พัก
-                </a>
-              </li>
-              <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-                <a href="/restaurant" className="text-black text-xl">
-                  ร้านอาหาร
-                </a>
-              </li>
-              <li className=" transition delay-150 hover:bg-gray-400 px-12 py-8">
-                <a href="/activity" className="text-black text-xl">
-                  กิจกรรม
-                </a>
-              </li>
-            </ul>
-          </div>
           <div className="flex items-center md:order-2 ">
             <Menu as="div" className="relative inline-block text-left ">
               <div>
