@@ -71,7 +71,7 @@ function RentHotel() {
         email : "",
         phone : ""
     });
-    
+
     const [payment,setPayment] = useState('');
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,14 +112,14 @@ function RentHotel() {
         {
             if(Number(dateIn[2]) == Number(dateOut[2]))
             {
-                dateList.push(paramCheckIn)
+                dateList.push('' + dateIn[2].toString() + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
             }
             else if (Number(dateIn[2]) <= Number(dateOut[2]))
             {
                 const max = Number(dateOut[2]) - Number(dateIn[2]);
                 for(let i = 0;i <= max;i++)
                 {
-                    dateList.push('' + dateIn[0].toString() + '-' + dateIn[1].toString() + '-' + (Number(dateIn[2]) + i).toString())
+                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
                     
                 }
             }
@@ -136,7 +136,7 @@ function RentHotel() {
                         dateIn[1] = 12; 
                         numDate = 0;
                     }
-                    dateList.push('' + dateIn[0].toString() + '-' + dateIn[1].toString() + '-' + (Number(dateIn[2]) + numDate).toString())
+                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
                     numDate = numDate + 1;
                     
                 }
@@ -158,8 +158,13 @@ function RentHotel() {
         });
 
         const res = await apiClient(`${config.api_url.localHost}/History`,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
-        console.log(res.data);
-        console.log(jason)
+        const ress = await apiClient(`${config.api_url.localHost}/Room/booking/${dataRoom?.idRoom}?numBooking=${Number(paramBooking)}`,{method : 'PUT',headers :{"Content-Type" : "application/json"} ,data : dateList})
+        // console.log(res.data);
+        console.log(ress.data);
+        // console.log(jasonDate)
+
+        alert("Sucess")
+        window.location.assign('/');
     }
 
     return (
@@ -570,13 +575,13 @@ function RentHotel() {
                     <div className=' bg-green-200 border border-green-500 rounded-md px-3 flex justify-between mb-2'>
                         <div className='flex'>
                             <TicketIcon className="h-4 w-4  mt-1 mr-2" />
-                            <p >ส่วนลด</p>
+                            <p >ส่วนลด (ห้อง)</p>
                         </div>
                         <p>-฿ {dataRoom?.discount}</p>
                     </div>
                     <div className='flex justify-between mb-2'>
                         <p>ยอดชำระเงินทั้งหมด</p>
-                        <p>฿ {Number(dataRoom?.roomPrice) - Number(dataRoom?.discount)}</p>
+                        <p>฿ {(Number(dataRoom?.roomPrice) - Number(dataRoom?.discount)) * Number(paramBooking)}</p>
                     </div>
                     <div className='flex justify-end'>
                         <button 
