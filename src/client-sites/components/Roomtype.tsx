@@ -43,7 +43,7 @@ function Roomtype(idHotel:any) {
   ];
 
   const [booking,setBooking] = useState('1')
-
+  
   return (
     <div>
       <p className="mx-8 text-2xl mt-[40px]">
