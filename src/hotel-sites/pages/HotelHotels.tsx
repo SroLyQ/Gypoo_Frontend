@@ -121,7 +121,7 @@ function HotelHotels() {
     setSelectEditId(dataId)
   }
   return (
-    <div className="pt-24 md:grid md:grid-flow-row ">
+    <div className="pt-24 md:grid md:grid-flow-row font-kanit">
       {
         selectConfirm ?
           <div className="grid grid-flow-row z-50 md:w-1/2 w-2/3 h-1/3 md:p-10 p-10 bg-white  border-2 border-black-900 absolute md:top-1/2 top-1/3 md:left-1/3 left-[20%]"> 
@@ -135,10 +135,13 @@ function HotelHotels() {
           ''
       }
       
-      <div className="md:grid md:grid-flow-col md:justify-self-center mt-5">
-          <div className=" w-96 "></div>
-          <div className=" w-96 "></div>
-          <div className="flex space-x-4 ml-72 md:ml-0">
+      <div className=" mt-5 mx-16 md:mx-64 lg:mx-[320px]">
+          <div className='flex justify-between'>
+          <div className='text-2xl'>
+            กิจการของฉัน
+
+          </div>
+          <div className="flex">
             {
               
               selectDelete ?
@@ -157,6 +160,11 @@ function HotelHotels() {
             }
           
           </div>
+
+          </div>
+          
+          
+          
       </div>
       <div className="grid grid-rows-1 grid-flow-rows justify-center">
       {
@@ -167,7 +175,9 @@ function HotelHotels() {
           
           <div className="grid grid-flow-col grid-cols-6 place-content-center w-screen">
           <div className="w-1/3 "></div>
+          
            <div className="col-span-4 relative grid-flow-row ">
+            
             <div>
               {
                 selectStatus[i] ?
@@ -178,6 +188,7 @@ function HotelHotels() {
             </div>
           
           <div className="z-30 w-[100%] h-[95%] bg-slate-300 opacity-20  mx-auto absolute top-5   rounded-lg"></div>
+          
           <Link to = {`/myhotel/${data.id}`}  className="z-20">  
             <HotelCard data = {data} />
           </Link>
@@ -186,7 +197,9 @@ function HotelHotels() {
           <div className="w-1/3 "></div>
           </div>
           :
+          
           <div className="grid grid-flow-col grid-cols-6 place-content-center w-screen">
+            
           <div className=" " ></div>
           <div className=" col-span-4 w-auto ">
           <div className="flex justify-end relative" >
