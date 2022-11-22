@@ -51,6 +51,7 @@ function Roomtype(data: any) {
   const navigate = useNavigate();
   const gotoRentHotel = () =>{
     const dataRentRoom = {
+      idroom : data.idHotel,
       booking : roomBooking,
       checkin : checkIn,
       checkout : checkOut,
