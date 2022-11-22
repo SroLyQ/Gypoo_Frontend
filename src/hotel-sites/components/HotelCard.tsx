@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 type dataType = {
-  data:{
-        id: string;
-        isAvailable :boolean;
-        name:string;
-        email:string;
-        phone:string;
-        address:string;
-        about:string;
-        mapURL:string;
-        ownerID:string;
-        locationType:any;
-        picture:Array<string>;
-        price:number;
-        discount:number;
-        rating:number;
-        review:number;
-        room: Array<any>;
-  }
+  data: {
+    id: string;
+    isAvailable: boolean;
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    about: string;
+    mapURL: string;
+    ownerID: string;
+    locationType: any;
+    picture: Array<string>;
+    price: number;
+    discount: number;
+    rating: number;
+    review: number;
+    room: Array<any>;
+  };
 };
 const Star = (n: number) => {
   const arr = new Array(5);
@@ -33,16 +33,19 @@ const Star = (n: number) => {
   return arr;
 };
 const HotelCard = ({ data }: dataType) => {
-  console.log(data)
+  console.log(data);
   return (
     <div className="flex border-2 border-black-900 rounded-lg w-[100%] space-x-4 mt-5 pr-7">
-    <div className="w-1/4 ">
-        <img src = {"https://image.makewebeasy.net/makeweb/0/oDgJmY2kJ/DefaultData/%E0%B8%97%E0%B8%B5%E0%B8%A5%E0%B8%AD%E0%B8%8B%E0%B8%B9.png"} className="object-cover object-left"/>
-    </div>
-    <div className="block w-2/5 md:w-3/5  space-y-2">
-        <p className="text-base md:text-xl">
-        {data.name}
-        </p>
+      <div className="w-1/4 ">
+        <img
+          src={
+            'https://pix8.agoda.net/hotelImages/240/2401189/2401189_17061912060053827734.jpg?ca=6&ce=1&s=1024x768'
+          }
+          className="object-cover object-left "
+        />
+      </div>
+      <div className="block w-2/5 md:w-3/5  space-y-2">
+        <p className="text-base md:text-xl">{data.name}</p>
         <div className="flex text-blue-500 text-sm md:text-base">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -27,18 +27,18 @@ function Roomtype(roomId: any) {
 
   const navigate = useNavigate();
 
-  const gotoRentHotel = () =>{
+  const gotoRentHotel = () => {
     const dataRentRoom = {
-      idroom : roomId.idRoom,
-      booking : booking,
-      checkin : checkIn,
-      checkout : checkOut,
+      idroom: roomId.idRoom,
+      booking: booking,
+      checkin: checkIn,
+      checkout: checkOut,
     };
     navigate({
       pathname: '/renthotel',
       search: `?${createSearchParams(dataRentRoom)}`,
     });
-  }
+  };
   return (
     <div>
       <div className=" border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] ">
@@ -155,7 +155,7 @@ function Roomtype(roomId: any) {
             <p className="font-bold mb-3  ">ห้องพัก</p>
             <img
               src={
-                'https://cdn.discordapp.com/attachments/1022834305971531798/1043933235933098014/unknown.png'
+                'https://pix8.agoda.net/hotelImages/240/2401189/2401189_17061912060053827734.jpg?ca=6&ce=1&s=1024x768'
               }
               className="w-full"
             />

@@ -1139,8 +1139,8 @@ function Main() {
                   <div className="grid grid-cols-4 grid-flow-row">
                     <img
                       // src={config.api_url.imgHost + data.picture[0]}
-                      src="https://img.redbull.com/images/c_crop,x_982,y_0,h_2133,w_1280/c_fill,w_400,h_660/q_auto,f_auto/redbullcom/2022/6/7/ay947dlkelia2kvgkstd/michaela-mimi-lintrup-portrait"
-                      className=" w-[390px] object-cover rounded-l-xl"
+                      src="https://pix8.agoda.net/hotelImages/240/2401189/2401189_17061912060053827734.jpg?ca=6&ce=1&s=1024x768"
+                      className=" w-[390px] object-contain rounded-l-xl"
                     />
                     <div className="col-span-2 p-2 md:p-5 lg:p-5 xl:p-5">
                       <p className="font-kanit md:text-4xl">{data.name}</p>
