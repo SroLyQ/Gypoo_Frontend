@@ -122,7 +122,7 @@ function Roomtype(data: any) {
                     name="quantity"
                     min="1"
                     max="5"
-                    value={roomBooking }
+                    value={roomBooking}
                     className="text-center bg-gray-200 border-black border-2 "
                   />
                 </form>

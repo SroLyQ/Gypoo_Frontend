@@ -62,10 +62,10 @@ function RentHotel() {
     
     const [isOpen, setIsOpen] = useState(true);
     const [useGuest,setUseGuest] = useState({
-        firstName : "โปรดใสข้อมูล",
-        lastName : "โปรดใสข้อมูล",
-        email : "โปรดใสข้อมูล",
-        phone : "โปรดใสข้อมูล"
+        firstName : "โปรดใส่ข้อมูล",
+        lastName : "โปรดใส่ข้อมูล",
+        email : "โปรดใส่ข้อมูล",
+        phone : "โปรดใส่ข้อมูล"
     });
     const [useGuestForm,setUseGuestForm] = useState({
         firstName : "",
