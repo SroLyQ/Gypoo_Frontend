@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import config from '../../config.json';
 import apiClient from '../../api/apiClient';
 import { stringify } from 'querystring';
-
+import { useNavigate } from 'react-router-dom';
+import { createSearchParams } from 'react-router-dom';
 function Roomtype(roomId: any) {
   useEffect(() => {
     const getRoom = async () => {
@@ -23,6 +24,21 @@ function Roomtype(roomId: any) {
   const [booking, setBooking] = useState('1');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
+
+  const navigate = useNavigate();
+
+  const gotoRentHotel = () =>{
+    const dataRentRoom = {
+      idroom : roomId.idRoom,
+      booking : booking,
+      checkin : checkIn,
+      checkout : checkOut,
+    };
+    navigate({
+      pathname: '/renthotel',
+      search: `?${createSearchParams(dataRentRoom)}`,
+    });
+  }
   return (
     <div>
       <div className=" border rounded-md border-[#999999] px-[25px] pb-[25px] pt-[15px] mt-[25px] ">
@@ -226,9 +242,7 @@ function Roomtype(roomId: any) {
             <p className="font-bold mb-3 text-center  ">🔻 จองเลย 🔻</p>
             <button
               className=" bg-[#07ffff] py-3 px-4 md:ml-6 mt-3 rounded-xl hover:bg-[#128e8e] "
-              onClick={(e) => {
-                console.log(checkIn, checkOut, booking);
-              }}
+              onClick={gotoRentHotel}
             >
               จองเลย
             </button>

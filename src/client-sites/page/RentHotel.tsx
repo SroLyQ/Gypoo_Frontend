@@ -10,16 +10,38 @@ import apiClient from '../../api/apiClient';
 import { getCurrentUser } from '../../services/userService';
 import 'tw-elements';
 
+interface room {
+    idRoom: string,
+    idHotel: string,
+    roomType: string,
+    guest: number,
+    roomCount: number,
+    currentRoom: number,
+    picture: string[],
+    roomPrice: number,
+    discount: number,
+    roomCount30Day: string[],
+    service : {
+      isWifi: boolean,
+      isParking: boolean,
+      isAnimals: boolean,
+      isBreakFast: boolean,
+      isBuffet: boolean,
+      isOther: boolean
+    }
+}
+
 function RentHotel() {
     
     const [dataParams] = useSearchParams();
-    const paramIdRoom = dataParams.get('booking');
+    const paramIdRoom = dataParams.get('idroom');
     const paramBooking = dataParams.get('booking');
     const paramCheckIn = dataParams.get('checkin');
     const paramCheckOut = dataParams.get('checkout');
 
     const [userID, setUserID] = useState<string>('');
-
+    
+    const [dataRoom,setDataRoom] = useState<room>()
 
     useEffect(() => {
         const getUserData = async () => {
@@ -27,6 +49,13 @@ function RentHotel() {
             setUserID(userData.userID);
         };
         getUserData();
+        const getRoomData = async () => {
+            const res = await apiClient(`${config.api_url.localHost}/Room/getroom/${paramIdRoom}`, {
+              method: 'GET',
+            });
+            setDataRoom(res.data);
+          };
+        getRoomData();
     }, []);
     
     const [isOpen, setIsOpen] = useState(true);
@@ -42,8 +71,8 @@ function RentHotel() {
         email : "",
         phone : ""
     });
-    const [payment,setPayment] = useState('');
 
+    const [payment,setPayment] = useState('');
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUseGuestForm({ ...useGuestForm, [event.currentTarget.name]: event.currentTarget.value });
@@ -69,26 +98,73 @@ function RentHotel() {
         setIsOpen(!isOpen);
     };
 
+    const dateList:any = [
+
+    ]
+
     const sendForm = async () => 
     {
-        console.log()
+       
+        const dateIn:any = paramCheckIn?.split('-')
+        const dateOut:any = paramCheckOut?.split('-')
+
+        if(Number(dateIn[1]) == Number(dateOut[1]))
+        {
+            if(Number(dateIn[2]) == Number(dateOut[2]))
+            {
+                dateList.push('' + dateIn[2].toString() + '/' + dateIn[1].toString() + '/' + Number(dateIn[0]).toString())
+            }
+            else if (Number(dateIn[2]) <= Number(dateOut[2]))
+            {
+                const max = Number(dateOut[2]) - Number(dateIn[2]);
+                for(let i = 0;i <= max;i++)
+                {
+                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
+                    
+                }
+            }
+        }
+        else if(Number(dateIn[1]) < Number(dateOut[1]))
+        {
+            const max = (Number(dateOut[2]) + 30) - Number(dateIn[2]);
+            let numDate = 0;
+            for(let i = 0;i <= max;i++)
+                {
+                    if(Number(dateIn[2]) + i > 30)
+                    {
+                        dateIn[2] = 1;
+                        dateIn[1] = 12; 
+                        numDate = 0;
+                    }
+                    dateList.push('' + (Number(dateIn[2]) + i).toString() + '/' + dateIn[1].toString() + '/' + dateIn[0].toString())
+                    numDate = numDate + 1;
+                    
+                }
+        }
+        console.log(dateList)
+        
         const jason = JSON.stringify({
-            idHotel: "",
-            idRoom: "",
-            idUser: "",
+            idHotel: dataRoom?.idHotel,
+            idRoom: dataRoom?.idRoom,
+            idUser: userID || "ไม่มีข้อมูล",
             firstName : useGuest.firstName,
             lastName : useGuest.lastName,
             email : useGuest.email,
             phone : useGuest.phone,
             payment : payment,
-            dateIn : "",
-            dateOut : "",
-            roomcount : 0,
-            roomprice : 0,
+            roomBooking : paramBooking,
+            roomprice : Number(dataRoom?.roomPrice) - Number(dataRoom?.discount),
+            dateBooking : dateList
         });
 
-        const res = await apiClient(`${config.api_url.localHost}/renthotel `,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
-        console.log(res.data);
+        const res = await apiClient(`${config.api_url.localHost}/History`,{method : 'POST',headers :{"Content-Type" : "application/json"} ,data : jason})
+        const ress = await apiClient(`${config.api_url.localHost}/Room/booking/${dataRoom?.idRoom}?numBooking=${Number(paramBooking)}`,{method : 'PUT',headers :{"Content-Type" : "application/json"} ,data : dateList})
+        // console.log(res.data);
+        console.log(ress.data);
+        // console.log(jasonDate)
+
+        alert("Sucess")
+        window.location.assign('/');
     }
 
     return (
@@ -99,7 +175,7 @@ function RentHotel() {
                         <div className="rounded-md border-[#999999] mt-[25px] pt-5 pb-10 px-5 shadow-2xl">
                             <div className="mb-2 flex justify-between">
                                 <p className="text-[26px]">
-                                    ข้อมูลผู้จอง
+                                    ข้อมูลผู้จอง 
                                 </p>
                                 <button>
                                     <PencilSquareIcon className="h-8 w-8 text-[#585858] mx-auto " onClick={toggleModel} />
@@ -236,7 +312,7 @@ function RentHotel() {
                     <div className=" mx-48 rounded-md border-[#999999] mt-[25px] pt-5 pb-10 px-5 shadow-2xl hidden md:block">
                         <div className="mb-2 flex justify-between">
                             <p className="text-[26px]">
-                                ข้อมูลผู้จอง
+                                ข้อมูลผู้จอง 
                             </p>
                             <button>
                                 <PencilSquareIcon className="h-8 w-8 text-[#585858] mx-auto " onClick={toggleModel} />
@@ -370,7 +446,7 @@ function RentHotel() {
                     </div>
                 </div>
 
-                <RentRoom idHotel = {"637bdd93d65f4573f18451af"} checkIn = {paramCheckIn?.toString()} checkOut = {paramCheckOut?.toString()} />
+                <RentRoom idRoom = {paramIdRoom} checkIn = {paramCheckIn?.toString()} checkOut = {paramCheckOut?.toString()} />
 
                 <div className='block'>
                     <div className='md:hidden'>
@@ -452,18 +528,22 @@ function RentHotel() {
                 <div className=" border rounded-md border-[#999999] px-5 py-4 mt-5">
                     <div className='flex justify-between mb-2'>
                         <p>ราคาที่พัก (x{1} คืน)</p>
-                        <p>฿ {2000}</p>
+                        <p>฿ {dataRoom?.roomPrice}</p>
+                    </div>
+                    <div className='flex justify-between mb-2'>
+                        <p>จำนวนที่พัก (ห้อง)</p>
+                        <p>฿ {paramBooking}</p>
                     </div>
                     <div className=' bg-green-200 border border-green-500 rounded-md px-3 flex justify-between mb-2'>
                         <div className='flex'>
                             <TicketIcon className="h-4 w-4  mt-1 mr-2" />
                             <p >ส่วนลด</p>
                         </div>
-                        <p>-฿ {5}</p>
+                        <p>-฿ {dataRoom?.discount}</p>
                     </div>
                     <div className='flex justify-between mb-2'>
                         <p>ยอดชำระเงินทั้งหมด</p>
-                        <p>฿ {2000 - 5}</p>
+                        <p>฿ {Number(dataRoom?.roomPrice) - Number(dataRoom?.discount)}</p>
                     </div>
                     <div className='flex justify-end'>
                         <button
@@ -486,18 +566,22 @@ function RentHotel() {
                 <div className=" border rounded-md border-[#999999] px-5 py-4 mt-5">
                     <div className='flex justify-between mb-2'>
                         <p>ราคาที่พัก (x{1} คืน)</p>
-                        <p>฿ {2000}</p>
+                        <p>฿ {dataRoom?.roomPrice}</p>
+                    </div>
+                    <div className='flex justify-between mb-2'>
+                        <p>จำนวนที่พัก (ห้อง)</p>
+                        <p>{paramBooking}</p>
                     </div>
                     <div className=' bg-green-200 border border-green-500 rounded-md px-3 flex justify-between mb-2'>
                         <div className='flex'>
                             <TicketIcon className="h-4 w-4  mt-1 mr-2" />
-                            <p >ส่วนลด</p>
+                            <p >ส่วนลด (ห้อง)</p>
                         </div>
-                        <p>-฿ {5}</p>
+                        <p>-฿ {dataRoom?.discount}</p>
                     </div>
                     <div className='flex justify-between mb-2'>
                         <p>ยอดชำระเงินทั้งหมด</p>
-                        <p>฿ {2000 - 5}</p>
+                        <p>฿ {(Number(dataRoom?.roomPrice) - Number(dataRoom?.discount)) * Number(paramBooking)}</p>
                     </div>
                     <div className='flex justify-end'>
                         <button 
