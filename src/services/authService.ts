@@ -18,6 +18,7 @@ export const checkLogin = async () => {
       method: 'GET',
     });
     if (res.status === 401 || res.status === 403) {
+      localStorage.setItem('token', '');
       return false;
     }
   } catch (e) {

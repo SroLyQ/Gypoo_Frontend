@@ -1,4 +1,15 @@
-import React, { FormEvent, useEffect } from 'react';
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  FormEvent,
+  MouseEventHandler,
+  useEffect,
+  useState,
+} from 'react';
+import apiClient from '../../api/apiClient';
+import config from '../../config.json';
+import { checkLogin } from '../../services/authService';
+import { getCurrentUser } from '../../services/userService';
 interface profileFormState {
   name: string;
   lastname: string;
@@ -12,49 +23,61 @@ function HotelProfile() {
     email: '',
   });
   const [popup, setpopup] = React.useState<boolean>(false);
-  const sendForm = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const { name, lastname, email } = e.target as typeof e.target & {
-      name: { value: string };
-      lastname: { value: string };
-      email: { value: string };
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [userID, setUserID] = useState<string>('');
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const checkAuthRes = await checkLogin();
+      if (checkAuthRes) {
+        setIsLogin(true);
+        getUserInfo();
+      } else {
+        setIsLogin(false);
+      }
     };
-    const jason = JSON.stringify({
-      name: name.value,
-      lastname: lastname.value,
-      email: email.value,
-    });
-    console.log(jason);
-    setpopup(false);
-    // await fetch('/route',{
-    //   headers:{
-    //     'Content-Type': 'application/json'
-    //   },
-    //   method : 'POST',
-    //   body : JSON.stringify({
-    //       name : name.value,
-    //       lastname : lastname.value,
-    //       email : email.value
-    //   })
-    //})
-    setUserForm({
-      name: name.value,
-      lastname: lastname.value,
-      email: email.value,
-    });
+    checkAuth();
+    const getUserInfo = async () => {
+      const userData: any = getCurrentUser();
+      console.log(userData);
+      const res = await apiClient(
+        `${config.api_url.localHost}/User/${userData.userID}`,
+        { method: 'GET' },
+      );
+      setUserID(userData.userID);
+      const userRes = res?.data;
+      console.log(userRes);
+      setUserForm({
+        name: userRes.name,
+        lastname: userRes.surname,
+        email: userRes.email,
+      });
+    };
+  }, []);
+  const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    setUserForm({ ...userForm, [e.target.id]: e.target.value });
   };
-  function handleProfile(e: FormEvent<HTMLFormElement>) {
-    const { name, lastname, email } = e.target as typeof e.target & {
-      name: { value: string };
-      lastname: { value: string };
-      email: { value: string };
+  const handleSubmit = async () => {
+    const body = {
+      name: userForm.name,
+      surname: userForm.lastname,
+      email: userForm.email,
     };
-    setUserForm({
-      name: name.value,
-      lastname: lastname.value,
-      email: email.value,
+    console.log(body);
+    const res = await apiClient(`${config.api_url.localHost}/User/${userID}`, {
+      method: 'PUT',
+      data: body,
     });
-  }
+    console.log(res.data);
+    const userNewData = res?.data.user;
+    setUserForm({
+      name: userNewData.name,
+      lastname: userNewData.surname,
+      email: userNewData.email,
+    });
+    setpopup(false);
+  };
+
   const openEditPopUp = () => {
     setpopup(!popup);
   };
@@ -63,11 +86,9 @@ function HotelProfile() {
   };
   return (
     <>
-      <div className="pt-24">โปรไฟล์อะไรก็ใส่มึงได้อะ</div>
-
-      <div>
+      <div className="pt-36">
         {popup ? (
-          <div className="block w-screen ">
+          <div className="block w-screen">
             <div className=" mx-auto border-2 border-black-900 w-2/3 rounded-lg md:px-16 sm:px-12 px-10 py-10  ">
               <div className="flex  justify-between w-auto ">
                 <p className=" md:text-2xl sm:text-sm text-sm">Edit Profile</p>
@@ -79,7 +100,7 @@ function HotelProfile() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                   >
                     <path
                       stroke-linecap="round"
@@ -90,13 +111,7 @@ function HotelProfile() {
                 </div>
               </div>
               <div className="border-b-2 border-black-900 pb-4 mt-2 md-2"></div>
-              <form
-                className="pt-4"
-                onSubmit={(e) => {
-                  sendForm(e);
-                }}
-              >
-                <div>upload image space</div>
+              <form className="pt-4">
                 <fieldset className="field-area pt-3">
                   <label htmlFor="name" className="mr-3">
                     Name :
@@ -104,7 +119,9 @@ function HotelProfile() {
                   <input
                     type="text"
                     id="name"
-                    className="border-2 border-black-900 rounded-lg"
+                    className="border-2 border-black-900 rounded-lg indent-2"
+                    placeholder={userForm.name}
+                    onChange={changeHandler}
                   />
                 </fieldset>
                 <fieldset className="field-area pt-3">
@@ -112,7 +129,9 @@ function HotelProfile() {
                   <input
                     type="text"
                     id="lastname"
-                    className="border-2 border-black-900 rounded-lg"
+                    className="border-2 border-black-900 rounded-lg indent-2"
+                    placeholder={userForm.lastname}
+                    onChange={changeHandler}
                   />
                 </fieldset>
                 <fieldset className="field-area pt-3">
@@ -122,13 +141,16 @@ function HotelProfile() {
                   <input
                     type="text"
                     id="email"
-                    className="border-2 border-black-900 rounded-lg"
+                    className="border-2 border-black-900 rounded-lg indent-2"
+                    placeholder={userForm.email}
+                    onChange={changeHandler}
                   />
                 </fieldset>
                 <div className="flex  justify-end w-auto ">
                   <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 md:py-1 mt-2 text-base md:text-sm rounded-full"
+                    onClick={handleSubmit}
                   >
                     ยืนยัน
                   </button>
@@ -136,7 +158,7 @@ function HotelProfile() {
               </form>
             </div>
           </div>
-        ) : (
+        ) : isLogin ? (
           <div className="block w-screen ">
             <div className="md:hidden">
               <img
@@ -160,7 +182,7 @@ function HotelProfile() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className="w-4 h-4 cursor-pointer"
                   >
                     <path
                       stroke-linecap="round"
@@ -169,7 +191,7 @@ function HotelProfile() {
                     />
                   </svg>
 
-                  <p onClick={openEditPopUp} className="text-sm">
+                  <p onClick={openEditPopUp} className="text-sm cursor-pointer">
                     edit
                   </p>
                 </div>
@@ -187,20 +209,22 @@ function HotelProfile() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-6">
-                  <p className="mb-4 text-sm text-ellipsis overflow-hidden">
+                <div className="mt-6 pl-12">
+                  <p className="mb-4 text-lg text-ellipsis overflow-hidden">
                     ชื่อ : {userForm.name}
                   </p>
-                  <p className="mb-4 text-sm text-ellipsis overflow-hidden">
+                  <p className="mb-4 text-lg text-ellipsis overflow-hidden">
                     นามสกุล : {userForm.lastname}
                   </p>
-                  <p className="mb-4 text-sm text-ellipsis overflow-hidden">
+                  <p className="mb-4 text-md text-ellipsis overflow-hidden">
                     Email : {userForm.email}
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        ) : (
+          <div className="text-xl">Please Login First!</div>
         )}
       </div>
     </>
