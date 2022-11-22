@@ -42,8 +42,6 @@ function RentHotel() {
     const [userID, setUserID] = useState<string>('');
     
     const [dataRoom,setDataRoom] = useState<room>()
-    const [roomPrice,setRoomPrice] = useState(2000)
-    const [discount,setDiscount] = useState(5)
 
     useEffect(() => {
         const getUserData = async () => {
@@ -73,8 +71,7 @@ function RentHotel() {
         email : "",
         phone : ""
     });
-    const [dateForm,setDateForme] = useState<[string]>();
-
+    
     const [payment,setPayment] = useState('');
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
